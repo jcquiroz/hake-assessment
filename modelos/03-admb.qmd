@@ -1,0 +1,102 @@
+---
+title: Estructura de codificación
+description: Partes del modelo
+---
+
+### Clave Talla-Edad
+
+Sección de código `ADMB` para implementar los supuestos en el crecimiento individual.
+
+``` {.c filename="admb.growth"}
+//========================================================================
+FUNCTION Eval_prob_talla_edad
+//========================================================================
+ int i, j;
+Linf = mfexp(log_Linfprior);
+ k    = mfexp(log_kprior);
+ Lo   = mfexp(log_Lo);
+
+   mu_edad(1) = Lo;
+   for (i=2;i<=nedades;i++){
+   mu_edad(i) = mu_edad(i-1)*mfexp(-k)+Linf*(1-mfexp(-k));} //Shnute y Fornier 1980
+   sigma_edad = mfexp(log_alfa)+mfexp(log_beta)*mu_edad;
+   Prob_talla = ALK( mu_edad, sigma_edad, Tallas);
+
+//========================================================================
+FUNCTION dvar_matrix ALK(dvar_vector& mu, dvar_vector& sig, dvector& x)
+//========================================================================
+    //RETURN_ARRAYS_INCREMENT();
+    int i, j;
+    dvariable z1;
+    dvariable z2;
+    int si,ni; si=mu.indexmin(); ni=mu.indexmax();
+    int sj,nj; sj=x.indexmin(); nj=x.indexmax();
+    dvar_matrix pdf(si,ni,sj,nj);
+    pdf.initialize();
+    double xs=0.5*(x[sj+1]-x[sj]);
+    for(i=si;i<=ni;i++) //loop over ages
+    {
+         for(j=sj;j<=nj;j++) //loop over length bins
+        {
+            z1=((x(j)-xs)-mu(i))/sig(i);
+            z2=((x(j)+xs)-mu(i))/sig(i);
+            pdf(i,j)=cumd_norm(z2)-cumd_norm(z1);
+        }//end nbins
+        pdf(i)/=sum(pdf(i));
+    }//end nage
+    return(pdf);
+```
+
+### Relación stock-recluta
+
+Sección de código `ADMB` para implementar los supuestos en el crecimiento individual.
+
+::: course-details
+Algo news
+:::
+
+sss
+
+::: cell-output
+``` c
+//---------------------------------------------------------------------------
+// Relacion Stock-Recluta
+//---------------------------------------------------------------------------
+ 
+ h = mfexp(log_h_prior);
+
+ if(opt_Reclu==1) //ByHolt
+ {
+ alfa = 4*h*mfexp(log_Ro)/(5*h-1);//
+ beta = (1-h)*SSBo/(5*h-1);
+ }
+
+ if(opt_Reclu==2) // Ricker
+ {
+ alfa = 1.25*log(5*h)-log(phi);
+ beta = 1.25*log(5*h)/SSBo;
+ }
+```
+:::
+
+dddd
+
+``` {.c .cell-output filename="admb.S-R"}
+//---------------------------------------------------------------------------
+// Relacion Stock-Recluta
+//---------------------------------------------------------------------------
+ 
+ h = mfexp(log_h_prior);
+
+ if(opt_Reclu==1) //ByHolt
+ {
+ alfa = 4*h*mfexp(log_Ro)/(5*h-1);//
+ beta = (1-h)*SSBo/(5*h-1);
+ }
+
+ if(opt_Reclu==2) // Ricker
+ {
+ alfa = 1.25*log(5*h)-log(phi);
+ beta = 1.25*log(5*h)/SSBo;
+ }
+```

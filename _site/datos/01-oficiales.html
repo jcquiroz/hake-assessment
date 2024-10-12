@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Evaluación de la Merluza del Pacífico - Análisis de datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../datos/01-cruceros.html" rel="next">
+<link href="../datos/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Evaluación de la Merluza del Pacífico</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../datos/index.html" aria-current="page"> 
+<span class="menu-text">Datos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../biologia/index.html"> 
+<span class="menu-text">Biología</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../modelos/index.html"> 
+<span class="menu-text">Modelos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resultados/index.html"> 
+<span class="menu-text">Resultados</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Sílabo</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Tipo de datos</a></li><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Registros Oficiales</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Análisis de datos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contexto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Tipo de datos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-oficiales.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Registros Oficiales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-cruceros.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evaluaciones Cruceros</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-tallas-rescatado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tallas y selectividad</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#datos-públicos-de-conapesca" id="toc-datos-públicos-de-conapesca" class="nav-link active" data-scroll-target="#datos-públicos-de-conapesca">Datos públicos de CONAPESCA</a></li>
+  <li><a href="#captura-y-esfuerzo" id="toc-captura-y-esfuerzo" class="nav-link" data-scroll-target="#captura-y-esfuerzo">Captura y esfuerzo</a></li>
+  <li><a href="#tasas-de-captura" id="toc-tasas-de-captura" class="nav-link" data-scroll-target="#tasas-de-captura">Tasas de captura</a>
+  <ul>
+  <li><a href="#modelamiento-tasas-de-captura" id="toc-modelamiento-tasas-de-captura" class="nav-link" data-scroll-target="#modelamiento-tasas-de-captura">Modelamiento tasas de captura</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title display-7">Análisis de datos</h1>
+<p class="subtitle lead">Exploración de tendencias en las capturas y esfuerzo de pesca</p>
+
+
+</header>
+
+
+<p>La gestión pesquera de merluza común es conducida por SAGARPA, a través de CONAPESCA e INAPESCA. A pesar de que las capturas comercialmente de merluza en el Golfo de California comenzaron en la década de 1980, sólo en la primera década del milenio (2000-2010) fueron relevantes con 2 mil toneladas anuales, y los programas de monitoreo están en operación desde el 2010. Esta sección describe las capturas reportada por CONAPESCA, con fines de explorar la temporalidad y posibles reconstrucciones de indices de abundancia.</p>
+<section id="datos-públicos-de-conapesca" class="level2">
+<h2 class="anchored" data-anchor-id="datos-públicos-de-conapesca">Datos públicos de CONAPESCA</h2>
+<p>Exploración de datos proporcionados vía website por <a href="https://conapesca.gob.mx/wb/cona/avisos_arribo_cosecha_produccion" target="_blank">CONAPESCA</a>, sobre arribos y cosecha por entidad federativa y por ejercicio fiscal.</p>
+<p>Los registros de CONAPESCA representan la actividad de pesca para el período 2018 y 2024. El desembarque promedio por viaje de pesca mostró un patrón creciente desde 10.2 ton el año 2018 a 25.8 ton el 2024. Durante este período se observo aumento en la desviación estándar del desembarque por viaje de pesca, que se condice con una reducción en el promedio de la duración de los viajes (<a href="#tbl-001" class="quarto-xref">Tabla&nbsp;1</a>). Se detectaron diferencia en la estructura de datos para el año 2024, las que requieres una revisión antes de validar.</p>
+<div class="cell tbl-column-body-outset-right" title="Estadisticas por tipo de captura (comercial versus descarte)">
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_language</span>(<span class="at">language =</span> <span class="st">"es"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>hake_season <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">desemb =</span> desemb<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">include =</span> <span class="fu">c</span>(ltrip1, ltrip2, desemb), <span class="at">by =</span> year, <span class="at">missing =</span> <span class="st">"no"</span>, <span class="at">type =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"continuous2"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">"{mean} ({sd})"</span>, <span class="st">"{p25} - {p75}"</span>), <span class="at">digits =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(desemb <span class="sc">~</span> <span class="st">"Desembarque"</span>, ltrip1 <span class="sc">~</span> <span class="st">"Esfuerzo 1"</span>, ltrip2 <span class="sc">~</span> <span class="st">"Esfuerzo 2"</span>), <span class="at">missing_text =</span> <span class="st">"(Missing)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_overall</span>() <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">"**Variable**"</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-001" class="cell tbl-column-body-outset-right quarto-float anchored" title="Estadisticas por tipo de captura (comercial versus descarte)">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;1: Estadísticas del esfuerzo (duración viaje en días) y desembarque (toneladas) promedio por viaje de pesca para el período 2018-2024.
+</figcaption>
+<div aria-describedby="tbl-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<div id="rlnmqqsroj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rlnmqqsroj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rlnmqqsroj thead, #rlnmqqsroj tbody, #rlnmqqsroj tfoot, #rlnmqqsroj tr, #rlnmqqsroj td, #rlnmqqsroj th {
+  border-style: none;
+}
+
+#rlnmqqsroj p {
+  margin: 0;
+  padding: 0;
+}
+
+#rlnmqqsroj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rlnmqqsroj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rlnmqqsroj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rlnmqqsroj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rlnmqqsroj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rlnmqqsroj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rlnmqqsroj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rlnmqqsroj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rlnmqqsroj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rlnmqqsroj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rlnmqqsroj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rlnmqqsroj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rlnmqqsroj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rlnmqqsroj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rlnmqqsroj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rlnmqqsroj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rlnmqqsroj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rlnmqqsroj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rlnmqqsroj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rlnmqqsroj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rlnmqqsroj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rlnmqqsroj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rlnmqqsroj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rlnmqqsroj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rlnmqqsroj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rlnmqqsroj .gt_left {
+  text-align: left;
+}
+
+#rlnmqqsroj .gt_center {
+  text-align: center;
+}
+
+#rlnmqqsroj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rlnmqqsroj .gt_font_normal {
+  font-weight: normal;
+}
+
+#rlnmqqsroj .gt_font_bold {
+  font-weight: bold;
+}
+
+#rlnmqqsroj .gt_font_italic {
+  font-style: italic;
+}
+
+#rlnmqqsroj .gt_super {
+  font-size: 65%;
+}
+
+#rlnmqqsroj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rlnmqqsroj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rlnmqqsroj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rlnmqqsroj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rlnmqqsroj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rlnmqqsroj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rlnmqqsroj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rlnmqqsroj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rlnmqqsroj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell tbl-column-body-outset-right table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="<div data-qmd-base64=&quot;KipWYXJpYWJsZSoq&quot;><div class='gt_from_md'><p><strong>Variable</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><p><strong>Variable</strong></p></th>
+<th id="<div data-qmd-base64=&quot;KipPdmVyYWxsKiogIApOID0gMyw3ODk=&quot;><div class='gt_from_md'><p><strong>Overall</strong><br />
+N = 3,789</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Overall</strong><br>
+N = 3,789</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDE4KiogIApOID0gMjU2&quot;><div class='gt_from_md'><p><strong>2018</strong><br />
+N = 256</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2018</strong><br>
+N = 256</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDE5KiogIApOID0gMjgx&quot;><div class='gt_from_md'><p><strong>2019</strong><br />
+N = 281</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2019</strong><br>
+N = 281</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDIwKiogIApOID0gMzAz&quot;><div class='gt_from_md'><p><strong>2020</strong><br />
+N = 303</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2020</strong><br>
+N = 303</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDIxKiogIApOID0gNDY2&quot;><div class='gt_from_md'><p><strong>2021</strong><br />
+N = 466</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2021</strong><br>
+N = 466</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDIyKiogIApOID0gODU0&quot;><div class='gt_from_md'><p><strong>2022</strong><br />
+N = 854</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2022</strong><br>
+N = 854</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDIzKiogIApOID0gOTAy&quot;><div class='gt_from_md'><p><strong>2023</strong><br />
+N = 902</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2023</strong><br>
+N = 902</p></th>
+<th id="<div data-qmd-base64=&quot;KioyMDI0KiogIApOID0gNzI3&quot;><div class='gt_from_md'><p><strong>2024</strong><br />
+N = 727</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>2024</strong><br>
+N = 727</p></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Esfuerzo 1</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_3"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_4"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_5"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_6"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_7"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Media (DE)</td>
+<td class="gt_row gt_center" headers="stat_0">5.8 (3.9)</td>
+<td class="gt_row gt_center" headers="stat_1">9.4 (6.2)</td>
+<td class="gt_row gt_center" headers="stat_2">9.4 (5.1)</td>
+<td class="gt_row gt_center" headers="stat_3">8.2 (6.5)</td>
+<td class="gt_row gt_center" headers="stat_4">5.7 (3.2)</td>
+<td class="gt_row gt_center" headers="stat_5">4.8 (2.1)</td>
+<td class="gt_row gt_center" headers="stat_6">4.7 (1.9)</td>
+<td class="gt_row gt_center" headers="stat_7">5.0 (2.2)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Q1 - Q3</td>
+<td class="gt_row gt_center" headers="stat_0">4.0 - 7.0</td>
+<td class="gt_row gt_center" headers="stat_1">6.0 - 11.0</td>
+<td class="gt_row gt_center" headers="stat_2">7.0 - 11.0</td>
+<td class="gt_row gt_center" headers="stat_3">5.0 - 9.0</td>
+<td class="gt_row gt_center" headers="stat_4">4.0 - 7.0</td>
+<td class="gt_row gt_center" headers="stat_5">3.0 - 6.0</td>
+<td class="gt_row gt_center" headers="stat_6">3.0 - 6.0</td>
+<td class="gt_row gt_center" headers="stat_7">4.0 - 6.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Esfuerzo 2</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_3"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_4"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_5"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_6"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_7"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Media (DE)</td>
+<td class="gt_row gt_center" headers="stat_0">5.0 (3.2)</td>
+<td class="gt_row gt_center" headers="stat_1">7.8 (5.0)</td>
+<td class="gt_row gt_center" headers="stat_2">8.3 (4.6)</td>
+<td class="gt_row gt_center" headers="stat_3">6.9 (4.5)</td>
+<td class="gt_row gt_center" headers="stat_4">5.3 (2.8)</td>
+<td class="gt_row gt_center" headers="stat_5">4.1 (2.0)</td>
+<td class="gt_row gt_center" headers="stat_6">3.8 (1.8)</td>
+<td class="gt_row gt_center" headers="stat_7">4.0 (1.9)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Q1 - Q3</td>
+<td class="gt_row gt_center" headers="stat_0">3.0 - 6.0</td>
+<td class="gt_row gt_center" headers="stat_1">5.0 - 9.0</td>
+<td class="gt_row gt_center" headers="stat_2">5.0 - 10.0</td>
+<td class="gt_row gt_center" headers="stat_3">4.0 - 8.0</td>
+<td class="gt_row gt_center" headers="stat_4">3.0 - 6.0</td>
+<td class="gt_row gt_center" headers="stat_5">3.0 - 5.0</td>
+<td class="gt_row gt_center" headers="stat_6">3.0 - 5.0</td>
+<td class="gt_row gt_center" headers="stat_7">3.0 - 5.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Desembarque</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_3"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_4"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_5"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_6"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_7"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Media (DE)</td>
+<td class="gt_row gt_center" headers="stat_0">19.0 (13.4)</td>
+<td class="gt_row gt_center" headers="stat_1">10.2 (7.6)</td>
+<td class="gt_row gt_center" headers="stat_2">8.9 (8.3)</td>
+<td class="gt_row gt_center" headers="stat_3">14.9 (10.2)</td>
+<td class="gt_row gt_center" headers="stat_4">15.9 (15.9)</td>
+<td class="gt_row gt_center" headers="stat_5">20.4 (10.9)</td>
+<td class="gt_row gt_center" headers="stat_6">20.8 (12.8)</td>
+<td class="gt_row gt_center" headers="stat_7">25.8 (14.5)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Q1 - Q3</td>
+<td class="gt_row gt_center" headers="stat_0">8.7 - 26.0</td>
+<td class="gt_row gt_center" headers="stat_1">2.9 - 16.0</td>
+<td class="gt_row gt_center" headers="stat_2">0.8 - 15.3</td>
+<td class="gt_row gt_center" headers="stat_3">6.0 - 22.0</td>
+<td class="gt_row gt_center" headers="stat_4">2.9 - 23.0</td>
+<td class="gt_row gt_center" headers="stat_5">13.0 - 28.0</td>
+<td class="gt_row gt_center" headers="stat_6">11.0 - 28.9</td>
+<td class="gt_row gt_center" headers="stat_7">16.1 - 34.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>La variación del desembarque por viaje de pesca (<a href="#fig-002" class="quarto-xref">Figura&nbsp;1</a>) muestra un incremento durante el período 2018 - 2024, reflejado en la progresión al alza de los estadígrafos (p25, p75, mediana, y media). Para todo el rango de años, los viajes de pesca se concentran en duraciones menores a los 10 días de viaje, con un promedio de 5.4 días (<a href="#tbl-001" class="quarto-xref">Tabla&nbsp;1</a>, para ambas unidades de esfuerzo). Por tanto, el aumento en el desembarque anual no necesariamente en consecuencia de la duración de los viajes de pesca, sino responde a una mayor frecuencia de viajes.</p>
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>hake_season <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">desemb =</span> desemb<span class="sc">/</span><span class="dv">1000</span>, <span class="at">yearf =</span> <span class="fu">factor</span>(year)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(desemb <span class="sc">&lt;=</span> <span class="dv">200</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, desemb, <span class="at">group =</span> <span class="fu">cut_width</span>(year, <span class="dv">1</span>))) <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">scale =</span> <span class="st">"width"</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">fill=</span><span class="st">"transparent"</span>, <span class="at">draw_quantiles =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> <span class="st">"width"</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color =</span> ltrip2), <span class="at">height =</span> <span class="fl">0.0</span>, <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">4</span>, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">fill=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Desembarque (ton)"</span>, <span class="at">color =</span> <span class="st">'Esfuerzo (días de pesca)'</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_c</span>(<span class="at">option =</span> <span class="st">"turbo"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">legend.title.position =</span> <span class="st">"right"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>hake_season <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">desemb =</span> desemb<span class="sc">/</span><span class="dv">1000</span>, <span class="at">yearf =</span> <span class="fu">factor</span>(year)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(desemb <span class="sc">&lt;=</span> <span class="dv">200</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, ltrip2, <span class="at">group =</span> <span class="fu">cut_width</span>(year, <span class="dv">1</span>))) <span class="sc">+</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">scale =</span> <span class="st">"width"</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">fill=</span><span class="st">"transparent"</span>, <span class="at">draw_quantiles =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> <span class="st">"width"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color =</span> desemb), <span class="at">height =</span> <span class="fl">0.0</span>, <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">4</span>, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">fill=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Esfuerzo (duración dias viaje)"</span>, <span class="at">color =</span> <span class="st">'Desembarque (ton)'</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_c</span>(<span class="at">option =</span> <span class="st">"turbo"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">legend.title.position =</span> <span class="st">"right"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-002" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-002" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-002-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-002-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="01-oficiales_files/figure-html/fig-002-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="fig-002"><img src="01-oficiales_files/figure-html/fig-002-1.png" class="img-fluid figure-img" data-ref-parent="fig-002" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-002-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Desembarque (ton) por viajes de pesca. Sobreposición del esfuerzo de pesca
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-002" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-002-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-002-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="01-oficiales_files/figure-html/fig-002-2.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="fig-002"><img src="01-oficiales_files/figure-html/fig-002-2.png" class="img-fluid figure-img" data-ref-parent="fig-002" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-002-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Duración del viaje de pesca (días). Sobreposición del desembarque
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Gráficas de violín destacando el valor promedio (punto rojo) y los cuartiles (líneas) al 25% (p25), 50% (mediana) y 75% (p75) de variabilidad anual. La forma del violín muestra la frecuencia de registros.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="captura-y-esfuerzo" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="captura-y-esfuerzo">Captura y esfuerzo</h2>
+<p>El período 2018-2024 se caracteriza por un crecimiento sostenido en el desembarque y esfuerzo de pesca (<a href="#fig-003" class="quarto-xref">Figura&nbsp;2</a>). El total mensual reportado en CONAPESCA no sobrepasa las 4,000 ton, que se registran en los primeros meses de los años más recientes. La tendencia del desembarque es ligeramente diferente a la del esfuerzo de pesca, sugiriendo que las tasas de captura deberían tener diferencias explicadas por el año.</p>
+<div class="cell page-columns page-full">
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tmp01 <span class="ot">&lt;-</span> hake_season <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year, monthf) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">viajes =</span> <span class="fu">n</span>(), <span class="at">desemb1 =</span> <span class="fu">sum</span>(desemb<span class="sc">/</span><span class="dv">1000</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">desemb2 =</span> <span class="fu">sum</span>(desembv<span class="sc">/</span><span class="dv">1000</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">effort1 =</span> <span class="fu">sum</span>(ltrip1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">effort2 =</span> <span class="fu">sum</span>(ltrip2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">cpue1 =</span> desemb1<span class="sc">/</span>effort1, <span class="at">cpue2 =</span> desemb1<span class="sc">/</span>effort2, <span class="at">cpue3 =</span> desemb1<span class="sc">/</span>viajes)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tmp01 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">names_to =</span> <span class="st">'Tipo'</span>, <span class="at">values_to =</span> <span class="st">'Valor'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Tipo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'desemb1'</span>,<span class="st">'desemb2'</span>,<span class="st">'effort1'</span>,<span class="st">'effort2'</span>)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(year,Valor)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> monthf), <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">color =</span> monthf), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Tipo, <span class="at">scales =</span> <span class="st">'free_y'</span>, <span class="at">strip.position =</span> <span class="st">'top'</span>, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">Tipo =</span> name.nivelescatch)) <span class="sc">+</span> <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> splines<span class="sc">::</span><span class="fu">bs</span>(x, <span class="dv">5</span>), <span class="at">se =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#372a51"</span>, <span class="at">fill =</span> <span class="st">"#468e8c"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="st">'Mes'</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">strip.placement.x =</span> <span class="st">"inside"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"white"</span>), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>)) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> mycolor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-003" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-oficiales_files/figure-html/fig-003-1.png" class="lightbox page-columns page-full" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="01-oficiales_files/figure-html/fig-003-1.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Captura y esfuerzo mensuales para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>El ciclo estacional de la pesquería es evidente, con un aumento en los desembarques al principio del año (<em>i.e.</em>, enero-marzo) seguido de un descenso a alrededor del 25% de los niveles iniciales (<a href="#fig-004" class="quarto-xref">Figura&nbsp;3</a>, paneles superiores). En cuanto al esfuerzo de pesca, se observa un patrón similar, con aproximadamente 600 días de pesca por mes al inicio del año, disminuyendo posteriormente pero a una tasa diferente a la reducción de los desembarques (<a href="#fig-004" class="quarto-xref">Figura&nbsp;3</a>, paneles inferiores). Se destacan aumentos en el esfuerzo durante el segundo trimestre de cada año, especialmente en el período 2022-2024.</p>
+<div class="cell page-columns page-full">
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tmp02 <span class="ot">&lt;-</span> hake_season <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year, month) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">viajes =</span> <span class="fu">n</span>(), <span class="at">desemb1 =</span> <span class="fu">sum</span>(desemb<span class="sc">/</span><span class="dv">1000</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">desemb2 =</span> <span class="fu">sum</span>(desembv<span class="sc">/</span><span class="dv">1000</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">effort1 =</span> <span class="fu">sum</span>(ltrip1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">effort2 =</span> <span class="fu">sum</span>(ltrip2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">cpue1 =</span> desemb1<span class="sc">/</span>effort1, <span class="at">cpue2 =</span> desemb1<span class="sc">/</span>effort2, <span class="at">cpue3 =</span> desemb1<span class="sc">/</span>viajes) <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">names_to =</span> <span class="st">'Tipo'</span>, <span class="at">values_to =</span> <span class="st">'Valor'</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">yearf =</span> <span class="fu">factor</span>(year))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tmp02 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Tipo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'desemb1'</span>,<span class="st">'desemb2'</span>,<span class="st">'effort1'</span>,<span class="st">'effort2'</span>)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(month,Valor)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> yearf), <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">color =</span> yearf), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Tipo, <span class="at">scales =</span> <span class="st">'free_y'</span>, <span class="at">strip.position =</span> <span class="st">'top'</span>, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">Tipo =</span> name.nivelescatch)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> splines<span class="sc">::</span><span class="fu">bs</span>(x, <span class="dv">5</span>), <span class="at">se =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#372a51"</span>, <span class="at">fill =</span> <span class="st">"#468e8c"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="st">'Año'</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">strip.placement.x =</span> <span class="st">"inside"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"white"</span>), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>)) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> mycolor2) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">n.breaks =</span> <span class="dv">7</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-004" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-oficiales_files/figure-html/fig-004-1.png" class="lightbox page-columns page-full" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="01-oficiales_files/figure-html/fig-004-1.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Patrón estacional de las capturas y esfuerzo de pesca para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tasas-de-captura" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="tasas-de-captura">Tasas de captura</h2>
+<p>Las tasas de captura, expresadas como captura por unidad de esfuerzo (CPUE), han experimentado un aumento constante durante el período 2018-2024 (<a href="#fig-005" class="quarto-xref">Figura&nbsp;4</a>). La variación en las unidades de esfuerzo utilizadas (días de pesca, días efectivos, número de viajes) a nivel mensual no muestra diferencias significativas en el incremento de las tasas de captura.</p>
+<div class="cell page-columns page-full">
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tmp01 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">names_to =</span> <span class="st">'Tipo'</span>, <span class="at">values_to =</span> <span class="st">'Valor'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Tipo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'cpue1'</span>,<span class="st">'cpue2'</span>,<span class="st">'cpue3'</span>)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(year,Valor)) <span class="sc">+</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> monthf), <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">color =</span> monthf), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Tipo, <span class="at">scales =</span> <span class="st">'free_y'</span>, <span class="at">strip.position =</span> <span class="st">'top'</span>, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">Tipo =</span> name.nivelescpue)) <span class="sc">+</span> <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> splines<span class="sc">::</span><span class="fu">bs</span>(x, <span class="dv">5</span>), <span class="at">se =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#372a51"</span>, <span class="at">fill =</span> <span class="st">"#468e8c"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="st">'Mes'</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">strip.placement.x =</span> <span class="st">"inside"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"white"</span>), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>)) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> mycolor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-005" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-005-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-oficiales_files/figure-html/fig-005-1.png" class="lightbox page-columns page-full" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="01-oficiales_files/figure-html/fig-005-1.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-005-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Captura por unidad de esfuerzo (CPUE) basada en desembarques (ton). La línea continua y área achurada muestra un suavizador B-spline de orden 5.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="modelamiento-tasas-de-captura" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="modelamiento-tasas-de-captura">Modelamiento tasas de captura</h3>
+<p>Para la construcción de las tasas de captura es crucial entender el comportamiento de los predictores temporales, en este caso el <code>Año</code> y <code>Mes</code>. La inspección del patrón estacional de las capturas y esfuerzo (<a href="#fig-004" class="quarto-xref">Figura&nbsp;3</a>) muestra un ciclo estacional bastante estable, aunque se observar diferencias importantes en la escala de la CPUE para los meses (<a href="#fig-005" class="quarto-xref">Figura&nbsp;4</a>).</p>
+<p>La incorporación de ambos predictores en un modelo lineal generalizado (<a href="#fig-006-1" class="quarto-xref">Figura&nbsp;5</a>) corrobora el crecimiento significativo de la CPUE durante el período 2018-2024, y además indica que la interacción entre ambos predictores es significativa (<span class="math inline">\(P&lt;0.05\)</span>), mostrando que el patrón estacional de la CPUE es diferente entre años (<a href="#fig-006-2" class="quarto-xref">Figura&nbsp;6</a>, <a href="#tbl-002" class="quarto-xref">Tabla&nbsp;2</a>). Específicamente, la tendencia anual de la CPUE es diferente para los últimos meses del año.</p>
+<div class="cell page-columns page-full">
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tmp03 <span class="ot">&lt;-</span> hake_season <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">catch1 =</span> desemb, <span class="at">catch2 =</span> desembv, <span class="at">effort1 =</span> ltrip1, <span class="at">effort2 =</span> ltrip2, <span class="at">year =</span> year, month, monthf, tipopesca) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearf =</span> <span class="fu">factor</span>(year), <span class="at">catch1 =</span> catch1<span class="sc">/</span><span class="dv">1000</span>, <span class="at">catch2 =</span> catch2<span class="sc">/</span><span class="dv">1000</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cpue11 =</span> catch1<span class="sc">/</span>effort1, <span class="at">cpue12 =</span> catch1<span class="sc">/</span>effort2, <span class="at">cpue21 =</span> catch2<span class="sc">/</span>effort1, <span class="at">cpue22 =</span> catch2<span class="sc">/</span>effort2) <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(catch1 <span class="sc">&lt;=</span> <span class="dv">200</span>) </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom.mixed) <span class="co"># for converting bayesian models to tidy tibbles</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dotwhisker)  <span class="co"># for visualizing regression results</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># tmp03 |&gt; ggplot(aes(x = month,  y = cpue11,  group = yearf,  color = yearf)) + geom_point() +  </span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_smooth(method = lm, se = FALSE) + scale_color_viridis_d(option = "turbo", end = 1) +</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_bw(base_size = 10) + labs(x = "Año", y = "CPUE", color = "Mes")</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"glm"</span>, <span class="at">family =</span> stats<span class="sc">::</span><span class="fu">Gamma</span>(<span class="at">link =</span> <span class="st">"log"</span>)) <span class="sc">%&gt;%</span> <span class="fu">translate</span>()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span>  lm_mod <span class="sc">|&gt;</span> <span class="fu">fit</span>(cpue11 <span class="sc">~</span> yearf <span class="sc">*</span> month <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> tmp03 <span class="sc">|&gt;</span> <span class="fu">filter</span>(effort1 <span class="sc">&gt;</span><span class="dv">0</span>))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit) <span class="sc">|&gt;</span> <span class="fu">dwplot</span>(<span class="at">dot_args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> mycolor[<span class="dv">8</span>]), <span class="at">whisker_args =</span> <span class="fu">list</span>(<span class="at">color =</span> mycolor[<span class="dv">11</span>]),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">vline =</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"grey50"</span>, <span class="at">linetype =</span> <span class="dv">2</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">10</span>) </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>new_points <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">month =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,  <span class="at">yearf =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">2018</span><span class="sc">:</span><span class="dv">2024</span>)))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>mean_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit, <span class="at">new_data =</span> new_points)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>conf_int_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit,  <span class="at">new_data =</span> new_points,  <span class="at">type =</span> <span class="st">"conf_int"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span>  new_points <span class="sc">|&gt;</span> <span class="fu">bind_cols</span>(mean_pred) <span class="sc">|&gt;</span> <span class="fu">bind_cols</span>(conf_int_pred)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data, <span class="fu">aes</span>(<span class="at">x =</span> yearf)) <span class="sc">+</span>  </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> .pred_lower,  <span class="at">ymax =</span> .pred_upper), <span class="at">width =</span> .<span class="dv">15</span>, <span class="at">color =</span> mycolor[<span class="dv">11</span>]) <span class="sc">+</span> </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> .pred), <span class="at">color =</span> mycolor[<span class="dv">8</span>], <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> month, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"CPUE"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">8</span>) <span class="sc">+</span> </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.placement.x =</span> <span class="st">"inside"</span>, <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"white"</span>),</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>)) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"CPUE"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-006-1" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-006-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-oficiales_files/figure-html/fig-006-1.png" class="lightbox page-columns page-full" data-glightbox="description: .lightbox-desc-6" data-gallery="quarto-lightbox-gallery-6"><img src="01-oficiales_files/figure-html/fig-006-1.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-006-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Valores de predictores lineales Mes y Año
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-006-2" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-006-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-oficiales_files/figure-html/fig-006-2.png" class="lightbox page-columns page-full" data-glightbox="description: .lightbox-desc-7" data-gallery="quarto-lightbox-gallery-7"><img src="01-oficiales_files/figure-html/fig-006-2.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-006-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Predicción anual de la CPUE por mes
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Los parámetros estimados (<span class="math inline">\(\beta\)</span>) para el modelo de predicción de la CPUE se muestran en la <a href="#tbl-002" class="quarto-xref">Tabla&nbsp;2</a>, destacando los predictores <code>Año+Mes</code> y la interacción <code>Año:Mes</code> son significativas. Para fines de la evaluación, se debe considerar únicamente el predictor Año.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>ver código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="sc">|&gt;</span> <span class="fu">tbl_regression</span>(<span class="at">exponentiate =</span> <span class="cn">FALSE</span>, <span class="at">pvalue_fun =</span> <span class="fu">label_style_pvalue</span>(<span class="at">digits =</span> <span class="dv">2</span>), <span class="at">label =</span> <span class="fu">list</span>(yearf <span class="sc">~</span> <span class="st">"Año"</span>, month <span class="sc">~</span> <span class="st">"Mes"</span>), <span class="at">missing_text =</span> <span class="st">"(Missing)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_global_p</span>() <span class="sc">|&gt;</span> <span class="fu">bold_p</span>(<span class="at">t =</span> <span class="fl">0.10</span>) <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">"**Predictor**"</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-002" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;2: Parámetros estimados para un modelo cpue ~ Año * Mes
+</figcaption>
+<div aria-describedby="tbl-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<div id="xpbmvkgxnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xpbmvkgxnt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xpbmvkgxnt thead, #xpbmvkgxnt tbody, #xpbmvkgxnt tfoot, #xpbmvkgxnt tr, #xpbmvkgxnt td, #xpbmvkgxnt th {
+  border-style: none;
+}
+
+#xpbmvkgxnt p {
+  margin: 0;
+  padding: 0;
+}
+
+#xpbmvkgxnt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xpbmvkgxnt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xpbmvkgxnt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xpbmvkgxnt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xpbmvkgxnt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xpbmvkgxnt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xpbmvkgxnt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xpbmvkgxnt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xpbmvkgxnt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xpbmvkgxnt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xpbmvkgxnt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xpbmvkgxnt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xpbmvkgxnt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xpbmvkgxnt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xpbmvkgxnt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpbmvkgxnt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xpbmvkgxnt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xpbmvkgxnt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xpbmvkgxnt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpbmvkgxnt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xpbmvkgxnt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpbmvkgxnt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xpbmvkgxnt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpbmvkgxnt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xpbmvkgxnt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xpbmvkgxnt .gt_left {
+  text-align: left;
+}
+
+#xpbmvkgxnt .gt_center {
+  text-align: center;
+}
+
+#xpbmvkgxnt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xpbmvkgxnt .gt_font_normal {
+  font-weight: normal;
+}
+
+#xpbmvkgxnt .gt_font_bold {
+  font-weight: bold;
+}
+
+#xpbmvkgxnt .gt_font_italic {
+  font-style: italic;
+}
+
+#xpbmvkgxnt .gt_super {
+  font-size: 65%;
+}
+
+#xpbmvkgxnt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xpbmvkgxnt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xpbmvkgxnt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xpbmvkgxnt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xpbmvkgxnt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xpbmvkgxnt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xpbmvkgxnt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xpbmvkgxnt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xpbmvkgxnt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="<div data-qmd-base64=&quot;KipQcmVkaWN0b3IqKg==&quot;><div class='gt_from_md'><p><strong>Predictor</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><p><strong>Predictor</strong></p></th>
+<th id="<div data-qmd-base64=&quot;KipCZXRhKio=&quot;><div class='gt_from_md'><p><strong>Beta</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Beta</strong></p></th>
+<th id="<div data-qmd-base64=&quot;Kio5NSUgQ0kqKg==&quot;><div class='gt_from_md'><p><strong>95% CI</strong></p>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>95% CI</strong></p>
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
+<th id="<div data-qmd-base64=&quot;KipwLXZhbG9yKio=&quot;><div class='gt_from_md'><p><strong>p-valor</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>p-valor</strong></p></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Año</td>
+<td class="gt_row gt_center" headers="estimate"><br>
+</td>
+<td class="gt_row gt_center" headers="conf.low"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2018</td>
+<td class="gt_row gt_center" headers="estimate">0.93</td>
+<td class="gt_row gt_center" headers="conf.low">0.74, 1.1</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2019</td>
+<td class="gt_row gt_center" headers="estimate">1.5</td>
+<td class="gt_row gt_center" headers="conf.low">1.3, 1.7</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2020</td>
+<td class="gt_row gt_center" headers="estimate">0.83</td>
+<td class="gt_row gt_center" headers="conf.low">0.70, 0.96</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2021</td>
+<td class="gt_row gt_center" headers="estimate">1.2</td>
+<td class="gt_row gt_center" headers="conf.low">1.1, 1.4</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2022</td>
+<td class="gt_row gt_center" headers="estimate">1.6</td>
+<td class="gt_row gt_center" headers="conf.low">1.5, 1.7</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2023</td>
+<td class="gt_row gt_center" headers="estimate">1.7</td>
+<td class="gt_row gt_center" headers="conf.low">1.6, 1.8</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2024</td>
+<td class="gt_row gt_center" headers="estimate">2.1</td>
+<td class="gt_row gt_center" headers="conf.low">2.0, 2.3</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Mes</td>
+<td class="gt_row gt_center" headers="estimate">-0.28</td>
+<td class="gt_row gt_center" headers="conf.low">-0.34, -0.22</td>
+<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Año * Mes</td>
+<td class="gt_row gt_center" headers="estimate"><br>
+</td>
+<td class="gt_row gt_center" headers="conf.low"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2019 * Mes</td>
+<td class="gt_row gt_center" headers="estimate">-0.09</td>
+<td class="gt_row gt_center" headers="conf.low">-0.17, -0.02</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2020 * Mes</td>
+<td class="gt_row gt_center" headers="estimate">0.29</td>
+<td class="gt_row gt_center" headers="conf.low">0.22, 0.35</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2021 * Mes</td>
+<td class="gt_row gt_center" headers="estimate">0.25</td>
+<td class="gt_row gt_center" headers="conf.low">0.18, 0.31</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2022 * Mes</td>
+<td class="gt_row gt_center" headers="estimate">0.28</td>
+<td class="gt_row gt_center" headers="conf.low">0.22, 0.34</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2023 * Mes</td>
+<td class="gt_row gt_center" headers="estimate">0.27</td>
+<td class="gt_row gt_center" headers="conf.low">0.20, 0.33</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;2024 * Mes</td>
+<td class="gt_row gt_center" headers="estimate">0.17</td>
+<td class="gt_row gt_center" headers="conf.low">0.09, 0.23</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="odd">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span>
+<p>CI = Intervalo de confianza</p></td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+
+
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figura&nbsp;1&nbsp;(a): Desembarque (ton) por viajes de pesca. Sobreposición del esfuerzo de pesca</span>
+<span class="glightbox-desc lightbox-desc-2">Figura&nbsp;1&nbsp;(b): Duración del viaje de pesca (días). Sobreposición del desembarque</span>
+<span class="glightbox-desc lightbox-desc-3">Figura&nbsp;2: Captura y esfuerzo mensuales para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.</span>
+<span class="glightbox-desc lightbox-desc-4">Figura&nbsp;3: Patrón estacional de las capturas y esfuerzo de pesca para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.</span>
+<span class="glightbox-desc lightbox-desc-5">Figura&nbsp;4: Captura por unidad de esfuerzo (CPUE) basada en desembarques (ton). La línea continua y área achurada muestra un suavizador B-spline de orden 5.</span>
+<span class="glightbox-desc lightbox-desc-6">Figura&nbsp;5: Valores de predictores lineales Mes y Año</span>
+<span class="glightbox-desc lightbox-desc-7">Figura&nbsp;6: Predicción anual de la CPUE por mes</span>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/facilevisual\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../datos/index.html" class="pagination-link" aria-label="Contexto">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Contexto</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../datos/01-cruceros.html" class="pagination-link" aria-label="Evaluaciones Cruceros">
+        <span class="nav-page-text">Evaluaciones Cruceros</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 por <a href="https://www.facilevisual.com">Juan-Carlos Quiroz</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,34 @@
+---
+title: Sílabo
+reference-location: margin
+references:
+- id: Frankfurt:2005
+  author:
+    - family: Frankfurt
+      given: Harry G.
+  citation-key: Frankfurt:2005
+  event-place: Princeton
+  issued:
+    - year: 2005
+  publisher: Princeton University Press
+  publisher-place: Princeton
+  title: On bullshit
+  type: book
+---
+
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr)
+library(tibble)
+library(gt)
+library(gtExtras)
+
+opts_theme <- function(x) {
+  x |>
+    opt_table_font(font = c("Barlow", "serif")) |>
+    tab_options(column_labels.font.weight = "bold")
+}
+
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+## Temas

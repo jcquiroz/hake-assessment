@@ -1,0 +1,264 @@
+---
+title: "Análisis de datos"
+subtitle: "Exploración de tendencias en las capturas y esfuerzo de pesca"
+subject: "Análisis"
+---
+
+```{r setup, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+library(readr)
+library(tidyverse)
+library(gtsummary)
+```
+
+La gestión pesquera de merluza común es conducida por SAGARPA, a través de CONAPESCA e INAPESCA. A pesar de
+que las capturas comercialmente de merluza en el Golfo de California comenzaron en la década de 1980, sólo en
+la primera década del milenio (2000-2010) fueron relevantes con 2 mil toneladas anuales, y los programas de
+monitoreo están en operación desde el 2010. Esta sección describe las capturas reportada por CONAPESCA, con
+fines de explorar la temporalidad y posibles reconstrucciones de indices de abundancia.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+name.nivelescpue <- c(cpue1="CPUE dias de pesca", cpue2="CPUE dias efectivos",
+  cpue3="CPUE número viajes")
+
+name.nivelescatch <- c(desemb1="Desembarque", desemb2="Desembarque (vivo)",
+  effort1="Dias de pesca", effort2="Dias efectivos")
+
+mycolor <- viridisLite::viridis(12, option = "turbo", begin = 0, end = 1)
+mycolor2 <- viridisLite::viridis(7, option = "turbo", begin = 0, end = 1)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+hake <- read_csv(file = "data/hake_gobierno.csv")
+
+hake_season <- hake |> select(date = fechaaviso, ini = periodoinicio, end = periodofin, mes = mescorte, year = yearcorte, ltrip1 = duracion, ltrip2 = diasefectivos, tipopesca = nombreespecie, desemb = pesodesembarcadokilogramos, desembv = pesovivokilogramos) |> 
+  mutate(month = recode(mes, ENERO=1, FEBRERO=2, MARZO=3, ABRIL=4, MAYO=5, JUNIO=6,
+    JULIO=7, AGOSTO=8, SEPTIEMBRE=9, OCTUBRE=10, NOVIEMBRE=11, DICIEMBRE=12), monthf = factor(month))
+```
+
+## Datos públicos de CONAPESCA
+
+Exploración de datos proporcionados vía website por
+[CONAPESCA](https://conapesca.gob.mx/wb/cona/avisos_arribo_cosecha_produccion){target="_blank"}, sobre arribos
+y cosecha por entidad federativa y por ejercicio fiscal.
+
+Los registros de CONAPESCA representan la actividad de pesca para el período 2018 y 2024. El desembarque
+promedio por viaje de pesca mostró un patrón creciente desde 10.2 ton el año 2018 a 25.8 ton el 2024. Durante
+este período se observo aumento en la desviación estándar del desembarque por viaje de pesca, que se condice
+con una reducción en el promedio de la duración de los viajes (@tbl-001). Se detectaron diferencia en la
+estructura de datos para el año 2024, las que requieres una revisión antes de validar.
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE, echo=FALSE}
+X2018 <- read_csv("data/2018.csv", col_select = -1) 
+X2019 <- read_csv("data/2019.csv", col_select = -1) 
+X2020 <- read_csv("data/2020.csv", col_select = -1) 
+X2021 <- read_csv("data/2021.csv", col_select = -1) 
+X2022 <- read_csv("data/2022.csv", col_select = -1) 
+X2023 <- read_csv("data/2023.csv", col_select = -1) 
+X2024 <- read_csv("data/2024.csv", col_select = -1) 
+
+allspc <- bind_rows(X2018, X2019, X2020, X2021, X2022, X2023, X2024, .id = "id")
+tmp <- names(allspc) |> str_remove_all(pattern = " |_") |> str_to_lower()
+hake <- allspc |> rename_with(~tmp) |> filter(grepl('MERL', nombreespecie)) 
+```
+
+```{r, warning=FALSE, message=FALSE}
+#| title: "Estadisticas por tipo de captura (comercial versus descarte)"
+#| tbl-cap: "Estadísticas del esfuerzo (duración viaje en días) y desembarque (toneladas) promedio por viaje de pesca para el período 2018-2024."
+#| tbl-column: body-outset-right
+#| label: tbl-001
+
+theme_gtsummary_language(language = "es")
+hake_season |> mutate(desemb = desemb/1000) |> 
+  tbl_summary(include = c(ltrip1, ltrip2, desemb), by = year, missing = "no", type = all_continuous() ~ "continuous2",
+    statistic = all_continuous() ~ c("{mean} ({sd})", "{p25} - {p75}"), digits = all_continuous() ~ 1,
+    label = list(desemb ~ "Desembarque", ltrip1 ~ "Esfuerzo 1", ltrip2 ~ "Esfuerzo 2"), missing_text = "(Missing)") |> 
+  add_overall() |> bold_labels() |>  modify_header(label = "**Variable**") 
+```
+
+La variación del desembarque por viaje de pesca (@fig-002) muestra un incremento durante el período 2018 -
+2024, reflejado en la progresión al alza de los estadígrafos (p25, p75, mediana, y media). Para todo el rango
+de años, los viajes de pesca se concentran en duraciones menores a los 10 días de viaje, con un promedio de
+5.4 días (@tbl-001, para ambas unidades de esfuerzo). Por tanto, el aumento en el desembarque anual no
+necesariamente en consecuencia de la duración de los viajes de pesca, sino responde a una mayor frecuencia de
+viajes.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| fig-cap: "Gráficas de violín destacando el valor promedio (punto rojo) y los cuartiles (líneas) al 25% (p25), 50% (mediana) y 75% (p75) de variabilidad anual. La forma del violín muestra la frecuencia de registros."
+#| fig-subcap: 
+#|   - "Desembarque (ton) por viajes de pesca. Sobreposición del esfuerzo de pesca"
+#|   - "Duración del viaje de pesca (días). Sobreposición del desembarque"
+#| layout-ncol: 1
+#| label: fig-002
+#| fig-column: page-right
+
+
+hake_season |> mutate(desemb = desemb/1000, yearf = factor(year)) |> filter(desemb <= 200) |> 
+  ggplot(aes(year, desemb, group = cut_width(year, 1))) + 
+  geom_violin(draw_quantiles = c(0.25, 0.75), linetype = "dashed", scale = "width") +
+  geom_violin(fill="transparent", draw_quantiles = 0.5, scale = "width") +
+  geom_jitter(aes(color = ltrip2), height = 0.0, width = 0.1, size = 0.8, alpha = 0.3) + theme_bw(base_size = 10) + 
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  labs(x = "Año", y = "Desembarque (ton)", color = 'Esfuerzo (días de pesca)') + scale_color_viridis_c(option = "turbo", direction = 1) + 
+  theme(legend.position = "bottom", legend.title.position = "right")
+
+hake_season |> mutate(desemb = desemb/1000, yearf = factor(year)) |> filter(desemb <= 200) |> 
+  ggplot(aes(year, ltrip2, group = cut_width(year, 1))) + 
+  geom_violin(draw_quantiles = c(0.25, 0.75), linetype = "dashed", scale = "width") +
+  geom_violin(fill="transparent", draw_quantiles = 0.5, scale = "width") +
+  geom_jitter(aes(color = desemb), height = 0.0, width = 0.1, size = 0.8, alpha = 0.3) + theme_bw(base_size = 10) + 
+  stat_summary(fun.y=mean, geom="point", shape=20, size=4, color="red", fill="red") +
+  labs(x = "Año", y = "Esfuerzo (duración dias viaje)", color = 'Desembarque (ton)') + scale_color_viridis_c(option = "turbo", direction = 1) + 
+  theme(legend.position = "bottom", legend.title.position = "right")
+
+```
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE, echo=FALSE}
+#| fig-cap: "Registros de pesca desde base CONAPESCA"
+#| label: fig-002a
+
+nyear <- hake |> group_by(yearcorte) |> summarise(n = n()) 
+nyear |> ggplot(aes(yearcorte,n)) + geom_col(fill = "#54aa85", alpha = 0.7) + theme_bw() + labs(x = "Year", y = "Registros [n]")
+```
+
+## Captura y esfuerzo
+
+El período 2018-2024 se caracteriza por un crecimiento sostenido en el desembarque y esfuerzo de pesca
+(@fig-003). El total mensual reportado en CONAPESCA no sobrepasa las 4,000 ton, que se registran en los
+primeros meses de los años más recientes. La tendencia del desembarque es ligeramente diferente a la del
+esfuerzo de pesca, sugiriendo que las tasas de captura deberían tener diferencias explicadas por el año.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| fig-cap: "Captura y esfuerzo mensuales para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5."
+#| fig-column: body-outset-right
+#| label: fig-003
+
+tmp01 <- hake_season |> group_by(year, monthf) |> summarise(viajes = n(), desemb1 = sum(desemb/1000, na.rm = TRUE), desemb2 = sum(desembv/1000, na.rm = TRUE), effort1 = sum(ltrip1, na.rm = TRUE), effort2 = sum(ltrip2, na.rm = TRUE)) |> mutate(cpue1 = desemb1/effort1, cpue2 = desemb1/effort2, cpue3 = desemb1/viajes)
+
+tmp01 |> pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |> 
+  filter(Tipo %in% c('desemb1','desemb2','effort1','effort2')) |> ggplot(aes(year,Valor)) + geom_point(aes(color = monthf), alpha = 0.7) + 
+  geom_path(aes(color = monthf), alpha = 0.1) + theme_bw(base_size = 10) + 
+  facet_wrap(~ Tipo, scales = 'free_y', strip.position = 'top', nrow = 2,
+      labeller = labeller(Tipo = name.nivelescatch)) + expand_limits(y = 0) + 
+  geom_smooth(method = lm, formula = y ~ splines::bs(x, 5), se = TRUE,
+    color = "#372a51", fill = "#468e8c", alpha = 0.25, linewidth = 0.6) +
+  labs(x = NULL, y = NULL, color = 'Mes') + theme(strip.placement.x = "inside",
+    strip.background = element_rect(colour = "white", fill = "white"), strip.text = element_text(size = 11)) + scale_color_manual(values = mycolor)
+```
+
+El ciclo estacional de la pesquería es evidente, con un aumento en los desembarques al principio del año
+(*i.e.*, enero-marzo) seguido de un descenso a alrededor del 25% de los niveles iniciales (@fig-004, paneles
+superiores). En cuanto al esfuerzo de pesca, se observa un patrón similar, con aproximadamente 600 días de
+pesca por mes al inicio del año, disminuyendo posteriormente pero a una tasa diferente a la reducción de los
+desembarques (@fig-004, paneles inferiores). Se destacan aumentos en el esfuerzo durante el segundo trimestre
+de cada año, especialmente en el período 2022-2024.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| fig-cap: "Patrón estacional de las capturas y esfuerzo de pesca para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5."
+#| fig-column: body-outset-right
+#| label: fig-004
+
+tmp02 <- hake_season |> group_by(year, month) |> summarise(viajes = n(), desemb1 = sum(desemb/1000, na.rm = TRUE), desemb2 = sum(desembv/1000, na.rm = TRUE), effort1 = sum(ltrip1, na.rm = TRUE), effort2 = sum(ltrip2, na.rm = TRUE)) |> mutate(cpue1 = desemb1/effort1, cpue2 = desemb1/effort2, cpue3 = desemb1/viajes) |> pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |> mutate(yearf = factor(year))
+
+tmp02 |> filter(Tipo %in% c('desemb1','desemb2','effort1','effort2')) |> ggplot(aes(month,Valor)) + geom_point(aes(color = yearf), alpha = 0.7) + 
+  geom_path(aes(color = yearf), alpha = 0.1) + theme_bw(base_size = 10) + 
+  facet_wrap(~ Tipo, scales = 'free_y', strip.position = 'top', nrow = 2,
+      labeller = labeller(Tipo = name.nivelescatch)) + ylim(0,NA) + 
+  geom_smooth(method = lm, formula = y ~ splines::bs(x, 5), se = TRUE,
+    color = "#372a51", fill = "#468e8c", alpha = 0.25, linewidth = 0.6) +
+  labs(x = NULL, y = NULL, color = 'Año') + theme(strip.placement.x = "inside",
+    strip.background = element_rect(colour = "white", fill = "white"), strip.text = element_text(size = 11)) + scale_color_manual(values = mycolor2) + scale_x_continuous(n.breaks = 7)
+```
+
+## Tasas de captura
+
+Las tasas de captura, expresadas como captura por unidad de esfuerzo (CPUE), han experimentado un aumento
+constante durante el período 2018-2024 (@fig-005). La variación en las unidades de esfuerzo utilizadas (días
+de pesca, días efectivos, número de viajes) a nivel mensual no muestra diferencias significativas en el
+incremento de las tasas de captura.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| fig-cap: "Captura por unidad de esfuerzo (CPUE) basada en desembarques (ton). La línea continua y área achurada muestra un suavizador B-spline de orden 5."
+#| fig-column: body-outset-right
+#| label: fig-005
+
+tmp01 |> pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |> 
+  filter(Tipo %in% c('cpue1','cpue2','cpue3')) |> ggplot(aes(year,Valor)) + 
+  geom_point(aes(color = monthf), alpha = 0.7) + 
+  geom_path(aes(color = monthf), alpha = 0.1) + theme_bw(base_size = 10) + 
+  facet_wrap(~ Tipo, scales = 'free_y', strip.position = 'top', nrow = 2,
+      labeller = labeller(Tipo = name.nivelescpue)) + expand_limits(y = 0) + 
+  geom_smooth(method = lm, formula = y ~ splines::bs(x, 5), se = TRUE,
+    color = "#372a51", fill = "#468e8c", alpha = 0.25, linewidth = 0.6) +
+  labs(x = NULL, y = NULL, color = 'Mes') + theme(strip.placement.x = "inside",
+    strip.background = element_rect(colour = "white", fill = "white"), strip.text = element_text(size = 11)) + scale_color_manual(values = mycolor)
+```
+
+### Modelamiento tasas de captura
+
+Para la construcción de las tasas de captura es crucial entender el comportamiento de los predictores
+temporales, en este caso el `Año` y `Mes`. La inspección del patrón estacional de las capturas y esfuerzo
+(@fig-004) muestra un ciclo estacional bastante estable, aunque se observar diferencias importantes en la
+escala de la CPUE para los meses (@fig-005).
+
+La incorporación de ambos predictores en un modelo lineal generalizado (@fig-006-1) corrobora el crecimiento
+significativo de la CPUE durante el período 2018-2024, y además indica que la interacción entre ambos
+predictores es significativa ($P<0.05$), mostrando que el patrón estacional de la CPUE es diferente entre años
+(@fig-006-2, @tbl-002). Específicamente, la tendencia anual de la CPUE es diferente para los últimos meses del
+año.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| fig-column: body-outset-right
+#| fig-cap: 
+#|   - "Valores de predictores lineales Mes y Año"
+#|   - "Predicción anual de la CPUE por mes"
+#| label: fig-006
+
+tmp03 <- hake_season |> 
+  select(catch1 = desemb, catch2 = desembv, effort1 = ltrip1, effort2 = ltrip2, year = year, month, monthf, tipopesca) |> 
+  mutate(yearf = factor(year), catch1 = catch1/1000, catch2 = catch2/1000, 
+    cpue11 = catch1/effort1, cpue12 = catch1/effort2, cpue21 = catch2/effort1, cpue22 = catch2/effort2) |> 
+  na.omit() |> filter(catch1 <= 200) 
+
+library(tidymodels) 
+library(broom.mixed) # for converting bayesian models to tidy tibbles
+library(dotwhisker)  # for visualizing regression results
+
+# tmp03 |> ggplot(aes(x = month,  y = cpue11,  group = yearf,  color = yearf)) + geom_point() +  
+#   geom_smooth(method = lm, se = FALSE) + scale_color_viridis_d(option = "turbo", end = 1) +
+#   theme_bw(base_size = 10) + labs(x = "Año", y = "CPUE", color = "Mes")
+
+lm_mod <- linear_reg() |> set_engine("glm", family = stats::Gamma(link = "log")) %>% translate()
+  
+lm_fit <-  lm_mod |> fit(cpue11 ~ yearf * month - 1, data = tmp03 |> filter(effort1 >0))
+
+tidy(lm_fit) |> dwplot(dot_args = list(size = 2, color = mycolor[8]), whisker_args = list(color = mycolor[11]),
+         vline = geom_vline(xintercept = 0, colour = "grey50", linetype = 2)) + theme_bw(base_size = 10) 
+
+new_points <- expand.grid(month = 1:12,  yearf = factor(c(2018:2024)))
+mean_pred <- predict(lm_fit, new_data = new_points)
+conf_int_pred <- predict(lm_fit,  new_data = new_points,  type = "conf_int")
+
+plot_data <-  new_points |> bind_cols(mean_pred) |> bind_cols(conf_int_pred)
+
+ggplot(plot_data, aes(x = yearf)) +  
+  geom_linerange(aes(ymin = .pred_lower,  ymax = .pred_upper), width = .15, color = mycolor[11]) + 
+  geom_point(aes(y = .pred), color = mycolor[8], size = 1.2) + 
+  facet_wrap(~ month, ncol = 4) + labs(y = "CPUE") + theme_bw(base_size = 8) + 
+  theme(strip.placement.x = "inside", strip.background = element_rect(colour = "white", fill = "white"),
+    strip.text = element_text(size = 9)) + labs(x = "Año", y = "CPUE")
+
+```
+
+Los parámetros estimados ($\beta$) para el modelo de predicción de la CPUE se muestran en la @tbl-002,
+destacando los predictores `Año+Mes` y la interacción `Año:Mes` son significativas. Para fines de la
+evaluación, se debe considerar únicamente el predictor Año.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| tbl-cap: "Parámetros estimados para un modelo cpue ~ Año * Mes"
+#| label: tbl-002
+
+lm_fit |> tbl_regression(exponentiate = FALSE, pvalue_fun = label_style_pvalue(digits = 2), label = list(yearf ~ "Año", month ~ "Mes"), missing_text = "(Missing)") |> 
+  add_global_p() |> bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Predictor**") 
+
+```

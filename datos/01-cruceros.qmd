@@ -1,0 +1,129 @@
+---
+title: "Cruceros area barrida"
+subtitle: "Obtención de índices de abundancia"
+subject: "Análisis"
+---
+
+```{r setup, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+library(readr)
+library(tidyverse)
+library(gtsummary)
+
+mycolor <- viridisLite::viridis(12, option = "turbo", begin = 0, end = 1)
+mycolor2 <- viridisLite::viridis(7, option = "turbo", begin = 0, end = 1)
+```
+
+Las biomasas obtenidas durante los cruceros de área barrida son útiles para condicionar la tendencia del
+tamaño de merluza del pacífico (*Merluccius productus*) estimado por un modelo de evaluación. Desde el año
+2005 el gobierno de México ha financiado la realización de seis (6) cruceros de área barrida en el Golfo de
+California. Esta sección describe las biomasas obtenidas y ciertas características que son relevantes para
+propósitos de la evaluación poblacional.
+
+## Biomasas prospectadas
+
+La @tbl-001 detalla los aspectos operativos de los cruceros, resaltando la biomasa prospectada y la captura
+por unidad de esfuerzo (CPUE). A excepción del crucero del año 2022 en un área distinta, la temporalidad y el
+esfuerzo de pesca (número de lances y duración en minutos) son similares, permitiendo la construcción de una
+serie temporal de índices de abundancia.
+
+| Crucero | Fecha            | Lances | Lances+ | Captura (kg)  | Biomasa (ton) | CPUE (kg/hr) | Duración (m) |
+|:--------|:-----------------|:------:|:-------:|:-------------:|:-------------:|:------------:|:------------:|
+| 2005    |                  |        |         |               |    49,000     |              |              |
+| 2014    | 13—27, Febrero   |   33   |   31    |      ni       |    47,642     |    362.0     |      30      |
+| 2019    | 03—18, Febrero   |   27   |   22    |  4,784 (67%)  |    64,823     |    334.4     |      30      |
+| 2020    | 03—18, Febrero   |   28   |   22    |  5,394 (52%)  |    47,649     |    385.3     |      30      |
+| 2022    | 28,Feb—11, Marzo |   18   |    7    | 271 (39%)\*\* |    69,339     |   537.1\^    |      30      |
+| 2023    | 06—17, Marzo     |   27   |   25    | 3,821 (51%)\* |    41,183     |    265.8     |      30      |
+
+: Resultados principales de los cruceros de área barrida realizados entre el 2005 y 2023. (\*)Proporción de la
+captura total. (\*\*)Proporción sobre un único lance. (\^)CPUE cuestionable. {#tbl-001 .striped .hover
+tbl-colwidths="\[10,15,8,8,15,12,12,10\]"}
+
+Excluyendo el año 2022, la tendencia de los índices de abundancia indica una ligera disminución en los últimos
+años (@fig-001). Se observa una posible discrepancia entre los niveles de CPUE y los de biomasa, lo que
+sugiere la necesidad de un análisis detallado de consistencia.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+#| fig-column: body-outset-right
+#| fig-cap: "Índices de abundancia obtenidos por área barrida entre los años 2005 y 2023. La línea continua muestra un suavizador B-spline de orden 3."
+#| label: fig-001
+#| fig-height: 4
+
+year = c(2005,2014,2019,2020,2022,2023)
+biomasa = c(49000, 47642, 64823, 47649, 69339, 41183)
+cv = c(0.19, 0.16, 0.14, 0.12, 0.12, 0.13)
+cpue = c(300, 362, 334.4, 385.3, 537.1, 265.8)
+inclu = c(rep(TRUE,4),FALSE,TRUE)
+
+data <- tibble(year,inclu,cpue,biomasa,cv) |> mutate(sd = cv*biomasa)
+data |> ggplot(aes(x = year, y = biomasa)) + geom_path(linetype = 2, color = "#ADADAD") +
+  geom_errorbar(aes(color = inclu, ymin = biomasa - 1.9*sd, ymax = biomasa + 1.9*sd), width = 0.4) + 
+  geom_point(aes(color = inclu, size = cpue)) + ylim(0,95000) +
+  geom_smooth(method = lm, formula = y ~ splines::bs(x, 3), se = FALSE,
+    color = "#B94C4C", fill = "#468e8c", alpha = 0.25, linewidth = 0.8) +
+  labs(y = "Biomasa [ton]", x = "Año", color = "Inclusión", size = "CPUE") + theme_bw(base_size = 10) +
+  scale_color_manual(values = c(mycolor2[2],mycolor2[5])) + scale_x_continuous(n.breaks = 7)
+  
+  
+```
+
+El rango de tallas de la merluza capturada durante los cruceros fue similar, al igual que la proporción de
+sexos y la profundidad de pesca (@tbl-002). Según los informes de los cruceros, no se encontró una relación
+entre la profundidad y la distribución de tallas de los peces muestreados. Los informes no incluyeron las
+distribuciones de tallas en formato tabular, y no se pudieron obtener los datos de muestreo, lo que impidió la
+incorporación de esta información en el modelo de evaluación.
+
+| Crucero | Profundidad | Longitud (cm) | Muestra | razón M/H | Zona Prospección |
+|:--------|:------------|:-------------:|:-------:|:---------:|:----------------:|
+| 2014    | 67.0 — 377  |  15.0 — 99.0  |   ni    |    ni     |    27 - 31°N     |
+| 2019    | 67.0 — 377  | 17.8 — 105.0  |   798   |   53/47   |    27 - 31°N     |
+| 2020    | 60.0 — 318  | 14.1 — 106.0  |  1,090  |   58/42   |    27 - 31°N     |
+| 2022    | 58.0 — 349  |  11.6 — 30.4  |   229   |           |    24 - 28°N     |
+| 2023    | 69.5 — 302  | 16.0 — 105.4  |   821   |   51/49   |    27 - 31°N     |
+
+: Aspectos operacionales durante los cruceros de área barrida realizados entre el 2005 y 2023. {#tbl-002
+.striped .hover tbl-colwidths="\[10,20,20,12,12,20\]"}
+
+## Particularidades
+
+-   Existen diferencias interanuales en las zonas de prospección. Esto dificulta la construcción de un indice
+    estandarizado para fines de evaluación poblacional.
+-   Prospección de adultos por sobre juveniles, sucede en machos y hembras.
+-   Hembras de mayor tamaño.
+-   Notar que los intervalos de confianza de las estimaciones de biomasa por área barrida fueron muy
+    estrechos, no viables para utilizarlos como indicador de variabilidad en la evaluación.
+-   Explorar acceso en <https://sipesca.conapesca.gob.mx/login.php>
+
+### Crucero 2019
+
+-   El informe técnico no se encuentra disponible.
+-   3,39e7 \* L \^ 3.1
+
+### Crucero 2020
+
+-   Similares observaciones que las del crucero 2023
+-   Existe una ppt presentada el año 2021
+-   Realizado sobre la zona norte del Golfo.
+-   Mayores capturas en rango de tallas altos. Predominancia de adultos.
+-   Composición poblacional: 74% Adultos / 26% Juveniles
+-   Tabla de PBR \| No claro desde donde provienen.
+-   Se observan pulsos de reclutamiento en las estructuras de tallas (18 y 30 cm)
+
+### Crucero 2022
+
+-   Realizado sobre la zona sur del Golfo.
+-   Capturas bajas en comparación a la captura total, relevancia de merluza en sólo un (1) lance de pesca.
+-   Diferencias en la velocidad de arrastre (3.2 nudos versus 3.0 nudos) con otros años.
+-   Los resultados fueron expuestos en un contexto ecológico y biológico, difícil de extraer información
+    pesquera.
+-   2e5 \* L \^ 2.8616
+
+### Crucero 2023
+
+-   Realizado sobre la zona norte del Golfo.
+-   Juveniles se reportan en la zona sur del Golfo, en los lances 1-6 y 27.
+-   Predominio de machos en la zona norte del Golfo (Figura).
+-   No existen diferencias notables en la proporción sexual en diferentes rangos de profundidad.
+
+![Distribución de tamaños.](/files/pesca/crucero_talla_2023.png)

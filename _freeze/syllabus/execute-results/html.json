@@ -1,0 +1,15 @@
+{
+  "hash": "f96cb52908e7d8a7321ac324c82298b9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Sílabo\nreference-location: margin\nreferences:\n- id: Frankfurt:2005\n  author:\n    - family: Frankfurt\n      given: Harry G.\n  citation-key: Frankfurt:2005\n  event-place: Princeton\n  issued:\n    - year: 2005\n  publisher: Princeton University Press\n  publisher-place: Princeton\n  title: On bullshit\n  type: book\n---\n\n\n\n\n## Temas\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

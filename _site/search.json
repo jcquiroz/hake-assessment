@@ -1,0 +1,319 @@
+[
+  {
+    "objectID": "resultados/04-explotacion.html",
+    "href": "resultados/04-explotacion.html",
+    "title": "Estato de Explotación",
+    "section": "",
+    "text": "Debido a que antes del año 2000 existió actividad pesquera, fue necesario restringir la estructura inicial de la población a una condición estado-estable penalizada a un total (para todas la edades) de mortalidad por pesca que resume las capturas priori al año 2000. La Figura 1 muestra que en la composición de tamaños del año 2000 destacan dos cohortes de reclutamiento a la pesquería, una inicial en torno a 15 cm, y una secundaria en los 25 cm. El último grupo de edad se centro en 99.6 cm, con una varianza proporcional a la talla media.\n\n\n\n\n\n\nFigura 1: Estructura Unicial",
+    "crumbs": [
+      "Resultados",
+      "Modelo Base",
+      "Explotación"
+    ]
+  },
+  {
+    "objectID": "resultados/04-explotacion.html#estructura-inicial",
+    "href": "resultados/04-explotacion.html#estructura-inicial",
+    "title": "Estato de Explotación",
+    "section": "",
+    "text": "Debido a que antes del año 2000 existió actividad pesquera, fue necesario restringir la estructura inicial de la población a una condición estado-estable penalizada a un total (para todas la edades) de mortalidad por pesca que resume las capturas priori al año 2000. La Figura 1 muestra que en la composición de tamaños del año 2000 destacan dos cohortes de reclutamiento a la pesquería, una inicial en torno a 15 cm, y una secundaria en los 25 cm. El último grupo de edad se centro en 99.6 cm, con una varianza proporcional a la talla media.\n\n\n\n\n\n\nFigura 1: Estructura Unicial",
+    "crumbs": [
+      "Resultados",
+      "Modelo Base",
+      "Explotación"
+    ]
+  },
+  {
+    "objectID": "resultados/04-explotacion.html#section",
+    "href": "resultados/04-explotacion.html#section",
+    "title": "Estato de Explotación",
+    "section": "",
+    "text": "Figura 1: Estructura Unicial",
+    "crumbs": [
+      "Resultados",
+      "Modelo Base",
+      "Explotación"
+    ]
+  },
+  {
+    "objectID": "modelos/03-procesos.html",
+    "href": "modelos/03-procesos.html",
+    "title": "Procesos individuales y poblacionales",
+    "section": "",
+    "text": "Estimaciones de parámetros VBGM para merluza del pacífico\n\n\nParámetro\nSexo\nValor\n\n\n\n\nLinf\nHembras\n163.70\n\n\nk\nHembras\n0.08\n\n\nLinf\nMachos\n108.90\n\n\nk\nHembras\n0.11\n\n\n\n\nEl crecimiento individual fue modelado por medio de una clave talla-edad modelada en base a los parámetros descritos por el método de von-Bertalanffy (VBGM) para sexos conjunto. Varias estimaciones de crecimiento fueron descritas en Alvarez-Trasviña et al. (2022), donde se proporcionaron estimaciones de longitud infinita (\\(L_{\\infty}\\)), tasa de crecimiento individual (\\(k\\)) para machos y hembras.\nLa conversión desde talla a edad fue realizada asumiendo que los grupos de edad se describen por medio de una talla modal (i.e., talla media) y su variación en el grupo (i.e., desviación estándar), asumiendo una distribución normal. Para esto, se simuló la talla de reclutamiento a la pesquería desde las composiciones de tamaños (Datos/Tallas) y se exploró el número de grupos de edad requeridos para incorporar las tallas muestreadas (Figura 1).\n\n\n\n\n\n\n\n\nFigura 1: Participación de grupos de edad en el rango de tamaños (5-110 cm) que se incluye en el modelo.",
+    "crumbs": [
+      "Modelos",
+      "Procesos",
+      "Historia de vida"
+    ]
+  },
+  {
+    "objectID": "modelos/03-procesos.html#crecimiento",
+    "href": "modelos/03-procesos.html#crecimiento",
+    "title": "Procesos individuales y poblacionales",
+    "section": "",
+    "text": "Estimaciones de parámetros VBGM para merluza del pacífico\n\n\nParámetro\nSexo\nValor\n\n\n\n\nLinf\nHembras\n163.70\n\n\nk\nHembras\n0.08\n\n\nLinf\nMachos\n108.90\n\n\nk\nHembras\n0.11\n\n\n\n\nEl crecimiento individual fue modelado por medio de una clave talla-edad modelada en base a los parámetros descritos por el método de von-Bertalanffy (VBGM) para sexos conjunto. Varias estimaciones de crecimiento fueron descritas en Alvarez-Trasviña et al. (2022), donde se proporcionaron estimaciones de longitud infinita (\\(L_{\\infty}\\)), tasa de crecimiento individual (\\(k\\)) para machos y hembras.\nLa conversión desde talla a edad fue realizada asumiendo que los grupos de edad se describen por medio de una talla modal (i.e., talla media) y su variación en el grupo (i.e., desviación estándar), asumiendo una distribución normal. Para esto, se simuló la talla de reclutamiento a la pesquería desde las composiciones de tamaños (Datos/Tallas) y se exploró el número de grupos de edad requeridos para incorporar las tallas muestreadas (Figura 1).\n\n\n\n\n\n\n\n\nFigura 1: Participación de grupos de edad en el rango de tamaños (5-110 cm) que se incluye en el modelo.",
+    "crumbs": [
+      "Modelos",
+      "Procesos",
+      "Historia de vida"
+    ]
+  },
+  {
+    "objectID": "modelos/03-procesos.html#mortalidad-natural",
+    "href": "modelos/03-procesos.html#mortalidad-natural",
+    "title": "Procesos individuales y poblacionales",
+    "section": "Mortalidad Natural",
+    "text": "Mortalidad Natural\nSe empleó información previa para la mortalidad natural utilizada en evaluaciones realizadas en Estados Unidos y Canadá. Los resultados del análisis utilizando el método de Hoenig (1983) respaldan el uso de una distribución log-normal con una mediana de M=0.21 y una desviación estándar logarítmica de 0.1. La sensibilidad a esta información ha sido evaluada extensamente en muchas evaluaciones anteriores de la merluza del pacífico. Los supuestos sobre M suelen tener un impacto significativo en los resultados del modelo, pero en ausencia de nueva información sobre M, ha habido pocas opciones para actualizar este parámetro.",
+    "crumbs": [
+      "Modelos",
+      "Procesos",
+      "Historia de vida"
+    ]
+  },
+  {
+    "objectID": "modelos/03-procesos.html#escarpamiento",
+    "href": "modelos/03-procesos.html#escarpamiento",
+    "title": "Procesos individuales y poblacionales",
+    "section": "Escarpamiento",
+    "text": "Escarpamiento\nEl valor del parámetro de escarpamiento de la función stock-recluta se fundamenta en datos de la mediana (0.79) y los percentiles 20 (0.67) y 80 (0.87) de la meta-análisis de Myers et al. (1999) de la familia Gadidae. Este valor se ha utilizado en evaluaciones de Estados Unidos desde 2007 y puede ser representado por una distribución a-priori beta con parámetros 9.76 y 2.80, lo que resulta en una media de 0.777 y una desviación estándar logarítmica de 0.113.",
+    "crumbs": [
+      "Modelos",
+      "Procesos",
+      "Historia de vida"
+    ]
+  },
+  {
+    "objectID": "modelos/03-procesos.html#madurez",
+    "href": "modelos/03-procesos.html#madurez",
+    "title": "Procesos individuales y poblacionales",
+    "section": "Madurez",
+    "text": "Madurez\nLos datos de la relación de fecundidad fueron actualizados para la evaluación de 2020 (Edwards et al., 2018b). Estas muestras fueron recolectadas de la encuesta acústica, viajes de investigación acústica de invierno y verano, del Programa de Observadores de Merluza en el Mar de EE. UU. a bordo de buques capturadores-procesadores comerciales, y de la encuesta de arrastre de fondo de la costa oeste de EE. UU. (Tabla XX). Las muestras de edades de 15 años en adelante fueron agrupadas tanto para la estimación de madurez como para el peso por edad debido a tamaños de muestra limitados. En consecuencia, las estimaciones de edades 15+ se aplicaron a edades 15-20 con fines de modelado de la dinámica poblacional (Figura 12). Se encontró que algunos peces de casi todas las edades eran funcionalmente inmaduros según los criterios histológicos, que es una combinación de “reproductores intermitentes” que no desovarán en el año próximo y peces senescentes que parecen no tener ovarios viables.\n\n\n\n\n\n\n\n\nFigura 2: Ojivas de madurez y fecundidad. La fecundidad es el producto de la madurez y el peso medio. Los valores informados para las edades de 15 años en adelante representan el promedio en todas las muestras en este rango.\n\n\n\n\n\n\n\n\nFigura 1: Participación de grupos de edad en el rango de tamaños (5-110 cm) que se incluye en el modelo.\nFigura 2: Ojivas de madurez y fecundidad. La fecundidad es el producto de la madurez y el peso medio. Los valores informados para las edades de 15 años en adelante representan el promedio en todas las muestras en este rango.",
+    "crumbs": [
+      "Modelos",
+      "Procesos",
+      "Historia de vida"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\n            Evaluación de la Merluza del Pacífico\n        ",
+    "section": "",
+    "text": "Evaluación de la Merluza del Pacífico\n        \n        \n            Dinámica pesquera y del descarte\n        \n        \n            Análisis basado en edades ajustado a la dinámica de tallasy calibrado por la CPUE, estimaciones de biomasa  por cruceros de área barrida y escenarios de captura descartada.\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\nEste es el sitio web del proyecto “Merluza del Golfo de California”. Acá se alojan todos los análisis de insumos proporcionados por el mandante, como también, los materiales de difusión (e.g., presentaciones, reportes) y análisis de datos.\n\n\n\nConsultor\n\n Dr. Juan-Carlos Quiroz\n jcquiroz\n LinkedIn\n GitHub\n\n\n\nGeneralidad Asesoría\n\n Analítica y Modelamiento\n Sep - Oct, 2024\n free-lance\n México\n\n\n\nResultados principales\n\n Datos modelo\n Reporte\n\n\n\n\n\n\nLicense\n\nEste sitio web ha sido construido bajo una licencia Creative Commons Attribution-ShareAlike 4.0 International. Visite aquí para detalles sobre este tipo de licencia."
+  },
+  {
+    "objectID": "datos/01-tallas-rescatado.html",
+    "href": "datos/01-tallas-rescatado.html",
+    "title": "Estructura de tallas",
+    "section": "",
+    "text": "Las composiciones de tamaños y los pesos medios en un modelo de evaluación poblacional permiten influir en dos procesos importantes para la estimación de variables de estado (por ejemplo, biomasa y reclutamiento): (i) el crecimiento poblacional, que se refiere a cómo las cohortes progresan temporalmente en la dinámica poblacional, describiendo la fuerza de los reclutamientos (es decir, un sustituto de los nacimientos) y (ii) determinar la fracción explotable de la población representada por las selectividades de la pesquería.",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Tallas y selectividad"
+    ]
+  },
+  {
+    "objectID": "datos/01-tallas-rescatado.html#estadísticas",
+    "href": "datos/01-tallas-rescatado.html#estadísticas",
+    "title": "Estructura de tallas",
+    "section": "Estadísticas",
+    "text": "Estadísticas\nUn total de 26770 muestras fueron analizadas para describir los cambios anuales en los tamaños y pesos de peces retenidos y descartados (Tabla 1). Un 79.98% corresponden a muestras para la construcción de composiciones de talla de la captura comercial, y el restante 20.02% se utilizarán para la construcción de las estructuras de tallas de la captura descartada. Un total de 1537 muestras son descartada por no identificar sexo (Tabla 1).\n\n\nver código\ntheme_gtsummary_language(language = \"es\")\ntheme_gtsummary_journal(\"jama\")\nobs_all |&gt;  \n  tbl_summary(include = c(year, sexo), by = destino, missing = \"ifany\", percent = c(\"row\"),\n              statistic = list(all_categorical() ~ \"{n} ({p}%)\"), \n              type = list(all_categorical() ~ \"categorical\"),\n              label = list(year ~ \"Año\", sexo ~ \"Sexo\"), \n              missing_text = \"(Perdidos)\") |&gt; \n  add_overall(col_label = \"**Totales** \\n\\n N = {style_number(N)}\", last = TRUE,\n              statistic = list(all_categorical() ~ \"{n}\")) |&gt; \n  add_n(col_label = \"**Muestras**\", last = TRUE, footnote = FALSE) |&gt;  \n  bold_labels() |&gt;  modify_header(label = \"**Factor**\") |&gt; as_gt()\n\n\n\n\nTabla 1: Tamaño de muestra por tipo de captura (comercial versus descarte) e identificación de sexo. Porcentaje aplica en niveles para cada factor.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactor\nComercial\nN = 19,525\nDescarte\nN = 4,887\nTotales\nN = 24,412\nMuestras\n\n\n\n\nAño, n (%)\n\n\n\n\n\n\n24,412\n\n\n    2015\n4,139 (64%)\n2,332 (36%)\n6,471\n\n\n\n\n    2016\n3,529 (93%)\n258 (6.8%)\n3,787\n\n\n\n\n    2017\n2,385 (76%)\n745 (24%)\n3,130\n\n\n\n\n    2018\n2,303 (81%)\n525 (19%)\n2,828\n\n\n\n\n    2019\n1,858 (85%)\n324 (15%)\n2,182\n\n\n\n\n    2020\n1,490 (88%)\n206 (12%)\n1,696\n\n\n\n\n    2021\n1,529 (85%)\n279 (15%)\n1,808\n\n\n\n\n    2022\n914 (91%)\n95 (9.4%)\n1,009\n\n\n\n\n    2023\n1,378 (92%)\n123 (8.2%)\n1,501\n\n\n\n\nSexo, n (%)\n\n\n\n\n\n\n23,069\n\n\n    Hembras\n8,236 (81%)\n1,900 (19%)\n10,136\n\n\n\n\n    Indefinido\n15 (7.7%)\n179 (92%)\n194\n\n\n\n\n    Machos\n10,058 (79%)\n2,681 (21%)\n12,739\n\n\n\n\n    (Perdidos)\n1,216\n127\n1,343\n\n\n\n\n\n\n\n\n\n\n\n\n\nLa Tabla 2 indica diferencias significativas en la talla y peso promedio entre muestras de captura comercial y descartada. El rango de tallas de la captura comercial va de 6 a 108 cm, con pesos entre 5 gr y 17.1 kg. Por otro lado, el peso promedio de la captura descartada es de 347 gr, notablemente inferior al de la captura comercial.\n\n\nver código\ntheme_gtsummary_language(language = \"es\")\ntheme_gtsummary_journal(\"jama\")\nobs_all |&gt;  tbl_summary(include = c(talla, peso), by = destino, missing = \"ifany\", type = all_continuous() ~ \"continuous2\",\n   statistic = all_continuous() ~ c(\"{mean} ({sd})\", \"{min} - {max}\"), digits = list(peso ~ 0, talla ~ 1),\n   label = list(peso ~ \"Peso\", talla ~ \"Talla\"), missing_text = \"(Perdidos)\") |&gt; \n   add_overall(col_label = \"**Totales** \\n\\n N = {style_number(N)}\", last = TRUE) |&gt; \n   add_n(col_label = \"**Muestras, n**\", last = TRUE, footnote = FALSE) |&gt; add_p(test = everything() ~ \"t.test\") |&gt; \n   bold_p(t = 0.10) |&gt; bold_labels() |&gt;  modify_header(label = \"**Factor**\") |&gt; as_gt()\nreset_gtsummary_theme()\n\n\n\n\nTabla 2: Estadisticas de las tallas y peso por tipo de captura (comercial versus descarte). Valor P negrilla indica diferecias significativa entre la captura comercial y descartada.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactor\nComercial\nN = 19,525\nDescarte\nN = 4,887\nTotales\nN = 24,412\nMuestras, n\np-valor\n1\n\n\n\n\nTalla\n\n\n\n\n\n\n24,379\n&lt;0.001\n\n\n    Media (DE)\n55.0 (11.7)\n31.4 (8.2)\n50.3 (14.6)\n\n\n\n\n\n\n    Min - Max\n13.0 - 108.0\n6.2 - 80.0\n6.2 - 108.0\n\n\n\n\n\n\n    (Perdidos)\n23\n10\n33\n\n\n\n\n\n\nPeso\n\n\n\n\n\n\n22,501\n&lt;0.001\n\n\n    Media (DE)\n1,832 (1,002)\n347 (407)\n1,512 (1,093)\n\n\n\n\n\n\n    Min - Max\n29 - 17,119\n5 - 6,661\n5 - 17,119\n\n\n\n\n\n\n    (Perdidos)\n1,869\n42\n1,911\n\n\n\n\n\n\n\n1\nt de Student",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Tallas y selectividad"
+    ]
+  },
+  {
+    "objectID": "datos/01-tallas-rescatado.html#estructura-de-tallas",
+    "href": "datos/01-tallas-rescatado.html#estructura-de-tallas",
+    "title": "Estructura de tallas",
+    "section": "Estructura de tallas",
+    "text": "Estructura de tallas\nLas composiciones de tamaño de la captura comercial y descartada muestran señales importantes para fines de la evaluación poblacional (Figura 1). Los descartes de hembras, Tabla 3 (a), revelan ingresos de cohortes que progresan en periodos de al menos 4 años (2019-2022). Similarmente la captura comercial muestra reducción de la fracción vulnerables (i.e., mayormente peces de tamaños grande, Tabla 3 (b)), que podría indicar cambios en las estrategias de pesca o aumentos en los niveles de mortalidad por pesca.\n\n\nver código\nbd = 2\nbg.brks &lt;- seq(0,110,bd)\n\ntmp &lt;- obs_all |&gt; filter(sexo %in% c(\"Machos\",\"Hembras\")) |&gt; drop_na(destino,sexo) |&gt; \n  reframe(armo_talla(talla,bg.brks), .by = c(year,destino,sexo)) \n\nggplot(data = tmp, aes(mids,freq)) + geom_col(aes(fill = destino), width = NULL, position = \"stack\") + \n  facet_grid(year ~ sexo, scales = \"free_y\") + mitheme2(bz = 9) + scale_fill_manual(values = mycolor[c(9,2)]) + \n  labs(x = \"Talla [cm]\", y = \"Proporción\", fill = \"Procedencia\")\n\n\n\n\n\n\n\n\nFigura 1: Estructura de tamaño de merluza del pacífico\n\n\n\n\n\n\nver código\ntheme_gtsummary_language(language = \"es\")\ntheme_gtsummary_journal(\"jama\")\nobs_all |&gt; filter (sexo == \"Hembras\") |&gt;  tbl_continuous(\n  variable = talla, by = destino, include = year,\n  statistic = ~ c(\"{median}\"), digits = ~ 1,\n   label = list(talla ~ \"Talla\", year ~ \"Año\") ) |&gt; add_p() |&gt; \n   bold_p(t = 0.10) |&gt; bold_labels() |&gt;  modify_header(label = \"**Factor**\") |&gt; as_gt()\nobs_all |&gt; filter (sexo == \"Machos\") |&gt;  tbl_continuous(\n  variable = talla, by = destino, include = year,\n  statistic = ~ c(\"{median}\"), digits = ~ 1,\n   label = list(talla ~ \"Talla\", year ~ \"Año\") ) |&gt; add_p() |&gt; \n   bold_p() |&gt; bold_labels() |&gt;  modify_header(label = \"**Factor**\") |&gt; as_gt()\nreset_gtsummary_theme()\n\n\n\n\nTabla 3: Progresión temporal de la talla media para la captura comercial y descartada. Valor P negrilla indica diferecias significativa entre la captura comercial y descartada.\n\n\n\n\n\n\n\n\n\n\n\n(a) Hembras\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactor\n\n\n\n\nComercial\nN = 8,236\n\n\n1\n\n\nDescarte\nN = 1,900\n\n\n1\n\n\np-valor\n\n\n2\n\n\n\n\nAño\n\n\n\n\n&lt;0.001\n\n\n    2015\n69.0\n30.0\n\n\n\n\n    2016\n57.0\n26.0\n\n\n\n\n    2017\n57.8\n26.5\n\n\n\n\n    2018\n57.6\n31.2\n\n\n\n\n    2019\n50.0\n27.5\n\n\n\n\n    2020\n55.0\n36.0\n\n\n\n\n    2021\n51.2\n33.1\n\n\n\n\n    2022\n52.4\n35.0\n\n\n\n\n    2023\n61.0\n26.3\n\n\n\n\n\n1\n\n\nTalla: Mediana\n\n\n\n\n2\n\n\nTwo-way ANOVA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Machos\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactor\n\n\n\n\nComercial\nN = 10,058\n\n\n1\n\n\nDescarte\nN = 2,681\n\n\n1\n\n\np-valor\n\n\n2\n\n\n\n\nAño\n\n\n\n\n&lt;0.001\n\n\n    2015\n64.0\n31.0\n\n\n\n\n    2016\n54.0\n25.0\n\n\n\n\n    2017\n54.5\n26.3\n\n\n\n\n    2018\n51.1\n30.3\n\n\n\n\n    2019\n45.3\n26.5\n\n\n\n\n    2020\n50.0\n35.0\n\n\n\n\n    2021\n46.7\n35.0\n\n\n\n\n    2022\n49.3\n34.3\n\n\n\n\n    2023\n51.1\n29.6\n\n\n\n\n\n1\n\n\nTalla: Mediana\n\n\n\n\n2\n\n\nTwo-way ANOVA",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Tallas y selectividad"
+    ]
+  },
+  {
+    "objectID": "datos/01-tallas-rescatado.html#relación-longitud-peso",
+    "href": "datos/01-tallas-rescatado.html#relación-longitud-peso",
+    "title": "Estructura de tallas",
+    "section": "Relación longitud-peso",
+    "text": "Relación longitud-peso\nEl crecimiento en peso, \\(W = a*L^b\\), que depende de la talla, será utilizado para modelar el crecimiento en el modelo de evaluación. Para esto es requerido estimar los parámetros a y b de la relación L-W. Específicamente es relevante discriminar como el cambio de estos parámetros es función del tiempo (años) y el sexo, con énfasis en determinar cuando el crecimiento es de tipo isométrico \\(b = 3\\) o alométrico si \\(b \\neq 3\\).\n\n\nver código\nobs_all |&gt; filter(sexo %in% c(\"Machos\",\"Hembras\")) |&gt; drop_na(destino) |&gt; \n  ggplot(aes(talla,peso)) + geom_point(aes(color = destino), size = 1, alpha = 0.4) + \n  facet_grid(year ~ sexo, scales = \"free_y\") + mitheme2(bz = 9) + \n  scale_color_manual(values = mycolor[c(9,2)]) + \n  labs(x = \"Talla [cm]\", y = \"Peso [gr]\", color = \"Destino\")\n\n\n\n\n\n\n\n\nFigura 2: Relación L-W para hembras y machos durante el período 2015 - 2023, destacando el destino de la captura\n\n\n\n\n\nLos valores de los parámetros estimados para la pendiente (\\(log(a)\\)) y crecimiento (\\(b\\)) bajo diferentes interacciones con el año y el sexo, sugieren que los cambios temporales en el crecimiento individual no son significativos (Figura 3 (a)), mientras que se detectan diferencias significativas entre sexo (Figura 3 (b)).\n\nver código\nlibrary(GGally)\nlibrary(labelled)\n\nobs_all_log &lt;- obs_all |&gt; filter(sexo != \"Indefinido\") |&gt; \n  drop_na(year,peso,talla) |&gt; mutate(yearf = factor(year), logW = log(peso), logL = log(talla)) |&gt; \n  set_variable_labels( yearf = \"Año\", logL = \"Crecimiento\", logW = \"Pendiente\" )\n\nmod02 &lt;- glm(logW ~ logL + yearf, data = obs_all_log)\nggcoef_model(mod02, intercept = TRUE, signif_stars = FALSE, facet_row = NULL, stripped_rows = TRUE) + \n  labs(x = NULL) + scale_color_viridis_d(option = \"turbo\", direction = 1) + mitheme2(bz = 4) + \n  theme(legend.position = \"none\") \n\nmod01 &lt;- glm(logW ~ logL + sexo, data = obs_all_log)\nggcoef_model(mod01, intercept = TRUE, signif_stars = FALSE, facet_row = NULL, stripped_rows = TRUE) + \n  labs(x = NULL) + scale_color_viridis_d(option = \"turbo\", direction = 1) + mitheme2(bz = 4) + \n  theme(legend.key.size = unit(12, \"pt\"), legend.key.spacing.y = unit(10, \"pt\"))\n#tbl_regression(mod01, conf.level = 0.75, intercept = TRUE, exponentiate = FALSE) |&gt; modify_header(label = \"Parámetros\") \n\n\n\n\n\n\n\n\n\n\n\n\n(a) Interacción con el predictor Año\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Interacción con el predictor Sexo\n\n\n\n\n\n\n\nFigura 3: Parámetros de la relacion L-W\n\n\n\n\n\n\nFigura 1: Estructura de tamaño de merluza del pacífico\nFigura 2: Relación L-W para hembras y machos durante el período 2015 - 2023, destacando el destino de la captura\nFigura 3 (a): Interacción con el predictor Año\nFigura 3 (b): Interacción con el predictor Sexo",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Tallas y selectividad"
+    ]
+  },
+  {
+    "objectID": "datos/01-cruceros.html",
+    "href": "datos/01-cruceros.html",
+    "title": "Cruceros area barrida",
+    "section": "",
+    "text": "Las biomasas obtenidas durante los cruceros de área barrida son útiles para condicionar la tendencia del tamaño de merluza del pacífico (Merluccius productus) estimado por un modelo de evaluación. Desde el año 2005 el gobierno de México ha financiado la realización de seis (6) cruceros de área barrida en el Golfo de California. Esta sección describe las biomasas obtenidas y ciertas características que son relevantes para propósitos de la evaluación poblacional.",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Evaluaciones Cruceros"
+    ]
+  },
+  {
+    "objectID": "datos/01-cruceros.html#biomasas-prospectadas",
+    "href": "datos/01-cruceros.html#biomasas-prospectadas",
+    "title": "Cruceros area barrida",
+    "section": "Biomasas prospectadas",
+    "text": "Biomasas prospectadas\nLa Tabla 1 detalla los aspectos operativos de los cruceros, resaltando la biomasa prospectada y la captura por unidad de esfuerzo (CPUE). A excepción del crucero del año 2022 en un área distinta, la temporalidad y el esfuerzo de pesca (número de lances y duración en minutos) son similares, permitiendo la construcción de una serie temporal de índices de abundancia.\n\n\n\nTabla 1: Resultados principales de los cruceros de área barrida realizados entre el 2005 y 2023. (*)Proporción de la captura total. (**)Proporción sobre un único lance. (^)CPUE cuestionable.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCrucero\nFecha\nLances\nLances+\nCaptura (kg)\nBiomasa (ton)\nCPUE (kg/hr)\nDuración (m)\n\n\n\n\n2005\n\n\n\n\n49,000\n\n\n\n\n2014\n13—27, Febrero\n33\n31\nni\n47,642\n362.0\n30\n\n\n2019\n03—18, Febrero\n27\n22\n4,784 (67%)\n64,823\n334.4\n30\n\n\n2020\n03—18, Febrero\n28\n22\n5,394 (52%)\n47,649\n385.3\n30\n\n\n2022\n28,Feb—11, Marzo\n18\n7\n271 (39%)**\n69,339\n537.1^\n30\n\n\n2023\n06—17, Marzo\n27\n25\n3,821 (51%)*\n41,183\n265.8\n30\n\n\n\n\n\n\nExcluyendo el año 2022, la tendencia de los índices de abundancia indica una ligera disminución en los últimos años (Figura 1). Se observa una posible discrepancia entre los niveles de CPUE y los de biomasa, lo que sugiere la necesidad de un análisis detallado de consistencia.\n\n\n\n\n\n\n\n\nFigura 1: Índices de abundancia obtenidos por área barrida entre los años 2005 y 2023. La línea continua muestra un suavizador B-spline de orden 3.\n\n\n\n\n\nEl rango de tallas de la merluza capturada durante los cruceros fue similar, al igual que la proporción de sexos y la profundidad de pesca (Tabla 2). Según los informes de los cruceros, no se encontró una relación entre la profundidad y la distribución de tallas de los peces muestreados. Los informes no incluyeron las distribuciones de tallas en formato tabular, y no se pudieron obtener los datos de muestreo, lo que impidió la incorporación de esta información en el modelo de evaluación.\n\n\n\nTabla 2: Aspectos operacionales durante los cruceros de área barrida realizados entre el 2005 y 2023.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCrucero\nProfundidad\nLongitud (cm)\nMuestra\nrazón M/H\nZona Prospección\n\n\n\n\n2014\n67.0 — 377\n15.0 — 99.0\nni\nni\n27 - 31°N\n\n\n2019\n67.0 — 377\n17.8 — 105.0\n798\n53/47\n27 - 31°N\n\n\n2020\n60.0 — 318\n14.1 — 106.0\n1,090\n58/42\n27 - 31°N\n\n\n2022\n58.0 — 349\n11.6 — 30.4\n229\n\n24 - 28°N\n\n\n2023\n69.5 — 302\n16.0 — 105.4\n821\n51/49\n27 - 31°N",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Evaluaciones Cruceros"
+    ]
+  },
+  {
+    "objectID": "datos/01-cruceros.html#particularidades",
+    "href": "datos/01-cruceros.html#particularidades",
+    "title": "Cruceros area barrida",
+    "section": "Particularidades",
+    "text": "Particularidades\n\nExisten diferencias interanuales en las zonas de prospección. Esto dificulta la construcción de un indice estandarizado para fines de evaluación poblacional.\nProspección de adultos por sobre juveniles, sucede en machos y hembras.\nHembras de mayor tamaño.\nNotar que los intervalos de confianza de las estimaciones de biomasa por área barrida fueron muy estrechos, no viables para utilizarlos como indicador de variabilidad en la evaluación.\nExplorar acceso en https://sipesca.conapesca.gob.mx/login.php\n\n\nCrucero 2019\n\nEl informe técnico no se encuentra disponible.\n3,39e7 * L ^ 3.1\n\n\n\nCrucero 2020\n\nSimilares observaciones que las del crucero 2023\nExiste una ppt presentada el año 2021\nRealizado sobre la zona norte del Golfo.\nMayores capturas en rango de tallas altos. Predominancia de adultos.\nComposición poblacional: 74% Adultos / 26% Juveniles\nTabla de PBR | No claro desde donde provienen.\nSe observan pulsos de reclutamiento en las estructuras de tallas (18 y 30 cm)\n\n\n\nCrucero 2022\n\nRealizado sobre la zona sur del Golfo.\nCapturas bajas en comparación a la captura total, relevancia de merluza en sólo un (1) lance de pesca.\nDiferencias en la velocidad de arrastre (3.2 nudos versus 3.0 nudos) con otros años.\nLos resultados fueron expuestos en un contexto ecológico y biológico, difícil de extraer información pesquera.\n2e5 * L ^ 2.8616\n\n\n\nCrucero 2023\n\nRealizado sobre la zona norte del Golfo.\nJuveniles se reportan en la zona sur del Golfo, en los lances 1-6 y 27.\nPredominio de machos en la zona norte del Golfo (Figura).\nNo existen diferencias notables en la proporción sexual en diferentes rangos de profundidad.\n\n\n\n\nDistribución de tamaños.\n\n\n\n\n\nFigura 1: Índices de abundancia obtenidos por área barrida entre los años 2005 y 2023. La línea continua muestra un suavizador B-spline de orden 3.\nDistribución de tamaños.",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Evaluaciones Cruceros"
+    ]
+  },
+  {
+    "objectID": "biologia/02-crecimiento.html",
+    "href": "biologia/02-crecimiento.html",
+    "title": "Crecimiento",
+    "section": "",
+    "text": "Las",
+    "crumbs": [
+      "Biología",
+      "Historia de vida",
+      "Crecimiento"
+    ]
+  },
+  {
+    "objectID": "biologia/index.html",
+    "href": "biologia/index.html",
+    "title": "Contexto",
+    "section": "",
+    "text": "Esta sección describe los datos disponibles para la evaluación poblacional de merluza del pacífico (Merluccius productus) en el Golfo de California, México.\nLas pesquerías de Merluza del Pacífico (Merluccius productus) ocurren en una extensa área del margen oriental del océano P",
+    "crumbs": [
+      "Biología",
+      "Conceptual",
+      "Contexto"
+    ]
+  },
+  {
+    "objectID": "datos/01-oficiales.html",
+    "href": "datos/01-oficiales.html",
+    "title": "Análisis de datos",
+    "section": "",
+    "text": "La gestión pesquera de merluza común es conducida por SAGARPA, a través de CONAPESCA e INAPESCA. A pesar de que las capturas comercialmente de merluza en el Golfo de California comenzaron en la década de 1980, sólo en la primera década del milenio (2000-2010) fueron relevantes con 2 mil toneladas anuales, y los programas de monitoreo están en operación desde el 2010. Esta sección describe las capturas reportada por CONAPESCA, con fines de explorar la temporalidad y posibles reconstrucciones de indices de abundancia.",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Registros Oficiales"
+    ]
+  },
+  {
+    "objectID": "datos/01-oficiales.html#datos-públicos-de-conapesca",
+    "href": "datos/01-oficiales.html#datos-públicos-de-conapesca",
+    "title": "Análisis de datos",
+    "section": "Datos públicos de CONAPESCA",
+    "text": "Datos públicos de CONAPESCA\nExploración de datos proporcionados vía website por CONAPESCA, sobre arribos y cosecha por entidad federativa y por ejercicio fiscal.\nLos registros de CONAPESCA representan la actividad de pesca para el período 2018 y 2024. El desembarque promedio por viaje de pesca mostró un patrón creciente desde 10.2 ton el año 2018 a 25.8 ton el 2024. Durante este período se observo aumento en la desviación estándar del desembarque por viaje de pesca, que se condice con una reducción en el promedio de la duración de los viajes (Tabla 1). Se detectaron diferencia en la estructura de datos para el año 2024, las que requieres una revisión antes de validar.\n\n\nver código\ntheme_gtsummary_language(language = \"es\")\nhake_season |&gt; mutate(desemb = desemb/1000) |&gt; \n  tbl_summary(include = c(ltrip1, ltrip2, desemb), by = year, missing = \"no\", type = all_continuous() ~ \"continuous2\",\n    statistic = all_continuous() ~ c(\"{mean} ({sd})\", \"{p25} - {p75}\"), digits = all_continuous() ~ 1,\n    label = list(desemb ~ \"Desembarque\", ltrip1 ~ \"Esfuerzo 1\", ltrip2 ~ \"Esfuerzo 2\"), missing_text = \"(Missing)\") |&gt; \n  add_overall() |&gt; bold_labels() |&gt;  modify_header(label = \"**Variable**\") \n\n\n\n\nTabla 1: Estadísticas del esfuerzo (duración viaje en días) y desembarque (toneladas) promedio por viaje de pesca para el período 2018-2024.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nOverall\nN = 3,789\n2018\nN = 256\n2019\nN = 281\n2020\nN = 303\n2021\nN = 466\n2022\nN = 854\n2023\nN = 902\n2024\nN = 727\n\n\n\n\nEsfuerzo 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    Media (DE)\n5.8 (3.9)\n9.4 (6.2)\n9.4 (5.1)\n8.2 (6.5)\n5.7 (3.2)\n4.8 (2.1)\n4.7 (1.9)\n5.0 (2.2)\n\n\n    Q1 - Q3\n4.0 - 7.0\n6.0 - 11.0\n7.0 - 11.0\n5.0 - 9.0\n4.0 - 7.0\n3.0 - 6.0\n3.0 - 6.0\n4.0 - 6.0\n\n\nEsfuerzo 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    Media (DE)\n5.0 (3.2)\n7.8 (5.0)\n8.3 (4.6)\n6.9 (4.5)\n5.3 (2.8)\n4.1 (2.0)\n3.8 (1.8)\n4.0 (1.9)\n\n\n    Q1 - Q3\n3.0 - 6.0\n5.0 - 9.0\n5.0 - 10.0\n4.0 - 8.0\n3.0 - 6.0\n3.0 - 5.0\n3.0 - 5.0\n3.0 - 5.0\n\n\nDesembarque\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    Media (DE)\n19.0 (13.4)\n10.2 (7.6)\n8.9 (8.3)\n14.9 (10.2)\n15.9 (15.9)\n20.4 (10.9)\n20.8 (12.8)\n25.8 (14.5)\n\n\n    Q1 - Q3\n8.7 - 26.0\n2.9 - 16.0\n0.8 - 15.3\n6.0 - 22.0\n2.9 - 23.0\n13.0 - 28.0\n11.0 - 28.9\n16.1 - 34.0\n\n\n\n\n\n\n\n\n\n\n\nLa variación del desembarque por viaje de pesca (Figura 1) muestra un incremento durante el período 2018 - 2024, reflejado en la progresión al alza de los estadígrafos (p25, p75, mediana, y media). Para todo el rango de años, los viajes de pesca se concentran en duraciones menores a los 10 días de viaje, con un promedio de 5.4 días (Tabla 1, para ambas unidades de esfuerzo). Por tanto, el aumento en el desembarque anual no necesariamente en consecuencia de la duración de los viajes de pesca, sino responde a una mayor frecuencia de viajes.\n\nver código\nhake_season |&gt; mutate(desemb = desemb/1000, yearf = factor(year)) |&gt; filter(desemb &lt;= 200) |&gt; \n  ggplot(aes(year, desemb, group = cut_width(year, 1))) + \n  geom_violin(draw_quantiles = c(0.25, 0.75), linetype = \"dashed\", scale = \"width\") +\n  geom_violin(fill=\"transparent\", draw_quantiles = 0.5, scale = \"width\") +\n  geom_jitter(aes(color = ltrip2), height = 0.0, width = 0.1, size = 0.8, alpha = 0.3) + theme_bw(base_size = 10) + \n  stat_summary(fun.y=mean, geom=\"point\", shape=20, size=4, color=\"red\", fill=\"red\") +\n  labs(x = \"Año\", y = \"Desembarque (ton)\", color = 'Esfuerzo (días de pesca)') + scale_color_viridis_c(option = \"turbo\", direction = 1) + \n  theme(legend.position = \"bottom\", legend.title.position = \"right\")\n\nhake_season |&gt; mutate(desemb = desemb/1000, yearf = factor(year)) |&gt; filter(desemb &lt;= 200) |&gt; \n  ggplot(aes(year, ltrip2, group = cut_width(year, 1))) + \n  geom_violin(draw_quantiles = c(0.25, 0.75), linetype = \"dashed\", scale = \"width\") +\n  geom_violin(fill=\"transparent\", draw_quantiles = 0.5, scale = \"width\") +\n  geom_jitter(aes(color = desemb), height = 0.0, width = 0.1, size = 0.8, alpha = 0.3) + theme_bw(base_size = 10) + \n  stat_summary(fun.y=mean, geom=\"point\", shape=20, size=4, color=\"red\", fill=\"red\") +\n  labs(x = \"Año\", y = \"Esfuerzo (duración dias viaje)\", color = 'Desembarque (ton)') + scale_color_viridis_c(option = \"turbo\", direction = 1) + \n  theme(legend.position = \"bottom\", legend.title.position = \"right\")\n\n\n\n\n\n\n\n\n\n\n\n\n(a) Desembarque (ton) por viajes de pesca. Sobreposición del esfuerzo de pesca\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Duración del viaje de pesca (días). Sobreposición del desembarque\n\n\n\n\n\n\n\nFigura 1: Gráficas de violín destacando el valor promedio (punto rojo) y los cuartiles (líneas) al 25% (p25), 50% (mediana) y 75% (p75) de variabilidad anual. La forma del violín muestra la frecuencia de registros.",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Registros Oficiales"
+    ]
+  },
+  {
+    "objectID": "datos/01-oficiales.html#captura-y-esfuerzo",
+    "href": "datos/01-oficiales.html#captura-y-esfuerzo",
+    "title": "Análisis de datos",
+    "section": "Captura y esfuerzo",
+    "text": "Captura y esfuerzo\nEl período 2018-2024 se caracteriza por un crecimiento sostenido en el desembarque y esfuerzo de pesca (Figura 2). El total mensual reportado en CONAPESCA no sobrepasa las 4,000 ton, que se registran en los primeros meses de los años más recientes. La tendencia del desembarque es ligeramente diferente a la del esfuerzo de pesca, sugiriendo que las tasas de captura deberían tener diferencias explicadas por el año.\n\n\nver código\ntmp01 &lt;- hake_season |&gt; group_by(year, monthf) |&gt; summarise(viajes = n(), desemb1 = sum(desemb/1000, na.rm = TRUE), desemb2 = sum(desembv/1000, na.rm = TRUE), effort1 = sum(ltrip1, na.rm = TRUE), effort2 = sum(ltrip2, na.rm = TRUE)) |&gt; mutate(cpue1 = desemb1/effort1, cpue2 = desemb1/effort2, cpue3 = desemb1/viajes)\n\ntmp01 |&gt; pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |&gt; \n  filter(Tipo %in% c('desemb1','desemb2','effort1','effort2')) |&gt; ggplot(aes(year,Valor)) + geom_point(aes(color = monthf), alpha = 0.7) + \n  geom_path(aes(color = monthf), alpha = 0.1) + theme_bw(base_size = 10) + \n  facet_wrap(~ Tipo, scales = 'free_y', strip.position = 'top', nrow = 2,\n      labeller = labeller(Tipo = name.nivelescatch)) + expand_limits(y = 0) + \n  geom_smooth(method = lm, formula = y ~ splines::bs(x, 5), se = TRUE,\n    color = \"#372a51\", fill = \"#468e8c\", alpha = 0.25, linewidth = 0.6) +\n  labs(x = NULL, y = NULL, color = 'Mes') + theme(strip.placement.x = \"inside\",\n    strip.background = element_rect(colour = \"white\", fill = \"white\"), strip.text = element_text(size = 11)) + scale_color_manual(values = mycolor)\n\n\n\n\n\n\n\n\nFigura 2: Captura y esfuerzo mensuales para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.\n\n\n\n\n\nEl ciclo estacional de la pesquería es evidente, con un aumento en los desembarques al principio del año (i.e., enero-marzo) seguido de un descenso a alrededor del 25% de los niveles iniciales (Figura 3, paneles superiores). En cuanto al esfuerzo de pesca, se observa un patrón similar, con aproximadamente 600 días de pesca por mes al inicio del año, disminuyendo posteriormente pero a una tasa diferente a la reducción de los desembarques (Figura 3, paneles inferiores). Se destacan aumentos en el esfuerzo durante el segundo trimestre de cada año, especialmente en el período 2022-2024.\n\n\nver código\ntmp02 &lt;- hake_season |&gt; group_by(year, month) |&gt; summarise(viajes = n(), desemb1 = sum(desemb/1000, na.rm = TRUE), desemb2 = sum(desembv/1000, na.rm = TRUE), effort1 = sum(ltrip1, na.rm = TRUE), effort2 = sum(ltrip2, na.rm = TRUE)) |&gt; mutate(cpue1 = desemb1/effort1, cpue2 = desemb1/effort2, cpue3 = desemb1/viajes) |&gt; pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |&gt; mutate(yearf = factor(year))\n\ntmp02 |&gt; filter(Tipo %in% c('desemb1','desemb2','effort1','effort2')) |&gt; ggplot(aes(month,Valor)) + geom_point(aes(color = yearf), alpha = 0.7) + \n  geom_path(aes(color = yearf), alpha = 0.1) + theme_bw(base_size = 10) + \n  facet_wrap(~ Tipo, scales = 'free_y', strip.position = 'top', nrow = 2,\n      labeller = labeller(Tipo = name.nivelescatch)) + ylim(0,NA) + \n  geom_smooth(method = lm, formula = y ~ splines::bs(x, 5), se = TRUE,\n    color = \"#372a51\", fill = \"#468e8c\", alpha = 0.25, linewidth = 0.6) +\n  labs(x = NULL, y = NULL, color = 'Año') + theme(strip.placement.x = \"inside\",\n    strip.background = element_rect(colour = \"white\", fill = \"white\"), strip.text = element_text(size = 11)) + scale_color_manual(values = mycolor2) + scale_x_continuous(n.breaks = 7)\n\n\n\n\n\n\n\n\nFigura 3: Patrón estacional de las capturas y esfuerzo de pesca para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Registros Oficiales"
+    ]
+  },
+  {
+    "objectID": "datos/01-oficiales.html#tasas-de-captura",
+    "href": "datos/01-oficiales.html#tasas-de-captura",
+    "title": "Análisis de datos",
+    "section": "Tasas de captura",
+    "text": "Tasas de captura\nLas tasas de captura, expresadas como captura por unidad de esfuerzo (CPUE), han experimentado un aumento constante durante el período 2018-2024 (Figura 4). La variación en las unidades de esfuerzo utilizadas (días de pesca, días efectivos, número de viajes) a nivel mensual no muestra diferencias significativas en el incremento de las tasas de captura.\n\n\nver código\ntmp01 |&gt; pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |&gt; \n  filter(Tipo %in% c('cpue1','cpue2','cpue3')) |&gt; ggplot(aes(year,Valor)) + \n  geom_point(aes(color = monthf), alpha = 0.7) + \n  geom_path(aes(color = monthf), alpha = 0.1) + theme_bw(base_size = 10) + \n  facet_wrap(~ Tipo, scales = 'free_y', strip.position = 'top', nrow = 2,\n      labeller = labeller(Tipo = name.nivelescpue)) + expand_limits(y = 0) + \n  geom_smooth(method = lm, formula = y ~ splines::bs(x, 5), se = TRUE,\n    color = \"#372a51\", fill = \"#468e8c\", alpha = 0.25, linewidth = 0.6) +\n  labs(x = NULL, y = NULL, color = 'Mes') + theme(strip.placement.x = \"inside\",\n    strip.background = element_rect(colour = \"white\", fill = \"white\"), strip.text = element_text(size = 11)) + scale_color_manual(values = mycolor)\n\n\n\n\n\n\n\n\nFigura 4: Captura por unidad de esfuerzo (CPUE) basada en desembarques (ton). La línea continua y área achurada muestra un suavizador B-spline de orden 5.\n\n\n\n\n\n\nModelamiento tasas de captura\nPara la construcción de las tasas de captura es crucial entender el comportamiento de los predictores temporales, en este caso el Año y Mes. La inspección del patrón estacional de las capturas y esfuerzo (Figura 3) muestra un ciclo estacional bastante estable, aunque se observar diferencias importantes en la escala de la CPUE para los meses (Figura 4).\nLa incorporación de ambos predictores en un modelo lineal generalizado (Figura 5) corrobora el crecimiento significativo de la CPUE durante el período 2018-2024, y además indica que la interacción entre ambos predictores es significativa (\\(P&lt;0.05\\)), mostrando que el patrón estacional de la CPUE es diferente entre años (Figura 6, Tabla 2). Específicamente, la tendencia anual de la CPUE es diferente para los últimos meses del año.\n\n\nver código\ntmp03 &lt;- hake_season |&gt; \n  select(catch1 = desemb, catch2 = desembv, effort1 = ltrip1, effort2 = ltrip2, year = year, month, monthf, tipopesca) |&gt; \n  mutate(yearf = factor(year), catch1 = catch1/1000, catch2 = catch2/1000, \n    cpue11 = catch1/effort1, cpue12 = catch1/effort2, cpue21 = catch2/effort1, cpue22 = catch2/effort2) |&gt; \n  na.omit() |&gt; filter(catch1 &lt;= 200) \n\nlibrary(tidymodels) \nlibrary(broom.mixed) # for converting bayesian models to tidy tibbles\nlibrary(dotwhisker)  # for visualizing regression results\n\n# tmp03 |&gt; ggplot(aes(x = month,  y = cpue11,  group = yearf,  color = yearf)) + geom_point() +  \n#   geom_smooth(method = lm, se = FALSE) + scale_color_viridis_d(option = \"turbo\", end = 1) +\n#   theme_bw(base_size = 10) + labs(x = \"Año\", y = \"CPUE\", color = \"Mes\")\n\nlm_mod &lt;- linear_reg() |&gt; set_engine(\"glm\", family = stats::Gamma(link = \"log\")) %&gt;% translate()\n  \nlm_fit &lt;-  lm_mod |&gt; fit(cpue11 ~ yearf * month - 1, data = tmp03 |&gt; filter(effort1 &gt;0))\n\ntidy(lm_fit) |&gt; dwplot(dot_args = list(size = 2, color = mycolor[8]), whisker_args = list(color = mycolor[11]),\n         vline = geom_vline(xintercept = 0, colour = \"grey50\", linetype = 2)) + theme_bw(base_size = 10) \n\nnew_points &lt;- expand.grid(month = 1:12,  yearf = factor(c(2018:2024)))\nmean_pred &lt;- predict(lm_fit, new_data = new_points)\nconf_int_pred &lt;- predict(lm_fit,  new_data = new_points,  type = \"conf_int\")\n\nplot_data &lt;-  new_points |&gt; bind_cols(mean_pred) |&gt; bind_cols(conf_int_pred)\n\nggplot(plot_data, aes(x = yearf)) +  \n  geom_linerange(aes(ymin = .pred_lower,  ymax = .pred_upper), width = .15, color = mycolor[11]) + \n  geom_point(aes(y = .pred), color = mycolor[8], size = 1.2) + \n  facet_wrap(~ month, ncol = 4) + labs(y = \"CPUE\") + theme_bw(base_size = 8) + \n  theme(strip.placement.x = \"inside\", strip.background = element_rect(colour = \"white\", fill = \"white\"),\n    strip.text = element_text(size = 9)) + labs(x = \"Año\", y = \"CPUE\")\n\n\n\n\n\n\n\n\nFigura 5: Valores de predictores lineales Mes y Año\n\n\n\n\n\n\n\n\n\n\n\nFigura 6: Predicción anual de la CPUE por mes\n\n\n\n\n\nLos parámetros estimados (\\(\\beta\\)) para el modelo de predicción de la CPUE se muestran en la Tabla 2, destacando los predictores Año+Mes y la interacción Año:Mes son significativas. Para fines de la evaluación, se debe considerar únicamente el predictor Año.\n\n\nver código\nlm_fit |&gt; tbl_regression(exponentiate = FALSE, pvalue_fun = label_style_pvalue(digits = 2), label = list(yearf ~ \"Año\", month ~ \"Mes\"), missing_text = \"(Missing)\") |&gt; \n  add_global_p() |&gt; bold_p(t = 0.10) |&gt; bold_labels() |&gt;  modify_header(label = \"**Predictor**\") \n\n\n\n\nTabla 2: Parámetros estimados para un modelo cpue ~ Año * Mes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictor\nBeta\n95% CI\n1\np-valor\n\n\n\n\nAño\n\n\n\n\n&lt;0.001\n\n\n    2018\n0.93\n0.74, 1.1\n\n\n\n\n    2019\n1.5\n1.3, 1.7\n\n\n\n\n    2020\n0.83\n0.70, 0.96\n\n\n\n\n    2021\n1.2\n1.1, 1.4\n\n\n\n\n    2022\n1.6\n1.5, 1.7\n\n\n\n\n    2023\n1.7\n1.6, 1.8\n\n\n\n\n    2024\n2.1\n2.0, 2.3\n\n\n\n\nMes\n-0.28\n-0.34, -0.22\n&lt;0.001\n\n\nAño * Mes\n\n\n\n\n&lt;0.001\n\n\n    2019 * Mes\n-0.09\n-0.17, -0.02\n\n\n\n\n    2020 * Mes\n0.29\n0.22, 0.35\n\n\n\n\n    2021 * Mes\n0.25\n0.18, 0.31\n\n\n\n\n    2022 * Mes\n0.28\n0.22, 0.34\n\n\n\n\n    2023 * Mes\n0.27\n0.20, 0.33\n\n\n\n\n    2024 * Mes\n0.17\n0.09, 0.23\n\n\n\n\n\n1\nCI = Intervalo de confianza\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 1 (a): Desembarque (ton) por viajes de pesca. Sobreposición del esfuerzo de pesca\nFigura 1 (b): Duración del viaje de pesca (días). Sobreposición del desembarque\nFigura 2: Captura y esfuerzo mensuales para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.\nFigura 3: Patrón estacional de las capturas y esfuerzo de pesca para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5.\nFigura 4: Captura por unidad de esfuerzo (CPUE) basada en desembarques (ton). La línea continua y área achurada muestra un suavizador B-spline de orden 5.\nFigura 5: Valores de predictores lineales Mes y Año\nFigura 6: Predicción anual de la CPUE por mes",
+    "crumbs": [
+      "Datos",
+      "Tipo de datos",
+      "Registros Oficiales"
+    ]
+  },
+  {
+    "objectID": "datos/index.html",
+    "href": "datos/index.html",
+    "title": "Contexto",
+    "section": "",
+    "text": "Esta sección describe los datos disponibles para la evaluación poblacional de merluza del pacífico (Merluccius productus) en el Golfo de California, México.\nLas pesquerías de Merluza del Pacífico (Merluccius productus) ocurren en una extensa área del margen oriental del océano Pacífico, desde Alaska hasta Baja California (Figura 1). Esta especie es altamente valorada por su carne blanca y firme, lo que la convierte en un objetivo importante para la pesca comercial. La pesquería ha sido gestionada de manera sostenible en muchos lugares, implementado medidas de manejo, como cuotas de captura, tallas mínimas de captura y temporadas de pesca. Los métodos de pesca incluyen redes de arrastre y palangre.\nLa revisión y análisis se realizaron para centrado en el Golfo de California, México, para un período entre 2002 y 2024.",
+    "crumbs": [
+      "Datos",
+      "Análisis de datos",
+      "Contexto"
+    ]
+  },
+  {
+    "objectID": "datos/index.html#indices-de-abundancia",
+    "href": "datos/index.html#indices-de-abundancia",
+    "title": "Contexto",
+    "section": "Indices de Abundancia",
+    "text": "Indices de Abundancia\nLos índices de abundancia son datos fundamentales en los modelos pesqueros para estimar el tamaño de la población en una zona o ecosistema específico. Proporcionan información crucial sobre la abundancia y distribución, permitiendo calcular cantidades de interés, como la Biomasa desovante, y para dar soporte a la gestión pesquera. El objetivo al incluir los índices de abundancia en los modelos pesqueros puede ser:\n\nMonitorear tendencias: Los índices de abundancia ayudan a seguir los cambios en las poblaciones a lo largo del tiempo, proporcionando información sobre la dinámica poblacional y posibles amenazas.\nEvaluar estado de la población: Los modelos pesqueros utilizan índices de abundancia para evaluar el estado de explotación y sostenibilidad de las poblaciones de peces. Esta información es crucial para establecer límites de captura e implementar medidas de conservación.\nApoyar a la gestión: Los índices desempeñan un papel clave en la orientación de decisiones de gestión pesquera, como establecer cuotas de pesca, implementar cierres estacionales y diseñar áreas marinas protegidas.\nImpacto de las actividades pesqueras: Los modelos pesqueros utilizan índices de abundancia para evaluar el impacto de la presión pesquera en las poblaciones de peces y los ecosistemas. Esta información ayuda a evaluar la efectividad de medidas de gestión y proponer ajustes a las estrategias de ordenamiento.\n\nEn esta evaluación se reviso y analizo información pesquera y auxiliar para fines de construcción de indices de CPUE y Cruceros.\n\n\n\nFigura 1: Extensión geográfica de habitat posibles de Merluza del Pacífico",
+    "crumbs": [
+      "Datos",
+      "Análisis de datos",
+      "Contexto"
+    ]
+  },
+  {
+    "objectID": "modelos/03-admb.html",
+    "href": "modelos/03-admb.html",
+    "title": "Estructura de codificación",
+    "section": "",
+    "text": "Clave Talla-Edad\nSección de código ADMB para implementar los supuestos en el crecimiento individual.\n\n\nadmb.growth\n\n//========================================================================\nFUNCTION Eval_prob_talla_edad\n//========================================================================\n int i, j;\nLinf = mfexp(log_Linfprior);\n k    = mfexp(log_kprior);\n Lo   = mfexp(log_Lo);\n\n   mu_edad(1) = Lo;\n   for (i=2;i&lt;=nedades;i++){\n   mu_edad(i) = mu_edad(i-1)*mfexp(-k)+Linf*(1-mfexp(-k));} //Shnute y Fornier 1980\n   sigma_edad = mfexp(log_alfa)+mfexp(log_beta)*mu_edad;\n   Prob_talla = ALK( mu_edad, sigma_edad, Tallas);\n\n//========================================================================\nFUNCTION dvar_matrix ALK(dvar_vector& mu, dvar_vector& sig, dvector& x)\n//========================================================================\n    //RETURN_ARRAYS_INCREMENT();\n    int i, j;\n    dvariable z1;\n    dvariable z2;\n    int si,ni; si=mu.indexmin(); ni=mu.indexmax();\n    int sj,nj; sj=x.indexmin(); nj=x.indexmax();\n    dvar_matrix pdf(si,ni,sj,nj);\n    pdf.initialize();\n    double xs=0.5*(x[sj+1]-x[sj]);\n    for(i=si;i&lt;=ni;i++) //loop over ages\n    {\n         for(j=sj;j&lt;=nj;j++) //loop over length bins\n        {\n            z1=((x(j)-xs)-mu(i))/sig(i);\n            z2=((x(j)+xs)-mu(i))/sig(i);\n            pdf(i,j)=cumd_norm(z2)-cumd_norm(z1);\n        }//end nbins\n        pdf(i)/=sum(pdf(i));\n    }//end nage\n    return(pdf);\n\n\n\nRelación stock-recluta\nSección de código ADMB para implementar los supuestos en el crecimiento individual.\n\nAlgo news\n\nsss\n\n//---------------------------------------------------------------------------\n// Relacion Stock-Recluta\n//---------------------------------------------------------------------------\n \n h = mfexp(log_h_prior);\n\n if(opt_Reclu==1) //ByHolt\n {\n alfa = 4*h*mfexp(log_Ro)/(5*h-1);//\n beta = (1-h)*SSBo/(5*h-1);\n }\n\n if(opt_Reclu==2) // Ricker\n {\n alfa = 1.25*log(5*h)-log(phi);\n beta = 1.25*log(5*h)/SSBo;\n }\n\ndddd\n\n\nadmb.S-R\n\n//---------------------------------------------------------------------------\n// Relacion Stock-Recluta\n//---------------------------------------------------------------------------\n \n h = mfexp(log_h_prior);\n\n if(opt_Reclu==1) //ByHolt\n {\n alfa = 4*h*mfexp(log_Ro)/(5*h-1);//\n beta = (1-h)*SSBo/(5*h-1);\n }\n\n if(opt_Reclu==2) // Ricker\n {\n alfa = 1.25*log(5*h)-log(phi);\n beta = 1.25*log(5*h)/SSBo;\n }",
+    "crumbs": [
+      "Modelos",
+      "Códigos",
+      "ADMB"
+    ]
+  },
+  {
+    "objectID": "modelos/index.html",
+    "href": "modelos/index.html",
+    "title": "Dinámica edad-estructurada",
+    "section": "",
+    "text": "Esta sección presenta el estado del recurso de la merluza del Pacífico (Merluccius productus) en el Golfo de California. Desde comienzo del milenio, las capturas han aumentado y configuran condiciones para evaluar la pesquería, respaldado en observaciones y muestreos desde un capacidad de flota que actualmente promedia 40 embarcaciones (Figura 1).\nLa evaluación de la merluza se basa principalmente en los desembarques pesqueros (2000-2023), los índices de biomasa desde cruceros de área barrida y Captura por Unidad de Esfuerzo (CPUE), como también, las composiciones de tamaños de la captura comercial y descartada. Los datos de composición por tamaños de la pesquería agregadas por genero (hembras + machos) proporcionan información que facilita la estimación de la fuerza relativa de las cohortes.\nver código\nname.niveles &lt;- c(catch=\"Captura [ton]\", effort=\"Número Embarcaciones\")\n\ncatch_effort &lt;- read_table(\"../datos/data/catch-effort.csv\") |&gt; mutate(catch = catch/1000) |&gt; \n  pivot_longer(!year, names_to = 'Variable', values_to = 'Valores') \n\ncatch_effort |&gt; ggplot(aes(x = year, y = Valores)) + \n  geom_col(fill = \"#54aa85\", alpha = 0.7) + \n  theme_bw(base_size = 10) + expand_limits(y = 0) + \n  facet_wrap(~ Variable, scales = 'free_y', strip.position = 'left', nrow = 1,\n      labeller = labeller(Variable = name.niveles)) + labs(x = NULL, y = NULL) +\n    theme(strip.placement.y = \"outside\", strip.background = element_rect(colour = \"white\", fill = \"white\"), strip.text = element_text(size = 9)) \n\n\n\n\n\n\n\n\nFigura 1: Captura y número de embarcaciones",
+    "crumbs": [
+      "Modelos",
+      "Contexto"
+    ]
+  },
+  {
+    "objectID": "modelos/index.html#enfoque-de-análisis",
+    "href": "modelos/index.html#enfoque-de-análisis",
+    "title": "Dinámica edad-estructurada",
+    "section": "Enfoque de análisis",
+    "text": "Enfoque de análisis\nEl análisis emplea un enfoque de estimación bayesiana para evaluar las posibles consecuencias de la incertidumbre en parámetros, modelos estructurales alternativos y rendimiento histórico del modelo de evaluación. Este enfoque combina conocimiento previo sobre mortalidad natural, pendiente de reclutamiento y otros parámetros con verosimilitudes de índices de biomasa de cruceros de área barrida y datos de composición de tamaños. La integración de la distribución posterior conjunta sobre los parámetros del modelo a través del algoritmo de Monte Carlo de cadena de Markov (MCMC) ofrece inferencias probabilísticas sobre parámetros de modelo inciertos y pronósticos derivados de los mismos.\nLos modelos estructurales alternativos se emplean para identificar hipótesis sobre la dinámica de las capturas descartadas. Estos modelos son evaluados mediante simulaciones que ofrecen datos sobre cómo las diversas combinaciones de selectividad de pesca para la captura comercial y descartada influirán en los resultados de gestión, considerando la aplicación repetida de estos procedimientos a largo plazo.\nLos análisis fueron realizados en la plataforma Automatic Differentiation Model Builder (ADMB) que permite resolver problemas de optimización no lineal (Fournier et al. 2012). ADMB es un marco de programación basado en diferenciación automática, diseñado para modelos altamente no lineales con un gran número de parámetros. Los beneficios de usar ADMB son eficiencia computacional y alta precisión numérica, ambos cruciales en la evalñuación de la merluza del pacífico.\n\n\n\nFigura 1: Captura y número de embarcaciones",
+    "crumbs": [
+      "Modelos",
+      "Contexto"
+    ]
+  }
+]

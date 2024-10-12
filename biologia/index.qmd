@@ -1,0 +1,10 @@
+---
+title: Contexto
+description: "Esta página describe datos biologicos."
+---
+
+Esta sección describe los datos disponibles para la evaluación poblacional de merluza del pacífico
+(*Merluccius productus*) en el Golfo de California, México.
+
+Las pesquerías de Merluza del Pacífico (*Merluccius productus*) ocurren en una extensa área del margen
+oriental del océano P

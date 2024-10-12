@@ -1,0 +1,64 @@
+---
+title: "Evaluación de la Merluza del Pacífico"
+subtitle: "Dinámica pesquera y del descarte"
+details: |
+  Análisis basado en edades ajustado a la dinámica de tallas<br>y calibrado por la CPUE, estimaciones 
+  de biomasa <br> por cruceros de área barrida y escenarios de captura descartada.
+sidebar: false
+toc: false
+page-layout: full
+format:
+  html:
+    template-partials:
+      - html/home/title-block.html
+course-logo: /files/logo_hake_hex.png
+---
+
+Este es el sitio web del proyecto "Merluza del Golfo de California". Acá se alojan todos los análisis de
+insumos proporcionados por el mandante, como también, los materiales de difusión (e.g., presentaciones,
+reportes) y análisis de datos.
+
+::::::: home
+:::::: {.grid .course-details}
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+### Consultor
+
+-   [{{< fa user >}}]{.fa-li} [{{< var instructor.name >}}]({{< var instructor.url >}})
+-   [{{< fa envelope >}}]{.fa-li} <a href='mailto:{{< var instructor.email >}}'>jcquiroz</a>
+-   [{{< iconify pajamas linkedin size=1.1em title='LinkedIn' >}}]{.fa-li}
+    [LinkedIn]({{< var instructor.linkedin >}})
+-   [{{< iconify jam github size=1.1em title='GitHub' >}}]{.fa-li} [GitHub]({{< var instructor.github >}})
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+### Generalidad Asesoría
+
+-   [{{< iconify streamline graph-dot size=1.1em >}}]{.fa-li} Analítica y Modelamiento
+-   [{{< iconify solar calendar-add-broken size=1.1em >}}]{.fa-li} Sep - Oct, 2024
+-   [{{< iconify ph clock-countdown size=1.1em >}}]{.fa-li} free-lance
+-   [{{< iconify fluent location-live-20-regular size=1.2em >}}]{.fa-li} México
+:::
+
+::: {.g-col-12 .g-col-md-4 .contact-policy}
+### Resultados principales
+
+-   [{{< iconify stash search-results-light size=1.1em >}}]{.fa-li} [Datos modelo](datos/index.qmd)
+-   [{{< iconify carbon report-data size=1.1em >}}]{.fa-li} [Reporte]()
+
+<!-- {{< var instructor.contact_policy >}} -->
+:::
+::::::
+
+```{r, echo=FALSE, eval=FALSE}
+knitr::include_graphics(here::here("files", "img", "dataviz-flowchart.png"), error = FALSE)
+```
+:::::::
+
+### License
+
+[![Creative Commons
+License](https://licensebuttons.net/l/by-sa/4.0/88x31.png){alt="Creative Commons License"}](https://creativecommons.org/licenses/by-sa/4.0/)\
+Este sitio web ha sido construido bajo una licencia [Creative Commons Attribution-ShareAlike 4.0
+International](https://creativecommons.org/licenses/by-sa/4.0/). Visite
+[aquí](https://github.com/dukestatsciintrods/blob/master/LICENSE.md) para detalles sobre este tipo de
+licencia.

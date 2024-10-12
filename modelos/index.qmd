@@ -1,0 +1,63 @@
+---
+title: "Dinámica edad-estructurada"
+subtitle: "Algo aca"
+description: "Algo tambien aca"
+---
+
+```{r setup, echo=FALSE, include=FALSE}
+library(readr)
+library(tidyverse)
+library(gtsummary)
+```
+
+Esta sección presenta el estado del recurso de la merluza del Pacífico (*Merluccius productus*) en el Golfo de
+California. Desde comienzo del milenio, las capturas han aumentado y configuran condiciones para evaluar la
+pesquería, respaldado en observaciones y muestreos desde un capacidad de flota que actualmente promedia 40
+embarcaciones (@fig-001).
+
+La evaluación de la merluza se basa principalmente en los desembarques pesqueros (2000-2023), los índices de
+biomasa desde cruceros de área barrida y Captura por Unidad de Esfuerzo (CPUE), como también, las
+composiciones de tamaños de la captura comercial y descartada. Los datos de composición por tamaños de la
+pesquería agregadas por genero (`hembras + machos`) proporcionan información que facilita la estimación de la
+fuerza relativa de las cohortes.
+
+```{r, warning=FALSE, echo=TRUE, message=FALSE}
+#| fig-cap: "Captura y número de embarcaciones"
+#| label: fig-001
+#| fig-asp: 0.3
+#| fig-height: 4
+
+name.niveles <- c(catch="Captura [ton]", effort="Número Embarcaciones")
+
+catch_effort <- read_table("../datos/data/catch-effort.csv") |> mutate(catch = catch/1000) |> 
+  pivot_longer(!year, names_to = 'Variable', values_to = 'Valores') 
+
+catch_effort |> ggplot(aes(x = year, y = Valores)) + 
+  geom_col(fill = "#54aa85", alpha = 0.7) + 
+  theme_bw(base_size = 10) + expand_limits(y = 0) + 
+  facet_wrap(~ Variable, scales = 'free_y', strip.position = 'left', nrow = 1,
+      labeller = labeller(Variable = name.niveles)) + labs(x = NULL, y = NULL) +
+    theme(strip.placement.y = "outside", strip.background = element_rect(colour = "white", fill = "white"), strip.text = element_text(size = 9)) 
+```
+
+## Enfoque de análisis
+
+El análisis emplea un enfoque de estimación bayesiana para evaluar las posibles consecuencias de la
+incertidumbre en parámetros, modelos estructurales alternativos y rendimiento histórico del modelo de
+evaluación. Este enfoque combina conocimiento previo sobre mortalidad natural, pendiente de reclutamiento y
+otros parámetros con verosimilitudes de índices de biomasa de cruceros de área barrida y datos de composición
+de tamaños. La integración de la distribución posterior conjunta sobre los parámetros del modelo a través del
+algoritmo de Monte Carlo de cadena de Markov (MCMC) ofrece inferencias probabilísticas sobre parámetros de
+modelo inciertos y pronósticos derivados de los mismos.
+
+Los modelos estructurales alternativos se emplean para identificar hipótesis sobre la dinámica de las capturas
+descartadas. Estos modelos son evaluados mediante simulaciones que ofrecen datos sobre cómo las diversas
+combinaciones de selectividad de pesca para la captura comercial y descartada influirán en los resultados de
+gestión, considerando la aplicación repetida de estos procedimientos a largo plazo.
+
+Los análisis fueron realizados en la plataforma [Automatic Differentiation Model
+Builder](https://www.admb-project.org/developers/core-team.html) (ADMB) que permite resolver problemas de
+optimización no lineal [@Fournier2012]. ADMB es un marco de programación basado en diferenciación automática,
+diseñado para modelos altamente no lineales con un gran número de parámetros. Los beneficios de usar ADMB son
+eficiencia computacional y alta precisión numérica, ambos cruciales en la evalñuación de la merluza del
+pacífico.

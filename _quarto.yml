@@ -1,0 +1,130 @@
+project:
+  type: website
+  render:
+    - "*.qmd" 
+    - "!01-tallas.qmd"
+    - "!schedule.qmd"
+  resources:
+    - "files/"
+    
+execute:
+  freeze: auto  
+  
+lang: es
+language: 
+  title-block-author-single: "Asesor"
+  title-block-affiliation-single: "WebSite"
+  
+bibliography: files/bib/readings.bib
+csl: files/bib/chicago-author-date.csl
+
+website:
+  title: "Evaluación de la Merluza del Pacífico"
+  description: "Pesquería de arrastre de fondo y de media agua"
+  site-url: "https://facilevisual.com"
+  
+  page-navigation: true
+
+  navbar:
+    pinned: true
+    background: "#21908C" 
+    right:
+      - text: "Datos"
+        file: datos/index.qmd
+      - text: "Biología"
+        file: biologia/index.qmd
+      - text: "Modelos"
+        file: modelos/index.qmd
+      - text: "Resultados"
+        file: resultados/index.qmd
+      - syllabus.qmd
+
+  sidebar:
+    - title: "Datos"
+      style: floating
+      search: false
+      background: light
+      contents:
+        - section: "Análisis de datos"
+          contents:
+            - datos/index.qmd
+        - section: "Tipo de datos"
+          contents:
+            - text: "Registros Oficiales"
+              file: datos/01-oficiales.qmd
+            - text: "Evaluaciones Cruceros"
+              file: datos/01-cruceros.qmd
+            - text: "Tallas y selectividad"
+              file: datos/01-tallas-rescatado.qmd
+    
+    - title: "Biología"
+      contents:
+        - section: "Conceptual"
+          contents:
+            - biologia/index.qmd
+        - section: "Historia de vida"
+          contents:
+            - text: "Crecimiento"
+              file: biologia/02-crecimiento.qmd
+    
+    - title: "Modelos"
+      contents:
+        - text: "Contexto"
+          file: modelos/index.qmd
+        - section: "Procesos"
+          contents:
+            - text: "Historia de vida"
+              file: modelos/03-procesos.qmd
+        - section: "Códigos"
+          contents:
+            - text: "ADMB"
+              file: modelos/03-admb.qmd
+    
+    - title: "Resultados"
+      contents:
+        - section: "Evaluación"
+          contents:
+            - resultados/index.qmd
+        - section: "Modelo Base"
+          contents:
+            - text: "Explotación"
+              file: resultados/04-explotacion.qmd
+
+  page-footer:
+    left: |
+      {{< fa brands creative-commons >}} {{< var course.copyright_year >}} por [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) 
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)
+
+format:
+  html:
+    theme:
+      - litera
+      - html/custom.scss
+    toc: true
+    toc-depth: 4
+    highlight-style: monokai
+    
+    grid:
+      sidebar-width: 250px #250px
+      body-width:	950px #800px
+      margin-width:	200px #250px
+      gutter-width:	1.0em
+      
+    lightbox: 
+      match: auto
+      loop: false
+    fig-dpi: 300
+    fig-show: hold
+    fig-align: center
+    
+    code-fold: true
+    code-summary: "ver código"
+    code-link: false
+    code-copy: true
+    code-overflow: wrap
+    code-line-numbers: false
+    code-block-border-left: false
+
+editor: visual
+

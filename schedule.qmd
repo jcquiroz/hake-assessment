@@ -1,0 +1,17 @@
+---
+title: "Calendario"
+sidebar: false
+toc: false
+page-layout: full
+---
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+```
+
+::: schedule-page
+## Text {.schedule-page}
+:::

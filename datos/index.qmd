@@ -1,0 +1,45 @@
+---
+title: Contexto
+description: "Esta página describe datos oficiales de la pesquería de merluza del pacífico (*Merluccius productus*) obtenida en el Golfo de California, México."
+---
+
+Esta sección describe los datos disponibles para la evaluación poblacional de merluza del pacífico
+(*Merluccius productus*) en el Golfo de California, México.
+
+Las pesquerías de Merluza del Pacífico (*Merluccius productus*) ocurren en una extensa área del margen
+oriental del océano Pacífico, desde Alaska hasta Baja California (@fig-mapahake). Esta especie es altamente
+valorada por su carne blanca y firme, lo que la convierte en un objetivo importante para la pesca comercial.
+La pesquería ha sido gestionada de manera sostenible en muchos lugares, implementado medidas de manejo, como
+cuotas de captura, tallas mínimas de captura y temporadas de pesca. Los métodos de pesca incluyen redes de
+arrastre y palangre.
+
+![Extensión geográfica de habitat posibles de Merluza del
+Pacífico](/files/pesca/pic_Fis-22908.jpg){#fig-mapahake fig-align="center"}
+
+La revisión y análisis se realizaron para centrado en el Golfo de California, México, para un período entre
+2002 y 2024.
+
+## Indices de Abundancia
+
+Los índices de abundancia son datos fundamentales en los modelos pesqueros para estimar el tamaño de la
+población en una zona o ecosistema específico. Proporcionan información crucial sobre la abundancia y
+distribución, permitiendo calcular cantidades de interés, como la Biomasa desovante, y para dar soporte a la
+gestión pesquera. El objetivo al incluir los índices de abundancia en los modelos pesqueros puede ser:
+
+1.  Monitorear tendencias: Los índices de abundancia ayudan a seguir los cambios en las poblaciones a lo largo
+    del tiempo, proporcionando información sobre la dinámica poblacional y posibles amenazas.
+
+2.  Evaluar estado de la población: Los modelos pesqueros utilizan índices de abundancia para evaluar el
+    estado de explotación y sostenibilidad de las poblaciones de peces. Esta información es crucial para
+    establecer límites de captura e implementar medidas de conservación.
+
+3.  Apoyar a la gestión: Los índices desempeñan un papel clave en la orientación de decisiones de gestión
+    pesquera, como establecer cuotas de pesca, implementar cierres estacionales y diseñar áreas marinas
+    protegidas.
+
+4.  Impacto de las actividades pesqueras: Los modelos pesqueros utilizan índices de abundancia para evaluar el
+    impacto de la presión pesquera en las poblaciones de peces y los ecosistemas. Esta información ayuda a
+    evaluar la efectividad de medidas de gestión y proponer ajustes a las estrategias de ordenamiento.
+
+En esta evaluación se reviso y analizo información pesquera y auxiliar para fines de construcción de indices
+de [CPUE](/datos/01-oficiales.qmd) y [Cruceros](/datos/01-cruceros.qmd).

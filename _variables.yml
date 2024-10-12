@@ -1,0 +1,35 @@
+author: Juan-Carlos Quiroz
+
+instructor:
+  name: Dr. Juan-Carlos Quiroz
+  name_no_title: Juan-Carlos Quiroz
+  email: jcquiroz@facilevisual.com
+  url: "https://www.facilevisual.com"
+  mastodon: "https://algo"
+  bluesky: "https://algo"
+  linkedin: "https://www.linkedin.com/in/jcquiroz"
+  github: "https://github.com/jcquiroz"  
+  office: "Valparaíso, Chile"
+  contact_policy: >-
+    E-mail y Message son las mejores formas de ponerse en contacto conmigo. Intentaré responder a todos los correos electrónicos y mensajes relacionados con el curso dentro de las 24 horas.
+  appointment_url: https://calendly.com/
+
+course:
+  number: "FVIS 299"
+  semester: "Segundo 2025"
+  days: "Any day"
+  time: "Asynchronous"
+  location: "Anywhere"
+  dates: "August 26–December 16, 2024"
+  github: "https://www.github.com/jcquiroz"
+  url: "https://porconfirmar.com"
+  copyright_year: "2024"
+  slack: "https://gsudatavizf2024.slack.com"
+
+university:
+  name: Facile Visual
+  url: "https://www.facilevisual.com"
+
+school:
+  name: Ingeniería
+  url: "https://www.facilevisual.com"
