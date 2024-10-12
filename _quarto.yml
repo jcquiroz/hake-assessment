@@ -3,7 +3,7 @@ project:
   output-dir: docs
   render:
     - "*.qmd" 
-    - "!01-tallas.qmd"
+    - "!01-tallas_legacy.qmd"
     - "!schedule.qmd"
   resources:
     - "files/"
@@ -56,7 +56,7 @@ website:
             - text: "Evaluaciones Cruceros"
               file: datos/01-cruceros.qmd
             - text: "Tallas y selectividad"
-              file: datos/01-tallas-rescatado.qmd
+              file: datos/01-tallas.qmd
     
     - title: "Biología"
       contents:

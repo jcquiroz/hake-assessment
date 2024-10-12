@@ -1,5 +1,6 @@
 ---
 title: "Estructura de tallas"
+author: "JCQ"
 subtitle: "Dinámica poblacional y selectividades"
 subject: "Análisis"
 ---
@@ -11,107 +12,184 @@ library(readxl)
 library(tidyverse)
 library(gtsummary)
 
-source("../R/functions.R")
+mycolor <- viridisLite::viridis(12, option = "turbo", begin = 0, end = 1)
+mycolor2 <- viridisLite::viridis(7, option = "turbo", begin = 0, end = 1)
 ```
 
 Las composiciones de tamaños y los pesos medios en un modelo de evaluación poblacional permiten influir en dos
-procesos importantes para la estimación de variables de estado (por ejemplo, biomasa y reclutamiento): (\i) el
+procesos importantes para la estimación de variables de estado (por ejemplo, biomasa y reclutamiento): (i) el
 crecimiento poblacional, que se refiere a cómo las cohortes progresan temporalmente en la dinámica
-poblacional, describiendo la fuerza de los reclutamientos (es decir, un sustituto de los nacimientos) y (\ii)
+poblacional, describiendo la fuerza de los reclutamientos (es decir, un sustituto de los nacimientos) y (ii)
 determinar la fracción explotable de la población representada por las selectividades de la pesquería.
 
 ```{r, warning=FALSE, echo=FALSE, message=FALSE}
-obs_2015 <- read_excel("data/obs_2015.xlsx", sheet = "Tallas", col_types = c("text", "numeric", "numeric", "date", "text", 
-        "text", "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2015)
-obs_2016 <- read_excel("data/obs_2016.xlsx", sheet = "Tallas", col_types = c("text", "numeric", "numeric", "date", "text", 
-        "text", "text", "numeric", "numeric", "numeric", "text", "text")) |> mutate(year = 2016)
-obs_2017 <- read_excel("data/obs_2017.xlsx", sheet = "Tallas", col_types = c("text", "numeric", "numeric", "date", "text", 
-        "numeric", "numeric", "text", "text")) |> mutate(year = 2017)
-obs_2018 <- read_excel("data/obs_2018.xlsx", sheet = "Tallas", col_types = c("text", "text", "numeric", "numeric", "date", 
-        "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2018)
+source("../R/functions.R")
+obs_2015 <- read_excel("data/obs_2015.xlsx", sheet = "Tallas", col_types = c("text", "numeric", "numeric", "date", "text", "text", "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2015)
+obs_2016 <- read_excel("data/obs_2016.xlsx", sheet = "Tallas", col_types = c("text", "numeric", "numeric", "date", "text", "text", "text", "numeric", "numeric", "numeric", "text", "text")) |> mutate(year = 2016)
+obs_2017 <- read_excel("data/obs_2017.xlsx", sheet = "Tallas", col_types = c("text", "numeric", "numeric", "date", "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2017)
+obs_2018 <- read_excel("data/obs_2018.xlsx", sheet = "Tallas", col_types = c("text", "text", "numeric", "numeric", "date", "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2018)
 obs_2019 <- read_excel("data/obs_2019.xlsx", sheet = "Tallas") |> mutate(year = 2019)
 obs_2020 <- read_excel("data/obs_2020.xlsx", sheet = "Tallas") |> mutate(year = 2020)
 obs_2021 <- read_excel("data/obs_2021.xlsx", sheet = "Tallas", col_types = c("text", "text", "text", "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2021)
 obs_2022 <- read_excel("data/obs_2022.xlsx", sheet = "Tallas", col_types = c("text", "text", "text", "numeric", "numeric", "text", "text")) |> mutate(year = 2022)
 obs_2023 <- read_excel("data/obs_2023.xlsx", sheet = "Tallas") |> mutate(year = 2023)
 
-obs_all <- bind_rows(obs_2015,obs_2016,obs_2017,obs_2018,obs_2019,obs_2020,obs_2021,obs_2022,obs_2023)
+obs_all <- bind_rows(obs_2015,obs_2016,obs_2017,obs_2018,obs_2019,obs_2020,obs_2021,obs_2022,obs_2023) |> 
+  mutate(across(sexo, ~ fct_recode(.x, "Machos" = "M", "Hembras" = "H", "Indefinido" = "Ind"))) |> 
+  mutate(across(destino, ~ fct_recode(.x, "Comercial" = "comercial", "Descarte" = "descarte")))
 ```
 
 ## Estadísticas
 
-La @tbl-001 muestra que existen diferencias significativas entre las tallas, pesos y número de muestras
-obtenidas de la captura comercial y la descartada. Este patrón se repite en toda la información disponible
-para el período 2015 - 2023.
+Un total de `r dim(obs_all)[1]` muestras fueron analizadas para describir los cambios anuales en los tamaños y
+pesos de peces retenidos y descartados (@tbl-001). Un `r round(100*(19525/24412),2)`% corresponden a muestras
+para la construcción de composiciones de talla de la captura comercial, y el restante
+`r round(100*(4887/24412),2)`% se utilizarán para la construcción de las estructuras de tallas de la captura
+descartada. Un total de `r 1343+194` muestras son descartada por no identificar sexo (@tbl-001).
 
 ```{r, warning=FALSE, message=FALSE}
-#| tbl-cap: "Estadisticas por tipo de captura (comercial versus descarte). Porcentaje aplica entre niveles para cada factor."
+#| tbl-cap: "Tamaño de muestra por tipo de captura (comercial versus descarte) e identificación de sexo. Porcentaje aplica en niveles para cada factor."
 #| tbl-column: body-outset-right
 #| label: tbl-001
 
 theme_gtsummary_language(language = "es")
-obs_all |>  tbl_summary(include = c(year, sexo, peso, talla), by = destino, missing = "ifany", type = all_continuous() ~ "continuous2",
-  statistic = all_continuous() ~ c("{mean} ({sd})", "{min} - {max}"), percent = c("column"), digits = all_continuous() ~ 0,
-  label = list(year ~ "Año", sexo ~ "Sexo", peso ~ "Peso", talla ~ "Talla"), missing_text = "(Missing)") |> 
-  add_overall(col_label = "**Totales** \n\n N = {style_number(N)}", last = TRUE) |> 
-  add_n(col_label = "**Muestras, n**", last = TRUE, footnote = FALSE) |> add_p(test = everything() ~ "t.test") |> 
-  bold_labels() |>  modify_header(label = "**Factor**") 
+theme_gtsummary_journal("jama")
+obs_all |>  
+  tbl_summary(include = c(year, sexo), by = destino, missing = "ifany", percent = c("row"),
+              statistic = list(all_categorical() ~ "{n} ({p}%)"), 
+              type = list(all_categorical() ~ "categorical"),
+              label = list(year ~ "Año", sexo ~ "Sexo"), 
+              missing_text = "(Perdidos)") |> 
+  add_overall(col_label = "**Totales** \n\n N = {style_number(N)}", last = TRUE,
+              statistic = list(all_categorical() ~ "{n}")) |> 
+  add_n(col_label = "**Muestras**", last = TRUE, footnote = FALSE) |>  
+  bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
 
-obs_all |>  tbl_summary(include = c(year, sexo), by = destino, missing = "ifany", percent = c("column"), 
-  label = list(year ~ "Año", sexo ~ "Sexo"), missing_text = "(Missing)") |> 
-  add_overall(col_label = "**Totales** \n\n N = {style_number(N)}", last = TRUE) |> 
-  add_n(col_label = "**Muestras, n**", last = TRUE, footnote = FALSE) |> add_p() |> 
-  bold_labels() |>  modify_header(label = "**Factor**") 
 
+```
+
+La @tbl-002 indica diferencias significativas en la talla y peso promedio entre muestras de captura comercial
+y descartada. El rango de tallas de la captura comercial va de 6 a 108 cm, con pesos entre 5 gr y 17.1 kg. Por
+otro lado, el peso promedio de la captura descartada es de 347 gr, notablemente inferior al de la captura
+comercial.
+
+```{r, warning=FALSE, message=FALSE}
+#| tbl-cap: "Estadisticas de las tallas y peso por tipo de captura (comercial versus descarte). Valor P negrilla indica diferecias significativa entre la captura comercial y descartada."
+#| tbl-column: body-outset-right
+#| label: tbl-002
+
+theme_gtsummary_language(language = "es")
+theme_gtsummary_journal("jama")
+obs_all |>  tbl_summary(include = c(talla, peso), by = destino, missing = "ifany", type = all_continuous() ~ "continuous2",
+   statistic = all_continuous() ~ c("{mean} ({sd})", "{min} - {max}"), digits = list(peso ~ 0, talla ~ 1),
+   label = list(peso ~ "Peso", talla ~ "Talla"), missing_text = "(Perdidos)") |> 
+   add_overall(col_label = "**Totales** \n\n N = {style_number(N)}", last = TRUE) |> 
+   add_n(col_label = "**Muestras, n**", last = TRUE, footnote = FALSE) |> add_p(test = everything() ~ "t.test") |> 
+   bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
+reset_gtsummary_theme()
 ```
 
 ## Estructura de tallas
 
+Las composiciones de tamaño de la captura comercial y descartada muestran señales importantes para fines de la
+evaluación poblacional (@fig-001). Los descartes de hembras, @tbl-003-1, revelan ingresos de cohortes que
+progresan en periodos de al menos 4 años (2019-2022). Similarmente la captura comercial muestra reducción de
+la fracción vulnerables (i.e., mayormente peces de tamaños grande, @tbl-003-2), que podría indicar cambios en
+las estrategias de pesca o aumentos en los niveles de mortalidad por pesca.
+
 ```{r, warning=FALSE, message=FALSE}
+#| fig-height: 9
 #| fig-cap: "Estructura de tamaño de merluza del pacífico"
 #| label: fig-001
-#| fig-height: 9
 
 bd = 2
 bg.brks <- seq(0,110,bd)
 
-tmp <- obs_all |> filter(sexo %in% c("M","H")) |> drop_na(destino,sexo) |> 
-  reframe(armo_talla(talla,bg.brks), .by = c(year,destino,sexo)) |> mutate(across(sexo, ~ fct_recode(.x, "Machos" = "M", "Hembras" = "H")))
+tmp <- obs_all |> filter(sexo %in% c("Machos","Hembras")) |> drop_na(destino,sexo) |> 
+  reframe(armo_talla(talla,bg.brks), .by = c(year,destino,sexo)) 
 
-ggplot(data = tmp, aes(mids,freq)) + geom_col(aes(fill = destino), width = NULL, position = "dodge") + 
+ggplot(data = tmp, aes(mids,freq)) + geom_col(aes(fill = destino), width = NULL, position = "stack") + 
   facet_grid(year ~ sexo, scales = "free_y") + mitheme2(bz = 9) + scale_fill_manual(values = mycolor[c(9,2)]) + 
   labs(x = "Talla [cm]", y = "Proporción", fill = "Procedencia")
 ```
 
-## Modelos de regresión
+```{r, warning=FALSE, message=FALSE}
+#| tbl-cap: "Progresión temporal de la talla media para la captura comercial y descartada. Valor P negrilla indica diferecias significativa entre la captura comercial y descartada."
+#| tbl-subcap: 
+#|   - "Hembras"
+#|   - "Machos"
+#| tbl-column: page-inset-right
+#| label: tbl-003
+#| layout-ncol: 2
+#| 
 
-Valores de modelos de regresión de la forma $W = a*L^b$ serán utilizados para modelar el crecimiento basado en
-tallas.
+theme_gtsummary_language(language = "es")
+theme_gtsummary_journal("jama")
+obs_all |> filter (sexo == "Hembras") |>  tbl_continuous(
+  variable = talla, by = destino, include = year,
+  statistic = ~ c("{median}"), digits = ~ 1,
+   label = list(talla ~ "Talla", year ~ "Año") ) |> add_p() |> 
+   bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
+
+obs_all |> filter (sexo == "Machos") |>  tbl_continuous(
+  variable = talla, by = destino, include = year,
+  statistic = ~ c("{median}"), digits = ~ 1,
+   label = list(talla ~ "Talla", year ~ "Año") ) |> add_p() |> 
+   bold_p() |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
+reset_gtsummary_theme()
+```
+
+## Relación longitud-peso
+
+El crecimiento en peso, $W = a*L^b$, que depende de la talla, será utilizado para modelar el crecimiento en el
+modelo de evaluación. Para esto es requerido estimar los parámetros *a* y *b* de la relación L-W.
+Específicamente es relevante discriminar como el cambio de estos parámetros es función del tiempo (años) y el
+sexo, con énfasis en determinar cuando el crecimiento es de tipo isométrico $b = 3$ o alométrico si
+$b \neq 3$.
 
 ```{r, warning=FALSE, message=FALSE}
+#| fig-height: 9
+#| fig-cap: "Relación L-W para hembras y machos durante el período 2015 - 2023, destacando el destino de la captura"
+#| label: fig-003
+
+obs_all |> filter(sexo %in% c("Machos","Hembras")) |> drop_na(destino) |> 
+  ggplot(aes(talla,peso)) + geom_point(aes(color = destino), size = 1, alpha = 0.4) + 
+  facet_grid(year ~ sexo, scales = "free_y") + mitheme2(bz = 9) + 
+  scale_color_manual(values = mycolor[c(9,2)]) + 
+  labs(x = "Talla [cm]", y = "Peso [gr]", color = "Destino")
+```
+
+Los valores de los parámetros estimados para la pendiente ($log(a)$) y crecimiento ($b$) bajo diferentes
+interacciones con el año y el sexo, sugieren que los cambios temporales en el crecimiento individual no son
+significativos (@fig-002-1), mientras que se detectan diferencias significativas entre sexo (@fig-002-2).
+
+```{r, warning=FALSE, message=FALSE}
+#| fig-cap: "Parámetros de la relacion L-W"
+#| fig-subcap:
+#|   - "Interacción con el predictor Año"
+#|   - "Interacción con el predictor Sexo"
+#| layout-ncol: 1
+#| fig-width: 3.1
+#| fig-asp: 0.6
+#| label: fig-002
+
 
 library(GGally)
 library(labelled)
 
-obs_all_log <- obs_all |> drop_na(year,peso,talla) |> mutate(yearf = factor(year), logW = log(peso), logL = log(talla)) |> 
-  set_variable_labels( yearf = "Año", logL = "Isometría", logW = "Pendiente" )
+obs_all_log <- obs_all |> filter(sexo != "Indefinido") |> 
+  drop_na(year,peso,talla) |> mutate(yearf = factor(year), logW = log(peso), logL = log(talla)) |> 
+  set_variable_labels( yearf = "Año", logL = "Crecimiento", logW = "Pendiente" )
 
-mod01 <- glm(logW ~ logL * yearf, data = obs_all_log)
+mod02 <- glm(logW ~ logL + yearf, data = obs_all_log)
+ggcoef_model(mod02, intercept = TRUE, signif_stars = FALSE, facet_row = NULL, stripped_rows = TRUE) + 
+  labs(x = NULL) + scale_color_viridis_d(option = "turbo", direction = 1) + mitheme2(bz = 4) + 
+  theme(legend.position = "none") 
+
+mod01 <- glm(logW ~ logL + sexo, data = obs_all_log)
 ggcoef_model(mod01, intercept = TRUE, signif_stars = FALSE, facet_row = NULL, stripped_rows = TRUE) + 
-  labs(x = NULL) + scale_colour_manual(values = mycolor[c(2,4,8,11)])
+  labs(x = NULL) + scale_color_viridis_d(option = "turbo", direction = 1) + mitheme2(bz = 4) + 
+  theme(legend.key.size = unit(12, "pt"), legend.key.spacing.y = unit(10, "pt"))
+#tbl_regression(mod01, conf.level = 0.75, intercept = TRUE, exponentiate = FALSE) |> modify_header(label = "Parámetros") 
 
-
-tbl_regression(mod01, conf.level = 0.75, intercept = TRUE, exponentiate = FALSE) |> modify_header(label = "Parámetros") 
-#|> plot(remove_header_rows = TRUE, remove_reference_rows = FALSE)
-
-```
-
-```{r, warning=FALSE, message=FALSE}
-#| fig-width: 8
-#| fig-height: 10
-#| fig-cap: "Relación longitud-peso de merluza del pacífico"
-
-obs_all |> drop_na(destino) |> ggplot(aes(talla,peso)) + geom_point(aes(color = sexo), size = 2, alpha = 0.6) + 
-  facet_wrap(year ~ destino, ncol = 2, scales = "free_y", dir = "v") + mitheme() + scale_color_manual(values = mycolor[c(9,2)]) + 
-  labs(title = "Relación L-W año 2020", x = "Talla [cm]", y = "Peso [gr]", color = "Sexo")
 ```
