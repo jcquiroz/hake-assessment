@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="En esta página se presentan resultados que describen el estado de explotación de la merluza en el Golfo de California">
 
-<title>Evaluación de la Merluza del Pacífico - Estato de Explotación</title>
+<title>Evaluación de la Merluza del Pacífico - Cruceros area barrida</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../resultados/index.html" rel="prev">
+<link href="../datos/01-tallas-rescatado.html" rel="next">
+<link href="../datos/01-oficiales.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../datos/index.html"> 
+    <a class="nav-link active" href="../datos/index.html" aria-current="page"> 
 <span class="menu-text">Datos</span></a>
   </li>  
   <li class="nav-item">
@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Modelos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../resultados/index.html" aria-current="page"> 
+    <a class="nav-link" href="../resultados/index.html"> 
 <span class="menu-text">Resultados</span></a>
   </li>  
   <li class="nav-item">
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../resultados/04-explotacion.html">Modelo Base</a></li><li class="breadcrumb-item"><a href="../resultados/04-explotacion.html">Explotación</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Tipo de datos</a></li><li class="breadcrumb-item"><a href="../datos/01-cruceros.html">Evaluaciones Cruceros</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Evaluación</span></a>
+ <span class="menu-text">Análisis de datos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -147,8 +147,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resultados/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Descripción</span></a>
+  <a href="../datos/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contexto</span></a>
   </div>
 </li>
       </ul>
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Modelo Base</span></a>
+ <span class="menu-text">Tipo de datos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -164,8 +164,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resultados/04-explotacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Explotación</span></a>
+  <a href="../datos/01-oficiales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Registros Oficiales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-cruceros.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Evaluaciones Cruceros</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-tallas-rescatado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tallas y selectividad</span></a>
   </div>
 </li>
       </ul>
@@ -180,43 +192,274 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#estructura-inicial" id="toc-estructura-inicial" class="nav-link active" data-scroll-target="#estructura-inicial">Estructura Inicial</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#biomasas-prospectadas" id="toc-biomasas-prospectadas" class="nav-link active" data-scroll-target="#biomasas-prospectadas">Biomasas prospectadas</a></li>
+  <li><a href="#particularidades" id="toc-particularidades" class="nav-link" data-scroll-target="#particularidades">Particularidades</a>
+  <ul>
+  <li><a href="#crucero-2019" id="toc-crucero-2019" class="nav-link" data-scroll-target="#crucero-2019">Crucero 2019</a></li>
+  <li><a href="#crucero-2020" id="toc-crucero-2020" class="nav-link" data-scroll-target="#crucero-2020">Crucero 2020</a></li>
+  <li><a href="#crucero-2022" id="toc-crucero-2022" class="nav-link" data-scroll-target="#crucero-2022">Crucero 2022</a></li>
+  <li><a href="#crucero-2023" id="toc-crucero-2023" class="nav-link" data-scroll-target="#crucero-2023">Crucero 2023</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7">Estato de Explotación</h1>
-
-<h4 class="description anchored">En esta página se presentan resultados que describen el estado de explotación de la merluza en el Golfo de California<p></p>
-
-</h4></header>
+<h1 class="title display-7">Cruceros area barrida</h1>
+<p class="subtitle lead">Obtención de índices de abundancia</p>
 
 
-<section id="estructura-inicial" class="level2">
-<h2 class="anchored" data-anchor-id="estructura-inicial">Estructura Inicial</h2>
-<p>Debido a que antes del año 2000 existió actividad pesquera, fue necesario restringir la estructura inicial de la población a una condición estado-estable penalizada a un total (para todas la edades) de mortalidad por pesca que resume las capturas priori al año 2000. La <a href="#fig-001" class="quarto-xref">Figura&nbsp;1</a> muestra que en la composición de tamaños del año 2000 destacan dos cohortes de reclutamiento a la pesquería, una inicial en torno a <code>15 cm</code>, y una secundaria en los <code>25 cm</code>. El último grupo de edad se centro en <code>99.6 cm</code>, con una varianza proporcional a la talla media.</p>
-<div id="fig-001" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="fig/inicio.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="fig/inicio.png" class="img-fluid figure-img"></a>
+</header>
+
+
+<p>Las biomasas obtenidas durante los cruceros de área barrida son útiles para condicionar la tendencia del tamaño de merluza del pacífico (<em>Merluccius productus</em>) estimado por un modelo de evaluación. Desde el año 2005 el gobierno de México ha financiado la realización de seis (6) cruceros de área barrida en el Golfo de California. Esta sección describe las biomasas obtenidas y ciertas características que son relevantes para propósitos de la evaluación poblacional.</p>
+<section id="biomasas-prospectadas" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="biomasas-prospectadas">Biomasas prospectadas</h2>
+<p>La <a href="#tbl-001" class="quarto-xref">Tabla&nbsp;1</a> detalla los aspectos operativos de los cruceros, resaltando la biomasa prospectada y la captura por unidad de esfuerzo (CPUE). A excepción del crucero del año 2022 en un área distinta, la temporalidad y el esfuerzo de pesca (número de lances y duración en minutos) son similares, permitiendo la construcción de una serie temporal de índices de abundancia.</p>
+<div id="tbl-001" class="striped hover quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;1: Resultados principales de los cruceros de área barrida realizados entre el 2005 y 2023. (*)Proporción de la captura total. (**)Proporción sobre un único lance. (^)CPUE cuestionable.
+</figcaption>
+<div aria-describedby="tbl-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Crucero</th>
+<th style="text-align: left;">Fecha</th>
+<th style="text-align: center;">Lances</th>
+<th style="text-align: center;">Lances+</th>
+<th style="text-align: center;">Captura (kg)</th>
+<th style="text-align: center;">Biomasa (ton)</th>
+<th style="text-align: center;">CPUE (kg/hr)</th>
+<th style="text-align: center;">Duración (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2005</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">49,000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2014</td>
+<td style="text-align: left;">13—27, Febrero</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">ni</td>
+<td style="text-align: center;">47,642</td>
+<td style="text-align: center;">362.0</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">03—18, Febrero</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">4,784 (67%)</td>
+<td style="text-align: center;">64,823</td>
+<td style="text-align: center;">334.4</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">03—18, Febrero</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">5,394 (52%)</td>
+<td style="text-align: center;">47,649</td>
+<td style="text-align: center;">385.3</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">28,Feb—11, Marzo</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">271 (39%)**</td>
+<td style="text-align: center;">69,339</td>
+<td style="text-align: center;">537.1^</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">06—17, Marzo</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">3,821 (51%)*</td>
+<td style="text-align: center;">41,183</td>
+<td style="text-align: center;">265.8</td>
+<td style="text-align: center;">30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Excluyendo el año 2022, la tendencia de los índices de abundancia indica una ligera disminución en los últimos años (<a href="#fig-001" class="quarto-xref">Figura&nbsp;1</a>). Se observa una posible discrepancia entre los niveles de CPUE y los de biomasa, lo que sugiere la necesidad de un análisis detallado de consistencia.</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-001" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-cruceros_files/figure-html/fig-001-1.png" class="lightbox page-columns page-full" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="01-cruceros_files/figure-html/fig-001-1.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Estructura Unicial
+Figura&nbsp;1: Índices de abundancia obtenidos por área barrida entre los años 2005 y 2023. La línea continua muestra un suavizador B-spline de orden 3.
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<p>El rango de tallas de la merluza capturada durante los cruceros fue similar, al igual que la proporción de sexos y la profundidad de pesca (<a href="#tbl-002" class="quarto-xref">Tabla&nbsp;2</a>). Según los informes de los cruceros, no se encontró una relación entre la profundidad y la distribución de tallas de los peces muestreados. Los informes no incluyeron las distribuciones de tallas en formato tabular, y no se pudieron obtener los datos de muestreo, lo que impidió la incorporación de esta información en el modelo de evaluación.</p>
+<div id="tbl-002" class="striped hover quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;2: Aspectos operacionales durante los cruceros de área barrida realizados entre el 2005 y 2023.
+</figcaption>
+<div aria-describedby="tbl-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Crucero</th>
+<th style="text-align: left;">Profundidad</th>
+<th style="text-align: center;">Longitud (cm)</th>
+<th style="text-align: center;">Muestra</th>
+<th style="text-align: center;">razón M/H</th>
+<th style="text-align: center;">Zona Prospección</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2014</td>
+<td style="text-align: left;">67.0 — 377</td>
+<td style="text-align: center;">15.0 — 99.0</td>
+<td style="text-align: center;">ni</td>
+<td style="text-align: center;">ni</td>
+<td style="text-align: center;">27 - 31°N</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">67.0 — 377</td>
+<td style="text-align: center;">17.8 — 105.0</td>
+<td style="text-align: center;">798</td>
+<td style="text-align: center;">53/47</td>
+<td style="text-align: center;">27 - 31°N</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">60.0 — 318</td>
+<td style="text-align: center;">14.1 — 106.0</td>
+<td style="text-align: center;">1,090</td>
+<td style="text-align: center;">58/42</td>
+<td style="text-align: center;">27 - 31°N</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022</td>
+<td style="text-align: left;">58.0 — 349</td>
+<td style="text-align: center;">11.6 — 30.4</td>
+<td style="text-align: center;">229</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">24 - 28°N</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023</td>
+<td style="text-align: left;">69.5 — 302</td>
+<td style="text-align: center;">16.0 — 105.4</td>
+<td style="text-align: center;">821</td>
+<td style="text-align: center;">51/49</td>
+<td style="text-align: center;">27 - 31°N</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
+<section id="particularidades" class="level2">
+<h2 class="anchored" data-anchor-id="particularidades">Particularidades</h2>
+<ul>
+<li>Existen diferencias interanuales en las zonas de prospección. Esto dificulta la construcción de un indice estandarizado para fines de evaluación poblacional.</li>
+<li>Prospección de adultos por sobre juveniles, sucede en machos y hembras.</li>
+<li>Hembras de mayor tamaño.</li>
+<li>Notar que los intervalos de confianza de las estimaciones de biomasa por área barrida fueron muy estrechos, no viables para utilizarlos como indicador de variabilidad en la evaluación.</li>
+<li>Explorar acceso en <a href="https://sipesca.conapesca.gob.mx/login.php" class="uri">https://sipesca.conapesca.gob.mx/login.php</a></li>
+</ul>
+<section id="crucero-2019" class="level3">
+<h3 class="anchored" data-anchor-id="crucero-2019">Crucero 2019</h3>
+<ul>
+<li>El informe técnico no se encuentra disponible.</li>
+<li>3,39e7 * L ^ 3.1</li>
+</ul>
+</section>
+<section id="crucero-2020" class="level3">
+<h3 class="anchored" data-anchor-id="crucero-2020">Crucero 2020</h3>
+<ul>
+<li>Similares observaciones que las del crucero 2023</li>
+<li>Existe una ppt presentada el año 2021</li>
+<li>Realizado sobre la zona norte del Golfo.</li>
+<li>Mayores capturas en rango de tallas altos. Predominancia de adultos.</li>
+<li>Composición poblacional: 74% Adultos / 26% Juveniles</li>
+<li>Tabla de PBR | No claro desde donde provienen.</li>
+<li>Se observan pulsos de reclutamiento en las estructuras de tallas (18 y 30 cm)</li>
+</ul>
+</section>
+<section id="crucero-2022" class="level3">
+<h3 class="anchored" data-anchor-id="crucero-2022">Crucero 2022</h3>
+<ul>
+<li>Realizado sobre la zona sur del Golfo.</li>
+<li>Capturas bajas en comparación a la captura total, relevancia de merluza en sólo un (1) lance de pesca.</li>
+<li>Diferencias en la velocidad de arrastre (3.2 nudos versus 3.0 nudos) con otros años.</li>
+<li>Los resultados fueron expuestos en un contexto ecológico y biológico, difícil de extraer información pesquera.</li>
+<li>2e5 * L ^ 2.8616</li>
+</ul>
+</section>
+<section id="crucero-2023" class="level3">
+<h3 class="anchored" data-anchor-id="crucero-2023">Crucero 2023</h3>
+<ul>
+<li>Realizado sobre la zona norte del Golfo.</li>
+<li>Juveniles se reportan en la zona sur del Golfo, en los lances 1-6 y 27.</li>
+<li>Predominio de machos en la zona norte del Golfo (Figura).</li>
+<li>No existen diferencias notables en la proporción sexual en diferentes rangos de profundidad.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../files/pesca/crucero_talla_2023.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Distribución de tamaños."><img src="../files/pesca/crucero_talla_2023.png" class="img-fluid figure-img" alt="Distribución de tamaños."></a></p>
+<figcaption>Distribución de tamaños.</figcaption>
+</figure>
+</div>
 
 
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figura&nbsp;1: Estructura Unicial</span>
+<span class="glightbox-desc lightbox-desc-1">Figura&nbsp;1: Índices de abundancia obtenidos por área barrida entre los años 2005 y 2023. La línea continua muestra un suavizador B-spline de orden 3.</span>
+<span class="glightbox-desc lightbox-desc-2">Distribución de tamaños.</span>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -631,11 +874,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../resultados/index.html" class="pagination-link" aria-label="Descripción">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Descripción</span>
+      <a href="../datos/01-oficiales.html" class="pagination-link" aria-label="Registros Oficiales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Registros Oficiales</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../datos/01-tallas-rescatado.html" class="pagination-link" aria-label="Tallas y selectividad">
+        <span class="nav-page-text">Tallas y selectividad</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -652,7 +898,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
