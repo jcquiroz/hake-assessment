@@ -36,8 +36,6 @@ website:
     right:
       - text: "Datos"
         file: datos/index.qmd
-      # - text: "Biología"
-      #   file: biologia/index.qmd
       - text: "Modelos"
         file: modelos/index.qmd
       - text: "Resultados"
@@ -61,16 +59,7 @@ website:
               file: datos/01-tallas.qmd
             - text: "Descartes"
               file: datos/01-descartes.qmd
-    
-    # - title: "Biología"
-    #   contents:
-    #     - text: "Contexto"
-    #       file: biologia/index.qmd
-    #     - section: "Historia de vida"
-    #       contents:
-    #         - text: "Crecimiento"
-    #           file: biologia/02-crecimiento.qmd
-    
+
     - title: "Modelos"
       contents:
         - text: "Contexto"
