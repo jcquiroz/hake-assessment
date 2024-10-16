@@ -5,6 +5,6 @@ description: "Los resultados del modelo son variados, en esta página se describ
 date: "Octubre, 2024"
 ---
 
-## Assessment
+## Comparaciones Biomasa
 
-Algo
+Texto
