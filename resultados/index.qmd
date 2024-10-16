@@ -1,4 +1,10 @@
 ---
-title: "Descripción"
-description: "Los resultados del modelo son variados, en esta página se describen los alcances de los principales hallazgos."
+title: Resultados
+subtitle: "Variables de estado y condicion de expotación"
+description: "Los resultados del modelo son variados, en esta página se describen los principales hallazgos"
+date: "Octubre, 2024"
 ---
+
+## Assessment
+
+Algo

@@ -1,9 +1,8 @@
 ---
-title: "Evaluación de la Merluza del Pacífico"
+title: "Evaluación exploratoria de la Merluza del Pacífico"
 subtitle: "Dinámica pesquera y del descarte"
 details: |
-  Análisis basado en edades ajustado a la dinámica de tallas<br>y calibrado por la CPUE, estimaciones 
-  de biomasa <br> por cruceros de área barrida y escenarios de captura descartada.
+  Análisis basado en edades ajustado a la dinámica de tallas y calibrado por la CPUE, <br> estimaciones de biomasa por cruceros de área barrida y escenarios de captura descartada.
 sidebar: false
 toc: false
 page-layout: full
@@ -15,8 +14,8 @@ course-logo: /files/logo_hake_hex.png
 ---
 
 Este es el sitio web del proyecto "Merluza del Golfo de California". Acá se alojan todos los análisis de
-insumos proporcionados por el mandante, como también, los materiales de difusión (e.g., presentaciones,
-reportes) y análisis de datos.
+insumos proporcionados por el mandante, como también, los materiales de difusión (e.g., reportes, scripts) y
+análisis de datos.
 
 ::::::: home
 :::::: {.grid .course-details}
@@ -31,7 +30,7 @@ reportes) y análisis de datos.
 :::
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
-### Generalidad Asesoría
+### Asesoría
 
 -   [{{< iconify streamline graph-dot size=1.1em >}}]{.fa-li} Analítica y Modelamiento
 -   [{{< iconify solar calendar-add-broken size=1.1em >}}]{.fa-li} Sep - Oct, 2024
@@ -40,7 +39,7 @@ reportes) y análisis de datos.
 :::
 
 ::: {.g-col-12 .g-col-md-4 .contact-policy}
-### Resultados principales
+### Reportes
 
 -   [{{< iconify stash search-results-light size=1.1em >}}]{.fa-li} [Datos modelo](datos/index.qmd)
 -   [{{< iconify carbon report-data size=1.1em >}}]{.fa-li} [Reporte]()

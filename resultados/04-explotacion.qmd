@@ -1,6 +1,8 @@
 ---
 title: "Estato de Explotación"
-description: "En esta página se presentan resultados que describen el estado de explotación de la merluza en el Golfo de California"
+subtitle: "Comparaciones entre modelos"
+date: "Octubre, 2024"
+description: ""
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
@@ -12,14 +14,5 @@ source("../R/functions.R")
 ```
 
 ## Estructura Inicial
-
-Debido a que antes del año 2000 existió actividad pesquera, fue necesario restringir la estructura inicial de
-la población a una condición estado-estable penalizada a un total (para todas la edades) de mortalidad por
-pesca que resume las capturas priori al año 2000. La @fig-001 muestra que en la composición de tamaños del año
-2000 destacan dos cohortes de reclutamiento a la pesquería, una inicial en torno a `15 cm`, y una secundaria
-en los `25 cm`. El último grupo de edad se centro en `99.6 cm`, con una varianza proporcional a la talla
-media.
-
-![Estructura Unicial](fig/inicio.png){#fig-001}
 
 ## 

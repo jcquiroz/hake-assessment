@@ -1,11 +1,16 @@
 ---
-title: "Procesos individuales y poblacionales"
-description: "El modelo de evaluación es condicionado a varios supuesto sobre aspectos poblacionales e individuales. En esta página se describen los métodos y procesos analíticos realizados para configurar estos supuestos."
+title: "Procesos poblacionales"
+subtitle: "Métodos y supuestos de la evaluación"
+date: "Octubre, 2024"
+description: ""
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.align = "center")
 source("../R/functions.R")
+library(gt)
+library(KScorrect)
+library(tidyverse)
+library(FSA)
 ```
 
 ## Crecimiento
@@ -17,18 +22,16 @@ source("../R/functions.R")
 #| 
 tibble::tribble(
   ~Parámetro, ~Sexo, ~Valor,
-  "Linf",  "Hembras", 163.7, 
-  "k",  "Hembras", 0.08,
-  "Linf",  "Machos", 108.9, 
-  "k",  "Hembras", 0.11
-) |> 
-  knitr::kable()
+  "Linf",  "Conjunto", 109.33, 
+  "k",  "Conjunto", 0.12,
+  "to", "Conjunto", -0.82
+) |> gt()
 ```
 
-El crecimiento individual fue modelado por medio de una clave talla-edad modelada en base a los parámetros
-descritos por el método de von-Bertalanffy (VBGM) para sexos conjunto. Varias estimaciones de crecimiento
-fueron descritas en @AlvarezTrasvia2022, donde se proporcionaron estimaciones de longitud infinita
-($L_{\infty}$), tasa de crecimiento individual ($k$) para machos y hembras.
+El crecimiento individual fue modelado por medio de una clave talla-edad en base a los parámetros descritos
+por el método de von-Bertalanffy (VBGM) para sexos conjunto. Varias estimaciones de crecimiento fueron
+descritas en @zamora2021ecologia, donde se proporcionaron estimaciones de longitud infinita ($L_{\infty}$),
+tasa de crecimiento individual ($k$), y edad a longitud cero ($t_0$) para sexos conjuntos.
 
 La conversión desde talla a edad fue realizada asumiendo que los grupos de edad se describen por medio de una
 talla modal (i.e., talla media) y su variación en el grupo (i.e., desviación estándar), asumiendo una
@@ -38,25 +41,20 @@ incorporar las tallas muestreadas (@fig-001).
 
 ```{r, warning=FALSE, echo=FALSE, message=FALSE}
 #| fig-height: 5
-#| fig-cap: "Participación de grupos de edad en el rango de tamaños (5-110 cm) que se incluye en el modelo."
+#| fig-cap: "Participación de grupos de edad en el rango de tamaños (1-110 cm) que se incluye en el modelo."
 #| label: fig-001
-#| fig-column: page-inset-right
-
-
-library(KScorrect)
-library(tidyverse)
-library(FSA)
+#| fig-column: body-outset-right
 
 # growth Hembras & Machos
-nedades = 15
-Linf    = (163.72 + 108.89)/2
-k       = .9*(0.08 + 0.11)/2
+nedades = 30
+Linf    = 109.33
+k       = 0.12
 Lo      = 15
 t0      = 0
 M       = 0.21
 
 cv      = 0.2
-tallas  = seq(2,110) #floor(Linf))
+tallas  = seq(0,110) #floor(Linf))
 
 mu_edad = sigma_edad = NULL
 mu_edad[1] = Lo;
@@ -86,10 +84,10 @@ raw    <- xtabs(~bins+agec, data=set_tallas)
 WR.key <- prop.table(raw, margin=1)
 #View(WR.key)
 
-maxedad = 18
+maxedad = 30
 wr.key <- WR.key[,c(1:maxedad)]
 
-FSA::alkPlot(wr.key,"barplot", lbl.cex = 0.5, xlim = c(2,110), xlab = "Talla", ylab = "Proporción")
+FSA::alkPlot(wr.key,"barplot", lbl.cex = 0.5, xlim = c(0,110), xlab = "Talla", ylab = "Proporción")
 ```
 
 ## Mortalidad Natural
@@ -111,24 +109,52 @@ desviación estándar logarítmica de 0.113.
 
 ## Madurez
 
-Los datos de la relación de fecundidad fueron actualizados para la evaluación de 2020 (Edwards et al., 2018b).
-Estas muestras fueron recolectadas de la encuesta acústica, viajes de investigación acústica de invierno y
-verano, del Programa de Observadores de Merluza en el Mar de EE. UU. a bordo de buques
-capturadores-procesadores comerciales, y de la encuesta de arrastre de fondo de la costa oeste de EE. UU.
-(Tabla XX). Las muestras de edades de 15 años en adelante fueron agrupadas tanto para la estimación de madurez
-como para el peso por edad debido a tamaños de muestra limitados. En consecuencia, las estimaciones de edades
-15+ se aplicaron a edades 15-20 con fines de modelado de la dinámica poblacional (Figura 12). Se encontró que
-algunos peces de casi todas las edades eran funcionalmente inmaduros según los criterios histológicos, que es
-una combinación de "reproductores intermitentes" que no desovarán en el año próximo y peces senescentes que
-parecen no tener ovarios viables.
+Se utilizo @ZamoraGarca2020. Estas muestras fueron recolectadas durante los cruceros de área barrida, viajes
+de investigación acústica de invierno, del Programa de Observadores de Merluza en el Golfo de California,
+México.
 
 ```{r, warning=FALSE, echo=FALSE, message=FALSE}
 #| fig-height: 4
-#| fig-cap: "Ojivas de madurez y fecundidad. La fecundidad es el producto de la madurez y el peso medio. Los valores informados para las edades de 15 años en adelante representan el promedio en todas las muestras en este rango."
+#| fig-cap: "Ojiva de madurez expresada en talla. Los puntos corresponden a los valores de madurez que se utilizarán en el modelo de evaluación para el rango de tallas entre 5 y 110 cm. La zona achurada corresponde a la madurez a la edad obtenida desde muestras empiricas. Las líneas verticales segmentadas muestran las edades desde 0.5, 1-15 grupos."
 #| label: fig-002
-#| fig-column: page-inset-right
+#| fig-column: body-outset-right
 
-ogive <- read_table("data/ogive.csv") |> pivot_longer(cols = 3:5, names_to = "ogive", values_to = "value")
 
-ogive |> filter(ogive %in% c("madurez","fecundidad")) |> ggplot(aes(x = age, y = value)) + geom_vline(xintercept = 2.41, linetype = 2, linewidth = 0.4, color = "#5b613c") + geom_hline(yintercept = 0.5, linetype = 2, linewidth = 0.4, color = "#5b613c") + geom_path(aes(colour = ogive), lineend = "round", linewidth = 1) + mitheme2(bz = 11) + labs(color = "Ojiva", x = "Edad", y = "Proporción") + scale_colour_manual(values = mycolor[c(9,2)])
+Linf = 109.33
+k = 0.12
+to = -0.82
+edad = seq(from = 0, to = 15, by = 0.01)
+talla = seq(from = 1, to = 109, by = 2)
+
+tallae <- function(Linf, k, to, edad){
+  Lt = Linf * (1 - exp(-k * (edad - to)))
+  return(Lt)
+}
+tallam <- tallae(Linf, k, to, edad)
+
+edad2 <- c(0.5, seq(from = 1, to = 15, by = 1))
+talla2 <- tibble(edad = edad2) |> mutate(talla =tallae(Linf, k, to, edad2))
+
+beta0 = -1.67
+beta1 = 0.58
+madura <- function(beta0, beta1, edad){
+  Pmad = exp(beta0 + beta1 * edad)/(1 + exp(beta0 + beta1 * edad))
+  return(Pmad)
+}
+msex <- madura(beta0, beta1, edad)
+
+mdata <- tibble(edad,tallam,msex)
+
+extrap <- Hmisc::approxExtrap(tallam, msex, talla, method = "linear")
+newmsex <- tibble(talla = extrap$x, msex = extrap$y)
+newmsex[[2]][1:5] = 0
+newmsex[[2]][48:55] = 1
+
+mdata |> ggplot(aes(x = tallam, y = msex)) + 
+  geom_path(color = mycolor2[1], linewidth = 4.3, alpha = 0.4) +
+  geom_point(data = newmsex, aes(x = talla, y = msex), size = 2, color = mycolor[10]) +
+  geom_vline(xintercept = talla2$talla, linetype = 2, color = mycolor3) +
+  mitheme2(bz = 10) + expand_limits(y = 0) + scale_x_continuous(breaks = seq(from = 1, to = 109, by = 4)) +
+  labs(x = "Talla [cm]", y = "Proporción") 
+
 ```

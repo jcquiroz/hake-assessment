@@ -1,7 +1,7 @@
 date-heading:
-  content: "Fechas de exploración: "
+  #content: "Fechas de exploración: "
   class: "bg-content"
-date-format: "full"
+date-format: "long"
 
 format:
   html:

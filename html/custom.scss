@@ -30,6 +30,7 @@ $yellow: #FDB725 !default; // #FCCE25 !default;  // Plasma[7]
 $green:  #900DA4 !default; // #7AD151 !default;  // Viridis[5]
 $teal:   #BF3984 !default; // #2A788E !default;  // Viridis[3]
 $cyan:   #E16462 !default; // #22A884 !default;  // Viridis[4]
+$verdea: #F0FFF0 !default;
 
 $primary:       $red !default;
 $secondary:     $gray-500 !default;
@@ -62,8 +63,8 @@ $link-color: $red;
 $link-hover-color: $cyan;
 
 // Inline code
-$code-bg: $gray-200 !default;
-$code-color: $gray-900 !default;
+$code-bg: $verdea !default;
+$code-color: $gray-800 !default;
 
 // Block code
 $monokai-bg: #2e3440;
@@ -264,7 +265,7 @@ div.sidebar-item-container .sidebar-link>code{
 // Content page stuff
 // Date bar
 .date-block {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 
   p.date {
     margin-bottom: 0 !important;
@@ -277,7 +278,7 @@ div.sidebar-item-container .sidebar-link>code{
 }
 
 .bg-content {
-  background-color: $orange;
+  background-color: $gray-500;
 }
 
 .bg-lesson {

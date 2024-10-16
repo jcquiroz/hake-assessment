@@ -1,0 +1,17 @@
+{
+  "hash": "126b9bb2900645f64ffd39f8f19fe078",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Estato de Explotación\"\nsubtitle: \"Comparaciones entre modelos\"\ndate: \"Octubre, 2024\"\ndescription: \"\"\n---\n\n\n\n\n\n## Estructura Inicial\n\n## \n",
+    "supporting": [
+      "04-explotacion_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

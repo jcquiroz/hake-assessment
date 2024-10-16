@@ -1,0 +1,142 @@
+---
+title: "Dinámica del descarte"
+subtitle: "Construcción de series de descarte"
+date: "Octubre, 2024"
+description: ""
+---
+
+```{r setup, echo=FALSE, include=FALSE}
+source(here::here("R", "functions.R"))
+library(readr)
+library(readxl)
+library(tidyverse)
+library(gtsummary)
+library(GGally)
+library(labelled)
+library(gt)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+obs_2015 <- read_excel("data/obs_2015.xlsx",  sheet = "Capturas", col_types = c("text",  "text", "date", "text", "numeric",  "numeric", "numeric")) |> mutate(year = 2015)
+
+obs_2016 <- read_excel("data/obs_2016.xlsx", sheet = "Capturas", col_types = c("text", "text", "date", "text", "numeric", "numeric", "numeric")) |> mutate(year = 2016)
+
+obs_2017 <- read_excel("data/obs_2017.xlsx",  sheet = "Capturas", col_types = c("text",  "text", "date", "numeric", "numeric",  "numeric")) |> mutate(year = 2017)
+
+obs_2018 <- read_excel("data/obs_2018.xlsx",  sheet = "Captura", col_types = c("text",  "numeric", "numeric", "date", "text",  "text", "numeric", "numeric", "numeric")) |> mutate(year = 2018)
+
+obs_2019 <- read_excel("data/obs_2019.xlsx",  col_types = c("skip", "text", "numeric",  "numeric", "text", "text", "date",  "numeric", "numeric", "numeric")) |> mutate(year = 2019)
+
+obs_2020 <- read_excel("data/obs_2020.xlsx",  sheet = "Capturas", col_types = c("text",  "numeric", "numeric", "text", "text",  "date", "numeric", "numeric", "numeric")) |> mutate(year = 2020)
+
+obs_2021 <- read_excel("data/obs_2021.xlsx",  sheet = "Captura", col_types = c("text",  "skip", "text", "text", "date", "numeric",  "numeric", "numeric")) |> mutate(year = 2021)
+
+obs_2022 <- read_excel("data/obs_2022.xlsx",  sheet = "Capturas", col_types = c("text",  "text", "date", "text", "numeric",  "numeric", "numeric")) |> mutate(year = 2022)
+
+obs_2023 <- read_excel("data/obs_2023.xlsx",  sheet = "Captura", col_types = c("text",  "text", "text", "date", "numeric",  "numeric", "numeric")) |> mutate(year = 2023)
+
+obs_all <- bind_rows(obs_2015,obs_2016,obs_2017,obs_2018,obs_2019,obs_2020,obs_2021,obs_2022,obs_2023) |> 
+  mutate(mes = month(fecha), dia = day(fecha))
+
+write_csv(x = obs_all, file = "data/descartes.csv")
+```
+
+```{r, warning=FALSE, message=FALSE}
+
+obs_all <- read_csv("data/descartes.csv")
+
+obs_all_p <- obs_all |> drop_na(total,descarte) |> 
+  pivot_longer(cols = c("comercial","descarte","total"), names_to = "Categoria",
+                        values_to = "Captura")
+
+obs_all_year_mes <- obs_all_p |> 
+  group_by(year,mes,Categoria) |> summarise(n = n(), Captura = sum(Captura, na.rm = TRUE)) |> 
+  pivot_wider(names_from = Categoria, values_from = Captura) |> mutate(P = descarte/total) 
+
+obs_all_year <- obs_all_p |> 
+  group_by(year,Categoria) |> summarise(n = n(), Captura = sum(Captura, na.rm = TRUE)) |> 
+  pivot_wider(names_from = Categoria, values_from = Captura) |> mutate(P = descarte/total) 
+
+obs_all_mes <- obs_all_p |> 
+  group_by(mes,Categoria) |> summarise(n = n(), Captura = sum(Captura, na.rm = TRUE)) |> 
+  pivot_wider(names_from = Categoria, values_from = Captura) |> mutate(P = descarte/total) 
+
+```
+
+## Serie temporal de descarte
+
+Es fundamental disponer de una serie de descartes aplicados durante un periodo determinado, representados por
+el nivel de descarte y la fracción de la población afectada, para evaluar la población de merluza norteña e
+integrar niveles de descarte. Un análisis temporal de los datos de descarte obtenidos por el programa de
+observadores ayudará a establecer criterios para construir una serie temporal de descarte.
+
+Se examinaron un total de `r sum(obs_all_year_mes$n)` registros de lances de pesca recopilados por el programa
+de observadores a bordo. La proporción de descartes mensual respecto de la captura total (@tbl-001) es
+altamente variable ($\sigma=0.14$, 2% - 62%). Durante le periodo 2015 - 2023, la mayor proporción de descarte
+(31%) ocurrió el año 2017, mientras que el año 2019 se presentó el menor porcentaje de descarte (6%).
+
+```{r, warning=FALSE, message=FALSE}
+#| tbl-cap: "Tamaño de muestra por tipo de captura (comercial versus descarte). Porcentaje aplica en niveles para cada factor."
+#| tbl-column: body-outset-right
+#| label: tbl-001
+
+obs_all_year_mes |> 
+  gt(rowname_col = "mes", groupname_col = "year") |> 
+  cols_label(year = "Año", comercial = "Comercial", descarte = "Descarte", 
+             total = "Total", P = "% Descarte", n = "lances") |> 
+   tab_spanner( label = "Captura", columns = c(comercial,descarte)) |> 
+  tab_spanner( label = "Est (%)", columns = c(total,P) ) |> fmt_percent(columns = P, decimals = 1) |> 
+  fmt_number(columns = c(comercial, descarte, total), decimals = 0) 
+
+```
+
+### Descartes anuales
+
+La @fig-002-1 muestra las cantidades de captura comercial y descartada durante el período 2015 - 2023. No se
+observa un patrón en el comportamiento de la captura que permita identificar un nivele de descarte
+representativo del periodo.
+
+El @fig-002-1 muestra las cantidades de captura comercial y descartada entre 2015 y 2023. No se aprecia un
+patrón en la captura que indique un nivel representativo de descarte durante ese período. Durante el periodo
+2015 y 2023, la proporción de captura descartada fue de `r 100*mean(obs_all_year$P)`% con un rango anual entre
+4.6% y 31%.
+
+```{r}
+#| fig-cap: 
+#|    - "Tipo de captura registrada durante el programa de observadores abordo entre los años 2015 y 2023." 
+#|    - "Proporción de captura descartada entre los años 2015 y 2023, el tamnaño de los circulos representan la captura total muestreada cada año."
+#| label: fig-002
+
+obs_all_year |> select(year,n,comercial,descarte) |> pivot_longer(cols = c("comercial","descarte"), names_to = "Captura") |> 
+  ggplot(aes(x = year, y = value/1e3)) + geom_col(aes(fill = Captura)) + mitheme2(bz = 10) + scale_fill_manual(values = mycolor3[c(9,3)]) + 
+  labs(x = "Año", y = "Captura [ton]") + scale_x_continuous(breaks = seq(from = 2015, to = 2023, by = 1)) 
+
+obs_all_year |> select(year,n,total,P) |> 
+  ggplot(aes(x = year, y = P)) + geom_path(aes(color = total/1000), linewidth = 2, alpha = 0.65) + 
+  geom_point(aes(size = n), color = "#e87f71") +  scale_size(range = c(1, 8), breaks = c(50, 75, 100, 150, 200)) + 
+  scale_color_viridis_c(option = "cividis") + mitheme2(bz = 10) +
+  labs(x = "Año", y = "% Descarte", color = "Captura total", size = NULL) + scale_x_continuous(breaks = seq(from = 2015, to = 2023, by = 1)) 
+```
+
+### Descartes mensuales
+
+Los niveles de captura muestreada (comercial y descartes, @fig-003-1) son coherentes con el patrón estacional
+de la pesquería, con un máximo de captura en los meses de febrero y marzo La proporción de descartes por mes
+(@fig-003-2) en promedio fue de 11.7% ($\sigma = 5%$).
+
+```{r}
+#| fig-cap: 
+#|    - "Tipo de captura registrada durante el programa de observadores abordo entre los años 2015 y 2023." 
+#|    - "Proporción de captura descartada entre los años 2015 y 2023, el tamnaño de los circulos representan la captura total muestreada cada año."
+#| label: fig-003
+
+obs_all_mes |> select(mes,n,comercial,descarte) |> filter(mes <8) |> pivot_longer(cols = c("comercial","descarte"), names_to = "Captura") |> 
+  ggplot(aes(x = mes, y = value/1e3)) + geom_col(aes(fill = Captura)) + mitheme2(bz = 10) + scale_fill_manual(values = mycolor3[c(9,3)]) + 
+  labs(x = "Mes", y = "Captura [ton]") + scale_x_continuous(breaks = seq(from = 1, to = 8, by = 1)) 
+
+obs_all_mes |> select(mes,n,total,P) |> filter(mes <8) |> 
+  ggplot(aes(x = mes, y = P)) + geom_path(aes(color = total/1000), linewidth = 2, alpha = 0.65) + 
+  geom_point(aes(size = n), color = "#e87f71") +  scale_size(range = c(1, 8), breaks = c(50, 75, 100, 150, 200)) + 
+  scale_color_viridis_c(option = "cividis") + mitheme2(bz = 10) +
+  labs(x = "Mes", y = "% Descarte", color = "Captura total", size = NULL) + scale_x_continuous(breaks = seq(from = 1, to = 8, by = 1)) 
+```

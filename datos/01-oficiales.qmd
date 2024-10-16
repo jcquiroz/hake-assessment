@@ -1,7 +1,8 @@
 ---
 title: "Análisis de datos"
 subtitle: "Exploración de tendencias en las capturas y esfuerzo de pesca"
-subject: "Análisis"
+date: "Octubre, 2024"
+description: ""
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
@@ -10,6 +11,8 @@ library(readr)
 library(tidyverse)
 library(gtsummary)
 ```
+
+## Registros oficiales
 
 La gestión pesquera de merluza común es conducida por SAGARPA, a través de CONAPESCA e INAPESCA. A pesar de
 que las capturas comercialmente de merluza en el Golfo de California comenzaron en la década de 1980, sólo en
@@ -36,7 +39,7 @@ hake_season <- hake |> select(date = fechaaviso, ini = periodoinicio, end = peri
     JULIO=7, AGOSTO=8, SEPTIEMBRE=9, OCTUBRE=10, NOVIEMBRE=11, DICIEMBRE=12), monthf = factor(month))
 ```
 
-## Datos públicos de CONAPESCA
+### Datos públicos de CONAPESCA
 
 Exploración de datos proporcionados vía website por
 [CONAPESCA](https://conapesca.gob.mx/wb/cona/avisos_arribo_cosecha_produccion){target="_blank"}, sobre arribos
@@ -69,11 +72,15 @@ hake <- allspc |> rename_with(~tmp) |> filter(grepl('MERL', nombreespecie))
 #| label: tbl-001
 
 theme_gtsummary_language(language = "es")
+theme_gtsummary_journal("jama")
+theme_gtsummary_compact()
 hake_season |> mutate(desemb = desemb/1000) |> 
   tbl_summary(include = c(ltrip1, ltrip2, desemb), by = year, missing = "no", type = all_continuous() ~ "continuous2",
     statistic = all_continuous() ~ c("{mean} ({sd})", "{p25} - {p75}"), digits = all_continuous() ~ 1,
     label = list(desemb ~ "Desembarque", ltrip1 ~ "Esfuerzo 1", ltrip2 ~ "Esfuerzo 2"), missing_text = "(Missing)") |> 
   add_overall() |> bold_labels() |>  modify_header(label = "**Variable**") 
+reset_gtsummary_theme()
+
 ```
 
 La variación del desembarque por viaje de pesca (@fig-002) muestra un incremento durante el período 2018 -
@@ -83,7 +90,7 @@ de años, los viajes de pesca se concentran en duraciones menores a los 10 días
 necesariamente en consecuencia de la duración de los viajes de pesca, sino responde a una mayor frecuencia de
 viajes.
 
-```{r, warning=FALSE, echo=TRUE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| fig-cap: "Gráficas de violín destacando el valor promedio (punto rojo) y los cuartiles (líneas) al 25% (p25), 50% (mediana) y 75% (p75) de variabilidad anual. La forma del violín muestra la frecuencia de registros."
 #| fig-subcap: 
 #|   - "Desembarque (ton) por viajes de pesca. Sobreposición del esfuerzo de pesca"
@@ -128,10 +135,12 @@ El período 2018-2024 se caracteriza por un crecimiento sostenido en el desembar
 primeros meses de los años más recientes. La tendencia del desembarque es ligeramente diferente a la del
 esfuerzo de pesca, sugiriendo que las tasas de captura deberían tener diferencias explicadas por el año.
 
-```{r, warning=FALSE, echo=TRUE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| fig-cap: "Captura y esfuerzo mensuales para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5."
 #| fig-column: body-outset-right
 #| label: fig-003
+#| fig-width: 4.5
+#| fig-asp: 1.2
 
 tmp01 <- hake_season |> group_by(year, monthf) |> summarise(viajes = n(), desemb1 = sum(desemb/1000, na.rm = TRUE), desemb2 = sum(desembv/1000, na.rm = TRUE), effort1 = sum(ltrip1, na.rm = TRUE), effort2 = sum(ltrip2, na.rm = TRUE)) |> mutate(cpue1 = desemb1/effort1, cpue2 = desemb1/effort2, cpue3 = desemb1/viajes)
 
@@ -153,10 +162,12 @@ pesca por mes al inicio del año, disminuyendo posteriormente pero a una tasa di
 desembarques (@fig-004, paneles inferiores). Se destacan aumentos en el esfuerzo durante el segundo trimestre
 de cada año, especialmente en el período 2022-2024.
 
-```{r, warning=FALSE, echo=TRUE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| fig-cap: "Patrón estacional de las capturas y esfuerzo de pesca para el período 2018-2024. La línea continua y área achurada muestra un suavizador B-spline de orden 5."
 #| fig-column: body-outset-right
 #| label: fig-004
+#| fig-width: 4.5
+#| fig-asp: 1.2
 
 tmp02 <- hake_season |> group_by(year, month) |> summarise(viajes = n(), desemb1 = sum(desemb/1000, na.rm = TRUE), desemb2 = sum(desembv/1000, na.rm = TRUE), effort1 = sum(ltrip1, na.rm = TRUE), effort2 = sum(ltrip2, na.rm = TRUE)) |> mutate(cpue1 = desemb1/effort1, cpue2 = desemb1/effort2, cpue3 = desemb1/viajes) |> pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |> mutate(yearf = factor(year))
 
@@ -177,10 +188,12 @@ constante durante el período 2018-2024 (@fig-005). La variación en las unidade
 de pesca, días efectivos, número de viajes) a nivel mensual no muestra diferencias significativas en el
 incremento de las tasas de captura.
 
-```{r, warning=FALSE, echo=TRUE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| fig-cap: "Captura por unidad de esfuerzo (CPUE) basada en desembarques (ton). La línea continua y área achurada muestra un suavizador B-spline de orden 5."
 #| fig-column: body-outset-right
 #| label: fig-005
+#| fig-width: 4.5
+#| fig-asp: 1.2
 
 tmp01 |> pivot_longer(cols = c(3:10), names_to = 'Tipo', values_to = 'Valor') |> 
   filter(Tipo %in% c('cpue1','cpue2','cpue3')) |> ggplot(aes(year,Valor)) + 
@@ -207,7 +220,7 @@ predictores es significativa ($P<0.05$), mostrando que el patrón estacional de 
 (@fig-006-2, @tbl-002). Específicamente, la tendencia anual de la CPUE es diferente para los últimos meses del
 año.
 
-```{r, warning=FALSE, echo=TRUE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| fig-column: body-outset-right
 #| fig-cap: 
 #|   - "Valores de predictores lineales Mes y Año"
@@ -235,6 +248,8 @@ lm_fit <-  lm_mod |> fit(cpue11 ~ yearf * month - 1, data = tmp03 |> filter(effo
 tidy(lm_fit) |> dwplot(dot_args = list(size = 2, color = mycolor[8]), whisker_args = list(color = mycolor[11]),
          vline = geom_vline(xintercept = 0, colour = "grey50", linetype = 2)) + theme_bw(base_size = 10) 
 
+write_csv(x = tidy(lm_fit), file = "../modelos/data/lm_fit.csv")
+
 new_points <- expand.grid(month = 1:12,  yearf = factor(c(2018:2024)))
 mean_pred <- predict(lm_fit, new_data = new_points)
 conf_int_pred <- predict(lm_fit,  new_data = new_points,  type = "conf_int")
@@ -254,11 +269,18 @@ Los parámetros estimados ($\beta$) para el modelo de predicción de la CPUE se 
 destacando los predictores `Año+Mes` y la interacción `Año:Mes` son significativas. Para fines de la
 evaluación, se debe considerar únicamente el predictor Año.
 
-```{r, warning=FALSE, echo=TRUE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 #| tbl-cap: "Parámetros estimados para un modelo cpue ~ Año * Mes"
 #| label: tbl-002
 
+theme_gtsummary_language(language = "es")
+theme_gtsummary_journal("jama")
+theme_gtsummary_compact()
 lm_fit |> tbl_regression(exponentiate = FALSE, pvalue_fun = label_style_pvalue(digits = 2), label = list(yearf ~ "Año", month ~ "Mes"), missing_text = "(Missing)") |> 
   add_global_p() |> bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Predictor**") 
+reset_gtsummary_theme()
+
+
+
 
 ```

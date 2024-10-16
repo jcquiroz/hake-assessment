@@ -1,0 +1,21 @@
+{
+  "hash": "cf68c17f0cb0256612567ffe01693758",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Procesos poblacionales\"\nsubtitle: \"Métodos y supuestos de la evaluación\"\ndate: \"Octubre, 2024\"\ndescription: \"\"\n---\n\n\n\n\n\n## Crecimiento\n\n\n\n::: {.cell .plain .tbl-column-margin tbl-cap='Estimaciones de parámetros VBGM para merluza del pacífico'}\n::: {.cell-output-display}\n\\begingroup\n\\fontsize{12.0pt}{14.4pt}\\selectfont\n\\begin{longtable}{llr}\n\\toprule\nParámetro & Sexo & Valor \\\\ \n\\midrule\\addlinespace[2.5pt]\nLinf & Conjunto & 109.33 \\\\ \nk & Conjunto & 0.12 \\\\ \nto & Conjunto & -0.82 \\\\ \n\\bottomrule\n\\end{longtable}\n\\endgroup\n\n:::\n:::\n\n\n\nEl crecimiento individual fue modelado por medio de una clave talla-edad en base a los parámetros descritos\npor el método de von-Bertalanffy (VBGM) para sexos conjunto. Varias estimaciones de crecimiento fueron\ndescritas en @zamora2021ecologia, donde se proporcionaron estimaciones de longitud infinita ($L_{\\infty}$),\ntasa de crecimiento individual ($k$), y edad a longitud cero ($t_0$) para sexos conjuntos.\n\nLa conversión desde talla a edad fue realizada asumiendo que los grupos de edad se describen por medio de una\ntalla modal (i.e., talla media) y su variación en el grupo (i.e., desviación estándar), asumiendo una\ndistribución normal. Para esto, se simuló la talla de reclutamiento a la pesquería desde las composiciones de\ntamaños ([Datos/Tallas](../datos/01-tallas.qmd)) y se exploró el número de grupos de edad requeridos para\nincorporar las tallas muestreadas (@fig-001).\n\n\n\n::: {.cell .fig-column-body-outset-right}\n::: {.cell-output-display}\n![Participación de grupos de edad en el rango de tamaños (1-110 cm) que se incluye en el modelo.](03-procesos_files/figure-pdf/fig-001-1.pdf){#fig-001}\n:::\n:::\n\n\n\n## Mortalidad Natural\n\nSe empleó información previa para la mortalidad natural utilizada en evaluaciones realizadas en Estados Unidos\ny Canadá. Los resultados del análisis utilizando el método de Hoenig (1983) respaldan el uso de una\ndistribución log-normal con una mediana de `M=0.21` y una desviación estándar logarítmica de `0.1`. La\nsensibilidad a esta información ha sido evaluada extensamente en muchas evaluaciones anteriores de la merluza\ndel pacífico. Los supuestos sobre M suelen tener un impacto significativo en los resultados del modelo, pero\nen ausencia de nueva información sobre `M`, ha habido pocas opciones para actualizar este parámetro.\n\n## Escarpamiento\n\nEl valor del parámetro de escarpamiento de la función stock-recluta se fundamenta en datos de la mediana\n(`0.79`) y los percentiles 20 (`0.67`) y 80 (`0.87`) de la meta-análisis de Myers et al. (1999) de la familia\nGadidae. Este valor se ha utilizado en evaluaciones de Estados Unidos desde 2007 y puede ser representado por\nuna distribución a-priori beta con parámetros 9.76 y 2.80, lo que resulta en una media de 0.777 y una\ndesviación estándar logarítmica de 0.113.\n\n## Madurez\n\nSe utilizo @ZamoraGarca2020. Estas muestras fueron recolectadas durante los cruceros de área barrida, viajes\nde investigación acústica de invierno, del Programa de Observadores de Merluza en el Golfo de California,\nMéxico.\n\n\n\n::: {.cell .fig-column-body-outset-right}\n::: {.cell-output-display}\n![Ojiva de madurez expresada en talla. Los puntos corresponden a los valores de madurez que se utilizarán en el modelo de evaluación para el rango de tallas entre 5 y 110 cm. La zona achurada corresponde a la madurez a la edad obtenida desde muestras empiricas. Las líneas verticales segmentadas muestran las edades desde 0.5, 1-15 grupos.](03-procesos_files/figure-pdf/fig-002-1.pdf){#fig-002}\n:::\n:::\n",
+    "supporting": [
+      "03-procesos_files/figure-pdf"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "\\usepackage{booktabs}\n\\usepackage{caption}\n\\usepackage{longtable}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{anyfontsize}\n\\usepackage{multirow}\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

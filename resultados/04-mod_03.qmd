@@ -1,0 +1,274 @@
+---
+title: "Modelo: Caso Crucero"
+subtitle: "Explorando el impacto de los cruceros"
+description: "Complementando los datos de entrada del **Caso Base**, este modelo incluye las estimaciones de biomasa obtenidas por los cruceros de área barrida. Aunque con ciertas diferencias en los pesos relativos de los índices de abundancia, este caso expone el impacto de incluir una segunda pieza de calbración de tendencia de biomasa."
+abstract: "Complementando los datos de entrada del **Caso Base**, este modelo incluye las estimaciones de biomasa obtenidas por los cruceros de área barrida. Aunque con ciertas diferencias en los pesos relativos de los índices de abundancia, este caso expone el impacto de incluir una segunda pieza de calbración de tendencia de biomasa."
+date: "Octubre, 2024"
+echo: false
+---
+
+```{r, include=FALSE}
+library(tidyverse)
+ruta = tools::file_path_as_absolute('src/')
+arch = tools::list_files_with_exts(ruta, exts = "R")
+sapply(arch, source)
+source("../R/functions.R")
+
+mycolor <- viridisLite::viridis(12, option = "turbo", begin = 0, end = 1)
+mycolor2 <- viridisLite::viridis(7, option = "turbo", begin = 0, end = 1)
+```
+
+## Ajustes de series de tiempo
+
+Describir el ajuste
+
+```{r}
+base <- read.admb('mod_03/m_03')
+vec_01 <- tibble(var = "Desembarque", year = base$year, pred = base$Desemb_pred, obs = base$Desemb_obs)
+vec_02 <- tibble(var = "CPUE", year = base$year, pred = base$CPUE_pred, obs = base$CPUE_obs)
+vec_03 <- tibble(var = "Lmedia", year = base$year, pred = base$Lmed_pred, obs = base$Lmed_obs)
+vec_04 <- tibble(var = "Crucero", year = base$year, pred = base$crucero_pred, obs = base$crucero)
+vec_fit <- bind_rows(vec_01,vec_02,vec_03,vec_04)
+
+```
+
+```{r}
+#| fig-cap: "Ajustes a series de datos para el período 2000 - 2023"
+#| fig-subcap: 
+#|   - "Capturas"
+#|   - "CPUE"
+#|   - "Talla media"
+#| label: fig-001
+#| fig-keep: all
+#| fig-height: 3
+#| fig-asp: 0.35
+
+tmp <- vec_fit |> pivot_longer(cols = c(3,4), names_to = "Tipo") 
+
+ggplot(tmp %>% filter(Tipo!='obs', var=='CPUE'), 
+       aes(year,value)) + 
+       geom_line(aes(colour=Tipo), size=0.8, colour = "#7daa50") +
+       geom_point(data = tmp |> filter(Tipo=='obs', var=='CPUE', value > 0),
+       aes(year,value), shape = 19, colour = "#e87f71", size = 2.6) +
+       scale_x_continuous(breaks = seq(from = 2000, to = 2023, by = 2)) +
+       labs(x = NULL, y = 'CPUE') + mitheme2(bz = 10) + 
+       theme(plot.title = element_text(hjust = 0.5),legend.position="none") +
+  scale_y_continuous(sec.axis = dup_axis(labels = NULL)) +
+  theme(axis.title.y.left = element_blank(),
+        axis.ticks.y = element_blank())
+
+ggplot(tmp %>% filter(Tipo!='obs', var=='Crucero'), 
+       aes(year,value)) + 
+       geom_line(aes(colour=Tipo), size=0.8, colour = "#7daa50") +
+       geom_point(data = tmp |> filter(Tipo=='obs', var=='Crucero', value > 0),
+       aes(year,value), shape = 19, colour = "#e87f71", size = 2.6) +
+       scale_x_continuous(breaks = seq(from = 2000, to = 2023, by = 2)) +
+       labs(x = NULL, y = 'Biomasa Crucero [ton]') + mitheme2(bz = 10) + 
+       theme(plot.title = element_text(hjust = 0.5),legend.position="none") +
+  scale_y_continuous(sec.axis = dup_axis(labels = NULL)) +
+  theme(axis.title.y.left = element_blank(),
+        axis.ticks.y = element_blank())
+
+ggplot(tmp %>% filter(Tipo!='obs', var=='Desembarque'), 
+       aes(year,value/1e6)) + 
+       geom_line(aes(colour=Tipo), size=0.8, colour = "#7daa50") +
+       geom_point(data = tmp |> filter(Tipo=='obs', var=='Desembarque', value > 0),
+       aes(year,value/1e6), shape = 19, colour = "#e87f71", size = 2.6) +
+       scale_x_continuous(breaks = seq(from = 2000, to = 2023, by = 2)) +
+       labs(x = NULL, y = 'Desembarque [`000 ton]') + mitheme2(bz = 10) + 
+       theme(plot.title = element_text(hjust = 0.5),legend.position="none") +
+  scale_y_continuous(sec.axis = dup_axis(labels = NULL)) +
+  theme(axis.title.y.left = element_blank(),
+        axis.ticks.y = element_blank())
+
+ggplot(tmp %>% filter(Tipo!='obs', var=='Lmedia'), 
+       aes(year,value)) + 
+       geom_line(aes(colour=Tipo), size=0.8, colour = "#7daa50") +
+       geom_point(data = tmp |> filter(Tipo=='obs', var=='Lmedia', value > 0),
+       aes(year,value), shape = 19, colour = "#e87f71", size = 2.6) +
+       scale_x_continuous(breaks = seq(from = 2000, to = 2023, by = 2)) +
+       labs(x = NULL, y = 'Talla media [cm]') + mitheme2(bz = 10) + 
+       theme(plot.title = element_text(hjust = 0.5),legend.position="none") +
+  scale_y_continuous(sec.axis = dup_axis(labels = NULL)) +
+  theme(axis.title.y.left = element_blank(),
+        axis.ticks.y = element_blank())
+
+```
+
+## Ajustes datos estructurados
+
+Describir el ajuste
+
+```{r}
+#| fig-cap: "Ajustes a estructuras de tamaños período 2000 - 2023. Valor en proporción."
+#| label: fig-002
+#| fig-keep: all
+#| fig-height: 15
+#| fig-asp: 1.2
+
+mat_01 <- data.frame(base$pobs) |> mutate(year = base$years, Tipo = "obs") |> 
+  pivot_longer(cols = 1:55) |> mutate(talla = rep(x = base$Tallas, times = length(base$year))) |> 
+  mutate(name = factor(talla))
+mat_02 <- data.frame(base$ppred) |> mutate(year = base$years, Tipo = "pred") |> 
+  pivot_longer(cols = 1:55) |> mutate(talla = rep(x = base$Tallas, times = length(base$year))) |> 
+  mutate(name = factor(talla))
+mat_fit <- bind_rows(mat_01,mat_02)
+
+ggplot(data = mat_fit |> filter(Tipo == "obs", value > 0), aes(x = talla, y = value)) + 
+  geom_col(fill = mycolor[10], width = .9) + 
+  facet_wrap(~ year, ncol = 4, shrink = TRUE, scales = "free_y", dir = "v", strip.position = "right") + 
+  geom_path(data = mat_fit |> filter(Tipo == "pred"), aes(x = talla, y = value), color = mycolor[1]) + 
+  mitheme2(bz = 8) + labs(x = "Talla [cm]", y = NULL)
+
+
+```
+
+## Variables de estado
+
+### Biomasas
+
+```{r}
+#| fig-cap: 
+#|   - "Biomasa desovante (BD), biomasa total (BT) y biomasa vulnerable (BV) para el período 2000 - 2023"
+#|   - "Reducción de la biomasa desovante, intervalos (zona achurada) al 90%. Línea segmentada representa un 40% de reducción de la biomasa en equilibrio sin pesca"
+#| label: fig-003
+#| fig-keep: all
+#| fig-height: 6
+#| fig-asp: 0.7
+#| layout-ncol: 1
+#| layout-align: center
+#| 
+
+var_01 <- tibble(mod = "Mod Base", year = base$year, BD = base$BD, BT = base$BT, BV = base$BV, 
+                 Rpred = base$R_pred, Rest = base$R_Est, F = base$F)
+
+var_01_longer <- var_01 |> pivot_longer(cols = c(3:8), names_to = "variable")
+
+var_01_longer |> filter(variable %in% c("BD","BT","BV")) |> 
+  ggplot(aes(x = year, y = value/1e6, group = variable)) + geom_path(aes(color = variable), size = 0.65) +
+  mitheme2(bz = 10) + scale_color_manual(values = mycolor[c(2,8,12)]) + 
+  labs(x = "Año", y = "Biomasa [`000 ton]", color = "Biomasa: ") + 
+  theme(legend.position = c(0.1, 0.2), legend.background = element_rect(fill=NULL))
+
+var_01_BD <- tibble(
+  year = base$years,
+  est = base$fit$est[base$fit$names == "BD"]/base$BDo,
+  sd = base$fit$std[base$fit$names == "BD"]/base$BDo
+  ) |> mutate(low = est - (1.96*sd), upe = est + (1.96*sd))
+
+var_01_BD |> ggplot(aes(x = year, y = est)) + 
+  geom_ribbon(aes(ymin=low, ymax=upe), alpha = 0.2, fill = "#408827") +
+  geom_path(size=0.65, color = mycolor[10]) + mitheme2(bz = 10) + 
+  labs(x = "Año", y = "Proporción [BD/BD0]") +
+  geom_hline(yintercept = 0.4, linetype = 2, color = "#364468", linewidth = 0.6) +
+  scale_y_continuous(breaks = seq(from = 0, to = 1, by = 0.1)) +
+  expand_limits(y = 0)
+
+```
+
+### Mortalidad por pesca
+
+```{r}
+#| fig-cap: 
+#|   - "Mortalidad por pesca para el período 2000 - 2023, intervalos (zona achurada) al 90%."
+#|   - "Ojivas de selectividad de la flota para los períodos 2000-2019 y 2020-2023. Línea segmentada corresponde al 50% de selectividad."
+#| label: fig-004
+#| fig-keep: all
+#| fig-height: 6
+#| fig-asp: 0.7
+#| layout-ncol: 1
+#| layout-align: center
+#| 
+var_02_F <- tibble(
+  year = base$years,
+  est = base$fit$est[base$fit$names == "log_F"],
+  sd = base$fit$std[base$fit$names == "log_F"]
+  ) |> mutate(low = est - (1.96*sd), upe = est + (1.96*sd)) |> 
+  mutate(est = exp(est), low = exp(low), upe = exp(upe))
+
+var_02_F |> ggplot(aes(x = year, y = est)) + 
+  geom_ribbon(aes(ymin=low, ymax=upe), alpha = 0.2, fill = "#408827") +
+  geom_path(size=0.65, color = mycolor[10]) + mitheme2(bz = 10) + 
+  labs(x = "Año", y = "Mortalidad por pesca [1/año]") +
+  #geom_hline(yintercept = 0.4, linetype = 2, color = "#364468", linewidth = 0.6) +
+  scale_y_continuous(breaks = seq(from = 0, to = 3, by = 0.2)) +
+  expand_limits(y = 0)
+
+var_02_sel <- tibble(edad = base$Edades, `2000-2019` = base$Sel_f[1,], `2020-2023` = base$Sel_f[24,]) |> 
+  pivot_longer(cols = 2:3, values_to = "sel", names_to = "Período")
+
+var_02_sel |> ggplot(aes(x = edad, y = sel)) + 
+  geom_path(aes(color = Período), size=0.65) + mitheme2(bz = 10) + 
+  labs(x = "Año", y = "Selectividad [proporción]") +
+  geom_hline(yintercept = 0.5, linetype = 2, color = "#364468", linewidth = 0.4) +
+  scale_y_continuous(breaks = seq(from = 0, to = 1, by = 0.2)) +
+  expand_limits(y = 0) + scale_color_manual(values = mycolor2[c(2,5)])
+
+
+
+```
+
+### Reclutamientos
+
+```{r}
+#| fig-cap: 
+#|   - "Reclutamientos a las edad 1 para el período 2000-2023, intervalos (zona achurada) al 90%. Línea gruesa (azul) corresponde a los reclutamientos predichos por la relación stock-recluta. Línea segmentada representa el reclutamiento bajo condiciones de equilibrio sin pesca."
+#|   - "Desviaciones de los reclutamientos para el período 2000-2023. Barras de error corresponden al 90%."
+#| label: fig-005
+#| fig-keep: all
+#| fig-height: 6
+#| fig-asp: 0.7
+#| layout-ncol: 1
+#| layout-align: center
+#| 
+var_03_R <- tibble(
+  year = base$years,
+  est = base$fit$est[base$fit$names == "Rest"]/1e6,
+  sd = base$fit$std[base$fit$names == "Rest"]/1e6
+  ) |> mutate(low = est - (1.9*sd), upe = est + (1.9*sd), Rpre = base$R_pred) 
+
+var_03_R |> ggplot(aes(x = year, y = est)) + 
+  geom_ribbon(aes(ymin=low, ymax=upe), alpha = 0.2, fill = "#408827") +
+  geom_path(size=0.65, color = mycolor[10]) + mitheme2(bz = 10) + 
+  geom_path(aes(y = Rpre/1e6), size=2, color = mycolor[2], alpha = 0.35) + mitheme2(bz = 10) + 
+  labs(x = "Año", y = "Reclutamiento [ind millones]") +
+  geom_hline(yintercept = exp(base$Ro)/1e6, linetype = 2, color = "#364468", linewidth = 0.6) +
+  scale_y_continuous(breaks = seq(from = 0, to = 80, by = 10)) +
+  expand_limits(y = 0)
+
+var_03_devR <- tibble(
+  year = base$years,
+  est = base$fit$est[base$fit$names == "dev_log_Ro"],
+  sd = base$fit$std[base$fit$names == "dev_log_Ro"]
+  ) |> mutate(low = est - (1.9*sd), upe = est + (1.9*sd)) |> 
+  mutate(est = exp(est), low = exp(low), upe = exp(upe))
+
+var_03_devR |> ggplot(aes(x = year, y = est)) + 
+  geom_pointrange(aes(ymin=low, ymax=upe), alpha = 0.9, color = mycolor[10]) +
+  geom_path(size=0.5, color = mycolor[1], alpha = 0.3) + mitheme2(bz = 10) + 
+  labs(x = "Año", y = "Desviaciones del Reclutamiento [respecto R0]") +
+  expand_limits(y = 0)
+
+
+```
+
+### Crecimiento
+
+```{r}
+#| fig-cap: "Distribución de tallas en los grupos de edad (1-15) utilizados en el modelo de evaluación."
+#| label: fig-006
+#| fig-keep: all
+#| fig-height: 6
+#| fig-asp: 0.7
+#| layout-ncol: 1
+#| layout-align: center
+
+var_04_Pte <- base$Prob_talla
+colnames(var_04_Pte) <- base$Tallas
+var_04_Pt <- as_tibble(var_04_Pte) |> mutate(edad = factor(base$Edades)) |> 
+  pivot_longer(cols = !edad, names_to = "talla", values_to = "prop") |> 
+  mutate(talla = as.numeric(talla))
+
+var_04_Pt |> ggplot(aes(x = talla, y = prop)) + geom_path(aes(group = edad, color = edad)) + scale_color_manual(values = mycolor3) + mitheme2(bz = 10) +
+  theme(legend.position = "none") + scale_x_continuous(breaks = seq(from = 1, to = 109, by = 4)) + labs(x = "Talla [cm]", y = "Proporción") 
+```

@@ -1,0 +1,117 @@
+% load packages
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage{caption}
+
+
+%% Set page size with a wider right margin
+\geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm, bottom=20mm, right=50mm}
+
+%% Let's define some colours
+\definecolor{light}{HTML}{ebebe0}
+\definecolor{highlight}{HTML}{006666}
+\definecolor{dark}{HTML}{00664d}
+\definecolor{texto}{HTML}{33334d}
+
+%% Captions
+\DeclareCaptionFont{green}{\color{highlight}}
+\DeclareCaptionFont{bf}{\bfseries}
+\captionsetup{margin=10pt, font=footnotesize, labelfont={green,bf}, labelsep=endash}
+
+
+%% Let's add the border on the right hand side 
+\AddToShipoutPicture{% 
+    \AtPageLowerLeft{% 
+        \put(\LenToUnit{\dimexpr\paperwidth-3cm},0){% 
+            \color{light}\rule{3cm}{\LenToUnit\paperheight}%
+          }%
+     }%
+     % logo
+    \AtPageLowerLeft{% start the bar at the bottom right of the page
+        \put(\LenToUnit{\dimexpr\paperwidth-2.25cm},27.2cm){% move it to the top right
+            \color{light}\includegraphics[width=1.5cm]{../files/logo_jcq.png}
+          }%
+     }%
+}
+
+%% Style the page number
+\fancypagestyle{mystyle}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0pt}
+  \fancyfoot[R]{\thepage\ de \pageref{LastPage}}
+  \fancyfootoffset{3.5cm}
+}
+\setlength{\footskip}{20pt}
+
+%% style the chapter/section fonts
+\chapterfont{\color{dark}\fontsize{24}{20.8}\selectfont}
+\sectionfont{\color{dark}\fontsize{20}{16.8}\selectfont}
+\subsectionfont{\color{dark}\fontsize{18}{14.8}\selectfont}
+
+\titleformat{\chapter}
+  {\sffamily\color{dark}\fontsize{22}{16.8}\bfseries}{\thesection}{1.2em}{}
+
+\titleformat{\section}
+  {\newpage\sffamily\color{dark}\fontsize{18}{14.8}\bfseries}{\thesection}{1.2em}{}[{\titlerule[0.1pt]}]
+  
+\titleformat{\subsection}
+  {\sffamily\color{texto}\fontsize{13}{13.8}\bfseries}{\thesection}{1.2em}{}
+  
+\titleformat{\subsubsection}
+  {\sffamily\color{texto}\fontsize{11}{10.8}\bfseries}{\thesection}{1.2em}{}
+  
+% left align title
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  {\sffamily\fontsize{34}{26.8}\textbf{\MakeUppercase{\@title}}} \vspace{1.5cm} \newline
+  {\sffamily\fontsize{30}{20.8}\textbf{\@subtitle}} \vspace{0.3cm} \newline
+  \rule{\linewidth}{0.2 mm} \\[14.4 cm]
+  {\sffamily\fontsize{11}{10.8}\textbf{Elaborado por: \@author \href{mailto:jcquiroz@facilevisual.com}{\; jcquiroz@facilevisual.com}
+            }} \vspace{0.3cm} \newline
+  {\sffamily\fontsize{11}{9.8}\textbf{\@date}} \vspace{0.7cm} \\[1cm]
+\end{flushleft}
+
+\begin{minipage}{0.5\textwidth} 
+		\begin{flushleft} \large 
+		\emph{\textbf{Mandante}}\\ 
+        Environmental Defense Fund (EDF)\\ 
+        México\\ 
+		\end{flushleft}
+	\end{minipage}
+	% ~
+	% \begin{minipage}{0.5\textwidth}
+	% 	\begin{flushright} \large
+	% 	\emph{\textbf{Modalidad}} \\
+	% 	 Online \\
+	% 	\end{flushright}
+	% \end{minipage}\\
+	
+\egroup
+}
+\makeatother
+
+% %% Use some custom fonts
+% \setsansfont{Ubuntu}[
+%     Path=../pdf/Ubuntu/,
+%     Scale=0.7,
+%     Extension = .ttf,
+%     UprightFont=*-Regular,
+%     BoldFont=*-Bold,
+%     ItalicFont=*-Italic,
+%     ]
+% 
+% \setmainfont{Ubuntu}[
+%     Path=../pdf/Ubuntu/,
+%     Scale=0.7,
+%     Extension = .ttf,
+%     UprightFont=*-Regular,
+%     BoldFont=*-Bold,
+%     ItalicFont=*-Italic,
+%     ]

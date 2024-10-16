@@ -40,5 +40,7 @@ mitheme2 <- function(bz = 8){
 
 mycolor <- viridisLite::viridis(12, option = "turbo", begin = 0, end = 1)
 mycolor2 <- viridisLite::viridis(7, option = "turbo", begin = 0, end = 1)
+mycolor3 <- viridisLite::viridis(16, option = "mako", begin = 0.3, end = 1)
+
 
 

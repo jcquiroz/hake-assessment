@@ -5,12 +5,16 @@ project:
     - "*.qmd" 
     - "!01-tallas_legacy.qmd"
     - "!schedule.qmd"
+    - "!biologia/"
   resources:
     - "files/"
     
 execute:
-  freeze: auto  
-  
+  freeze: auto
+  echo: false
+  warning: false
+  eval: true
+
 lang: es
 language: 
   title-block-author-single: "Asesor"
@@ -32,41 +36,40 @@ website:
     right:
       - text: "Datos"
         file: datos/index.qmd
-      - text: "Biología"
-        file: biologia/index.qmd
+      # - text: "Biología"
+      #   file: biologia/index.qmd
       - text: "Modelos"
         file: modelos/index.qmd
       - text: "Resultados"
         file: resultados/index.qmd
-      - syllabus.qmd
 
   sidebar:
     - title: "Datos"
-      style: floating
-      search: false
+      style: docked
+      search: true
       background: light
       contents:
-        - section: "Análisis de datos"
-          contents:
-            - datos/index.qmd
+        - text: "Contexto"
+          file: datos/index.qmd
         - section: "Tipo de datos"
           contents:
-            - text: "Registros Oficiales"
+            - text: "Oficiales"
               file: datos/01-oficiales.qmd
-            - text: "Evaluaciones Cruceros"
+            - text: "Área barrida"
               file: datos/01-cruceros.qmd
-            - text: "Tallas y selectividad"
+            - text: "Estructutados"
               file: datos/01-tallas.qmd
+            - text: "Descartes"
+              file: datos/01-descartes.qmd
     
-    - title: "Biología"
-      contents:
-        - section: "Conceptual"
-          contents:
-            - biologia/index.qmd
-        - section: "Historia de vida"
-          contents:
-            - text: "Crecimiento"
-              file: biologia/02-crecimiento.qmd
+    # - title: "Biología"
+    #   contents:
+    #     - text: "Contexto"
+    #       file: biologia/index.qmd
+    #     - section: "Historia de vida"
+    #       contents:
+    #         - text: "Crecimiento"
+    #           file: biologia/02-crecimiento.qmd
     
     - title: "Modelos"
       contents:
@@ -83,17 +86,22 @@ website:
     
     - title: "Resultados"
       contents:
-        - section: "Evaluación"
+        - text: "Contexto"
+          file: resultados/index.qmd
+        - section: "Casos"
           contents:
-            - resultados/index.qmd
-        - section: "Modelo Base"
+            - text: "Base CPUE"
+              file: resultados/04-mod_02.qmd
+            - text: "Base Crucero"
+              file: resultados/04-mod_03.qmd
+        - section: "Comparaciones"
           contents:
-            - text: "Explotación"
+            - text: "Biomasas"
               file: resultados/04-explotacion.qmd
 
   page-footer:
     left: |
-      {{< fa brands creative-commons >}} {{< var course.copyright_year >}} por [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) 
+      {{< fa brands creative-commons >}} {{< var course.copyright_year >}} [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) 
     right: |
       Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)
 

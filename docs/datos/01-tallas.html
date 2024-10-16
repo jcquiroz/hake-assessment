@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="JCQ">
 
 <title>Evaluación de la Merluza del Pacífico - Estructura de tallas</title>
 <style>
@@ -21,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,6 +29,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../datos/01-descartes.html" rel="next">
 <link href="../datos/01-cruceros.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -139,7 +105,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -157,12 +123,8 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../datos/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../datos/index.qmd" aria-current="page"> 
 <span class="menu-text">Datos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../biologia/index.html"> 
-<span class="menu-text">Biología</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../modelos/index.html"> 
@@ -171,10 +133,6 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../resultados/index.html"> 
 <span class="menu-text">Resultados</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Sílabo</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -187,22 +145,36 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Tipo de datos</a></li><li class="breadcrumb-item"><a href="../datos/01-tallas.html">Tallas y selectividad</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Tipo de datos</a></li><li class="breadcrumb-item"><a href="../datos/01-tallas.html">Estructutados</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/index.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contexto</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Análisis de datos</span></a>
+ <span class="menu-text">Tipo de datos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -210,37 +182,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datos/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contexto</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Tipo de datos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../datos/01-oficiales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Registros Oficiales</span></a>
+ <span class="menu-text">Oficiales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../datos/01-cruceros.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Evaluaciones Cruceros</span></a>
+ <span class="menu-text">Área barrida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../datos/01-tallas.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tallas y selectividad</span></a>
+ <span class="menu-text">Estructutados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-descartes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descartes</span></a>
   </div>
 </li>
       </ul>
@@ -255,43 +216,36 @@ window.Quarto = {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#estadísticas" id="toc-estadísticas" class="nav-link active" data-scroll-target="#estadísticas">Estadísticas</a></li>
+  <li><a href="#utilidad-de-las-estructuras-de-tamaños" id="toc-utilidad-de-las-estructuras-de-tamaños" class="nav-link active" data-scroll-target="#utilidad-de-las-estructuras-de-tamaños">Utilidad de las estructuras de tamaños</a></li>
+  <li><a href="#estadísticas" id="toc-estadísticas" class="nav-link" data-scroll-target="#estadísticas">Estadísticas</a></li>
   <li><a href="#estructura-de-tallas" id="toc-estructura-de-tallas" class="nav-link" data-scroll-target="#estructura-de-tallas">Estructura de tallas</a></li>
-  <li><a href="#relación-longitud-peso" id="toc-relación-longitud-peso" class="nav-link" data-scroll-target="#relación-longitud-peso">Relación longitud-peso</a></li>
+  <li><a href="#longitud-peso" id="toc-longitud-peso" class="nav-link" data-scroll-target="#longitud-peso">Longitud-peso</a></li>
+  <li><a href="#selectividades" id="toc-selectividades" class="nav-link" data-scroll-target="#selectividades">Selectividades</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="01-tallas.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">Estructura de tallas</h1>
 <p class="subtitle lead">Dinámica poblacional y selectividades</p>
 
 
+<div class="date-block bg-content text-white p-2">
+  <p class="date"> octubre, 2024</p>
+</div>
 </header>
 
 
+<section id="utilidad-de-las-estructuras-de-tamaños" class="level2">
+<h2 class="anchored" data-anchor-id="utilidad-de-las-estructuras-de-tamaños">Utilidad de las estructuras de tamaños</h2>
 <p>Las composiciones de tamaños y los pesos medios en un modelo de evaluación poblacional permiten influir en dos procesos importantes para la estimación de variables de estado (por ejemplo, biomasa y reclutamiento): (i) el crecimiento poblacional, que se refiere a cómo las cohortes progresan temporalmente en la dinámica poblacional, describiendo la fuerza de los reclutamientos (es decir, un sustituto de los nacimientos) y (ii) determinar la fracción explotable de la población representada por las selectividades de la pesquería.</p>
+</section>
 <section id="estadísticas" class="level2">
 <h2 class="anchored" data-anchor-id="estadísticas">Estadísticas</h2>
 <p>Un total de 26770 muestras fueron analizadas para describir los cambios anuales en los tamaños y pesos de peces retenidos y descartados (<a href="#tbl-001" class="quarto-xref">Tabla&nbsp;1</a>). Un 79.98% corresponden a muestras para la construcción de composiciones de talla de la captura comercial, y el restante 20.02% se utilizarán para la construcción de las estructuras de tallas de la captura descartada. Un total de 1537 muestras son descartada por no identificar sexo (<a href="#tbl-001" class="quarto-xref">Tabla&nbsp;1</a>).</p>
 <div class="cell tbl-column-body-outset-right">
-<details class="code-fold">
-<summary>ver código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_language</span>(<span class="at">language =</span> <span class="st">"es"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_journal</span>(<span class="st">"jama"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>obs_all <span class="sc">|&gt;</span>  </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">include =</span> <span class="fu">c</span>(year, sexo), <span class="at">by =</span> destino, <span class="at">missing =</span> <span class="st">"ifany"</span>, <span class="at">percent =</span> <span class="fu">c</span>(<span class="st">"row"</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">statistic =</span> <span class="fu">list</span>(<span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"{n} ({p}%)"</span>), </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">type =</span> <span class="fu">list</span>(<span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"categorical"</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="fu">list</span>(year <span class="sc">~</span> <span class="st">"Año"</span>, sexo <span class="sc">~</span> <span class="st">"Sexo"</span>), </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">missing_text =</span> <span class="st">"(Perdidos)"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_overall</span>(<span class="at">col_label =</span> <span class="st">"**Totales** </span><span class="sc">\n\n</span><span class="st"> N = {style_number(N)}"</span>, <span class="at">last =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">statistic =</span> <span class="fu">list</span>(<span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"{n}"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_n</span>(<span class="at">col_label =</span> <span class="st">"**Muestras**"</span>, <span class="at">last =</span> <span class="cn">TRUE</span>, <span class="at">footnote =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">"**Factor**"</span>) <span class="sc">|&gt;</span> <span class="fu">as_gt</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div id="tbl-001" class="cell tbl-column-body-outset-right quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -300,30 +254,30 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
 <div aria-describedby="tbl-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="qdltjxzfmk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qdltjxzfmk table {
+<div id="oifohfvyvy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oifohfvyvy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qdltjxzfmk thead, #qdltjxzfmk tbody, #qdltjxzfmk tfoot, #qdltjxzfmk tr, #qdltjxzfmk td, #qdltjxzfmk th {
+#oifohfvyvy thead, #oifohfvyvy tbody, #oifohfvyvy tfoot, #oifohfvyvy tr, #oifohfvyvy td, #oifohfvyvy th {
   border-style: none;
 }
 
-#qdltjxzfmk p {
+#oifohfvyvy p {
   margin: 0;
   padding: 0;
 }
 
-#qdltjxzfmk .gt_table {
+#oifohfvyvy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
@@ -342,12 +296,12 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-left-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_caption {
+#oifohfvyvy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qdltjxzfmk .gt_title {
+#oifohfvyvy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -359,7 +313,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-bottom-width: 0;
 }
 
-#qdltjxzfmk .gt_subtitle {
+#oifohfvyvy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -371,7 +325,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-top-width: 0;
 }
 
-#qdltjxzfmk .gt_heading {
+#oifohfvyvy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -383,13 +337,13 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-right-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_bottom_border {
+#oifohfvyvy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_col_headings {
+#oifohfvyvy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -404,7 +358,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-right-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_col_heading {
+#oifohfvyvy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -424,7 +378,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   overflow-x: hidden;
 }
 
-#qdltjxzfmk .gt_column_spanner_outer {
+#oifohfvyvy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -436,15 +390,15 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   padding-right: 4px;
 }
 
-#qdltjxzfmk .gt_column_spanner_outer:first-child {
+#oifohfvyvy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qdltjxzfmk .gt_column_spanner_outer:last-child {
+#oifohfvyvy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qdltjxzfmk .gt_column_spanner {
+#oifohfvyvy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -456,13 +410,13 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   width: 100%;
 }
 
-#qdltjxzfmk .gt_spanner_row {
+#oifohfvyvy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qdltjxzfmk .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#oifohfvyvy .gt_group_heading {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   color: #333333;
@@ -486,7 +440,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   text-align: left;
 }
 
-#qdltjxzfmk .gt_empty_group_heading {
+#oifohfvyvy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -501,17 +455,17 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   vertical-align: middle;
 }
 
-#qdltjxzfmk .gt_from_md > :first-child {
+#oifohfvyvy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qdltjxzfmk .gt_from_md > :last-child {
+#oifohfvyvy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qdltjxzfmk .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#oifohfvyvy .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -528,7 +482,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   overflow-x: hidden;
 }
 
-#qdltjxzfmk .gt_stub {
+#oifohfvyvy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -541,7 +495,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   padding-right: 5px;
 }
 
-#qdltjxzfmk .gt_stub_row_group {
+#oifohfvyvy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,36 +509,36 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   vertical-align: top;
 }
 
-#qdltjxzfmk .gt_row_group_first td {
+#oifohfvyvy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qdltjxzfmk .gt_row_group_first th {
+#oifohfvyvy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qdltjxzfmk .gt_summary_row {
+#oifohfvyvy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#qdltjxzfmk .gt_first_summary_row {
+#oifohfvyvy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_first_summary_row.thick {
+#oifohfvyvy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qdltjxzfmk .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#oifohfvyvy .gt_last_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: solid;
@@ -592,19 +546,19 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-bottom-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_grand_summary_row {
+#oifohfvyvy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#qdltjxzfmk .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#oifohfvyvy .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-style: double;
@@ -612,9 +566,9 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-top-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#oifohfvyvy .gt_last_grand_summary_row_top {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: double;
@@ -622,11 +576,11 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-bottom-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_striped {
+#oifohfvyvy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qdltjxzfmk .gt_table_body {
+#oifohfvyvy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -635,7 +589,7 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-bottom-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_footnotes {
+#oifohfvyvy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -649,16 +603,16 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-right-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_footnote {
+#oifohfvyvy .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#qdltjxzfmk .gt_sourcenotes {
+#oifohfvyvy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -672,80 +626,80 @@ Tabla&nbsp;1: Tamaño de muestra por tipo de captura (comercial versus descarte)
   border-right-color: #D3D3D3;
 }
 
-#qdltjxzfmk .gt_sourcenote {
+#oifohfvyvy .gt_sourcenote {
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#qdltjxzfmk .gt_left {
+#oifohfvyvy .gt_left {
   text-align: left;
 }
 
-#qdltjxzfmk .gt_center {
+#oifohfvyvy .gt_center {
   text-align: center;
 }
 
-#qdltjxzfmk .gt_right {
+#oifohfvyvy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qdltjxzfmk .gt_font_normal {
+#oifohfvyvy .gt_font_normal {
   font-weight: normal;
 }
 
-#qdltjxzfmk .gt_font_bold {
+#oifohfvyvy .gt_font_bold {
   font-weight: bold;
 }
 
-#qdltjxzfmk .gt_font_italic {
+#oifohfvyvy .gt_font_italic {
   font-style: italic;
 }
 
-#qdltjxzfmk .gt_super {
+#oifohfvyvy .gt_super {
   font-size: 65%;
 }
 
-#qdltjxzfmk .gt_footnote_marks {
+#oifohfvyvy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qdltjxzfmk .gt_asterisk {
+#oifohfvyvy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qdltjxzfmk .gt_indent_1 {
+#oifohfvyvy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qdltjxzfmk .gt_indent_2 {
+#oifohfvyvy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qdltjxzfmk .gt_indent_3 {
+#oifohfvyvy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qdltjxzfmk .gt_indent_4 {
+#oifohfvyvy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qdltjxzfmk .gt_indent_5 {
+#oifohfvyvy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qdltjxzfmk .katex-display {
+#oifohfvyvy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qdltjxzfmk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oifohfvyvy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -915,18 +869,6 @@ N = 4,887</p></th>
 </div>
 <p>La <a href="#tbl-002" class="quarto-xref">Tabla&nbsp;2</a> indica diferencias significativas en la talla y peso promedio entre muestras de captura comercial y descartada. El rango de tallas de la captura comercial va de 6 a 108 cm, con pesos entre 5 gr y 17.1 kg. Por otro lado, el peso promedio de la captura descartada es de 347 gr, notablemente inferior al de la captura comercial.</p>
 <div class="cell tbl-column-body-outset-right">
-<details class="code-fold">
-<summary>ver código</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_language</span>(<span class="at">language =</span> <span class="st">"es"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_journal</span>(<span class="st">"jama"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>obs_all <span class="sc">|&gt;</span>  <span class="fu">tbl_summary</span>(<span class="at">include =</span> <span class="fu">c</span>(talla, peso), <span class="at">by =</span> destino, <span class="at">missing =</span> <span class="st">"ifany"</span>, <span class="at">type =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"continuous2"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">statistic =</span> <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">"{mean} ({sd})"</span>, <span class="st">"{min} - {max}"</span>), <span class="at">digits =</span> <span class="fu">list</span>(peso <span class="sc">~</span> <span class="dv">0</span>, talla <span class="sc">~</span> <span class="dv">1</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">label =</span> <span class="fu">list</span>(peso <span class="sc">~</span> <span class="st">"Peso"</span>, talla <span class="sc">~</span> <span class="st">"Talla"</span>), <span class="at">missing_text =</span> <span class="st">"(Perdidos)"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">add_overall</span>(<span class="at">col_label =</span> <span class="st">"**Totales** </span><span class="sc">\n\n</span><span class="st"> N = {style_number(N)}"</span>, <span class="at">last =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">add_n</span>(<span class="at">col_label =</span> <span class="st">"**Muestras, n**"</span>, <span class="at">last =</span> <span class="cn">TRUE</span>, <span class="at">footnote =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">add_p</span>(<span class="at">test =</span> <span class="fu">everything</span>() <span class="sc">~</span> <span class="st">"t.test"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bold_p</span>(<span class="at">t =</span> <span class="fl">0.10</span>) <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">"**Factor**"</span>) <span class="sc">|&gt;</span> <span class="fu">as_gt</span>()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">reset_gtsummary_theme</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div id="tbl-002" class="cell tbl-column-body-outset-right quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -935,30 +877,30 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
 <div aria-describedby="tbl-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="czslltpeqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#czslltpeqa table {
+<div id="hkluoaclxo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hkluoaclxo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#czslltpeqa thead, #czslltpeqa tbody, #czslltpeqa tfoot, #czslltpeqa tr, #czslltpeqa td, #czslltpeqa th {
+#hkluoaclxo thead, #hkluoaclxo tbody, #hkluoaclxo tfoot, #hkluoaclxo tr, #hkluoaclxo td, #hkluoaclxo th {
   border-style: none;
 }
 
-#czslltpeqa p {
+#hkluoaclxo p {
   margin: 0;
   padding: 0;
 }
 
-#czslltpeqa .gt_table {
+#hkluoaclxo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
@@ -977,12 +919,12 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-left-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_caption {
+#hkluoaclxo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#czslltpeqa .gt_title {
+#hkluoaclxo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -994,7 +936,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-bottom-width: 0;
 }
 
-#czslltpeqa .gt_subtitle {
+#hkluoaclxo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1006,7 +948,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-top-width: 0;
 }
 
-#czslltpeqa .gt_heading {
+#hkluoaclxo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1018,13 +960,13 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-right-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_bottom_border {
+#hkluoaclxo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_col_headings {
+#hkluoaclxo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1039,7 +981,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-right-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_col_heading {
+#hkluoaclxo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1059,7 +1001,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   overflow-x: hidden;
 }
 
-#czslltpeqa .gt_column_spanner_outer {
+#hkluoaclxo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1071,15 +1013,15 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   padding-right: 4px;
 }
 
-#czslltpeqa .gt_column_spanner_outer:first-child {
+#hkluoaclxo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#czslltpeqa .gt_column_spanner_outer:last-child {
+#hkluoaclxo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#czslltpeqa .gt_column_spanner {
+#hkluoaclxo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1091,13 +1033,13 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   width: 100%;
 }
 
-#czslltpeqa .gt_spanner_row {
+#hkluoaclxo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#czslltpeqa .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#hkluoaclxo .gt_group_heading {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   color: #333333;
@@ -1121,7 +1063,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   text-align: left;
 }
 
-#czslltpeqa .gt_empty_group_heading {
+#hkluoaclxo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1136,17 +1078,17 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   vertical-align: middle;
 }
 
-#czslltpeqa .gt_from_md > :first-child {
+#hkluoaclxo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#czslltpeqa .gt_from_md > :last-child {
+#hkluoaclxo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#czslltpeqa .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#hkluoaclxo .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -1163,7 +1105,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   overflow-x: hidden;
 }
 
-#czslltpeqa .gt_stub {
+#hkluoaclxo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1176,7 +1118,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   padding-right: 5px;
 }
 
-#czslltpeqa .gt_stub_row_group {
+#hkluoaclxo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1190,36 +1132,36 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   vertical-align: top;
 }
 
-#czslltpeqa .gt_row_group_first td {
+#hkluoaclxo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#czslltpeqa .gt_row_group_first th {
+#hkluoaclxo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#czslltpeqa .gt_summary_row {
+#hkluoaclxo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#czslltpeqa .gt_first_summary_row {
+#hkluoaclxo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_first_summary_row.thick {
+#hkluoaclxo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#czslltpeqa .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#hkluoaclxo .gt_last_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: solid;
@@ -1227,19 +1169,19 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-bottom-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_grand_summary_row {
+#hkluoaclxo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#czslltpeqa .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#hkluoaclxo .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-style: double;
@@ -1247,9 +1189,9 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-top-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#hkluoaclxo .gt_last_grand_summary_row_top {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: double;
@@ -1257,11 +1199,11 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-bottom-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_striped {
+#hkluoaclxo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#czslltpeqa .gt_table_body {
+#hkluoaclxo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1270,7 +1212,7 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-bottom-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_footnotes {
+#hkluoaclxo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1284,16 +1226,16 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-right-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_footnote {
+#hkluoaclxo .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#czslltpeqa .gt_sourcenotes {
+#hkluoaclxo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1307,111 +1249,108 @@ Tabla&nbsp;2: Estadisticas de las tallas y peso por tipo de captura (comercial v
   border-right-color: #D3D3D3;
 }
 
-#czslltpeqa .gt_sourcenote {
+#hkluoaclxo .gt_sourcenote {
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#czslltpeqa .gt_left {
+#hkluoaclxo .gt_left {
   text-align: left;
 }
 
-#czslltpeqa .gt_center {
+#hkluoaclxo .gt_center {
   text-align: center;
 }
 
-#czslltpeqa .gt_right {
+#hkluoaclxo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#czslltpeqa .gt_font_normal {
+#hkluoaclxo .gt_font_normal {
   font-weight: normal;
 }
 
-#czslltpeqa .gt_font_bold {
+#hkluoaclxo .gt_font_bold {
   font-weight: bold;
 }
 
-#czslltpeqa .gt_font_italic {
+#hkluoaclxo .gt_font_italic {
   font-style: italic;
 }
 
-#czslltpeqa .gt_super {
+#hkluoaclxo .gt_super {
   font-size: 65%;
 }
 
-#czslltpeqa .gt_footnote_marks {
+#hkluoaclxo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#czslltpeqa .gt_asterisk {
+#hkluoaclxo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#czslltpeqa .gt_indent_1 {
+#hkluoaclxo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#czslltpeqa .gt_indent_2 {
+#hkluoaclxo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#czslltpeqa .gt_indent_3 {
+#hkluoaclxo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#czslltpeqa .gt_indent_4 {
+#hkluoaclxo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#czslltpeqa .gt_indent_5 {
+#hkluoaclxo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#czslltpeqa .katex-display {
+#hkluoaclxo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#czslltpeqa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hkluoaclxo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell tbl-column-body-outset-right table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header gt_col_headings">
 <th id="<div data-qmd-base64=&quot;KipGYWN0b3IqKg==&quot;><div class='gt_from_md'><p><strong>Factor</strong></p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><p><strong>Factor</strong></p></th>
-<th id="<div data-qmd-base64=&quot;KipDb21lcmNpYWwqKiAgCk4gPSAxOSw1MjU=&quot;><div class='gt_from_md'><p><strong>Comercial</strong><br />
-N = 19,525</p>
+<th id="<div data-qmd-base64=&quot;KipDb21lcmNpYWwqKiAgCk4gPSAxOeKAiTUyNQ==&quot;><div class='gt_from_md'><p><strong>Comercial</strong><br />
+N = 19 525</p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Comercial</strong><br>
-N = 19,525</p></th>
-<th id="<div data-qmd-base64=&quot;KipEZXNjYXJ0ZSoqICAKTiA9IDQsODg3&quot;><div class='gt_from_md'><p><strong>Descarte</strong><br />
-N = 4,887</p>
+N = 19 525</p></th>
+<th id="<div data-qmd-base64=&quot;KipEZXNjYXJ0ZSoqICAKTiA9IDTigIk4ODc=&quot;><div class='gt_from_md'><p><strong>Descarte</strong><br />
+N = 4 887</p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Descarte</strong><br>
-N = 4,887</p></th>
-<th id="<div data-qmd-base64=&quot;KipUb3RhbGVzKiogCgpOID0gMjQsNDEy&quot;><div class='gt_from_md'><p><strong>Totales</strong></p>
-<p>N = 24,412</p>
+N = 4 887</p></th>
+<th id="<div data-qmd-base64=&quot;KipUb3RhbGVzKiogCgpOID0gMjTigIk0MTI=&quot;><div class='gt_from_md'><p><strong>Totales</strong></p>
+<p>N = 24 412</p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Totales</strong></p>
-<p>N = 24,412</p></th>
-<th id="<div data-qmd-base64=&quot;KipNdWVzdHJhcywgbioq&quot;><div class='gt_from_md'><p><strong>Muestras, n</strong></p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Muestras, n</strong></p></th>
+<p>N = 24 412</p></th>
 <th id="<div data-qmd-base64=&quot;KipwLXZhbG9yKio=&quot;><div class='gt_from_md'><p><strong>p-valor</strong></p>
 </div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>p-valor</strong></p>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
@@ -1426,26 +1365,21 @@ N = 4,887</p></th>
 </td>
 <td class="gt_row gt_center" headers="stat_0"><br>
 </td>
-<td class="gt_row gt_center" headers="n">24,379</td>
-<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0.001</td>
+<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0·0001</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Media (DE)</td>
-<td class="gt_row gt_center" headers="stat_1">55.0 (11.7)</td>
-<td class="gt_row gt_center" headers="stat_2">31.4 (8.2)</td>
-<td class="gt_row gt_center" headers="stat_0">50.3 (14.6)</td>
-<td class="gt_row gt_center" headers="n"><br>
-</td>
+<td class="gt_row gt_center" headers="stat_1">55·0 (11·7)</td>
+<td class="gt_row gt_center" headers="stat_2">31·4 (8·2)</td>
+<td class="gt_row gt_center" headers="stat_0">50·3 (14·6)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Min - Max</td>
-<td class="gt_row gt_center" headers="stat_1">13.0 - 108.0</td>
-<td class="gt_row gt_center" headers="stat_2">6.2 - 80.0</td>
-<td class="gt_row gt_center" headers="stat_0">6.2 - 108.0</td>
-<td class="gt_row gt_center" headers="n"><br>
-</td>
+<td class="gt_row gt_center" headers="stat_1">13·0 - 108·0</td>
+<td class="gt_row gt_center" headers="stat_2">6·2 - 80·0</td>
+<td class="gt_row gt_center" headers="stat_0">6·2 - 108·0</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -1454,8 +1388,6 @@ N = 4,887</p></th>
 <td class="gt_row gt_center" headers="stat_1">23</td>
 <td class="gt_row gt_center" headers="stat_2">10</td>
 <td class="gt_row gt_center" headers="stat_0">33</td>
-<td class="gt_row gt_center" headers="n"><br>
-</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -1467,42 +1399,35 @@ N = 4,887</p></th>
 </td>
 <td class="gt_row gt_center" headers="stat_0"><br>
 </td>
-<td class="gt_row gt_center" headers="n">22,501</td>
-<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0.001</td>
+<td class="gt_row gt_center" headers="p.value" style="font-weight: bold">&lt;0·0001</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Media (DE)</td>
-<td class="gt_row gt_center" headers="stat_1">1,832 (1,002)</td>
+<td class="gt_row gt_center" headers="stat_1">1 832 (1 002)</td>
 <td class="gt_row gt_center" headers="stat_2">347 (407)</td>
-<td class="gt_row gt_center" headers="stat_0">1,512 (1,093)</td>
-<td class="gt_row gt_center" headers="n"><br>
-</td>
+<td class="gt_row gt_center" headers="stat_0">1 512 (1 093)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Min - Max</td>
-<td class="gt_row gt_center" headers="stat_1">29 - 17,119</td>
-<td class="gt_row gt_center" headers="stat_2">5 - 6,661</td>
-<td class="gt_row gt_center" headers="stat_0">5 - 17,119</td>
-<td class="gt_row gt_center" headers="n"><br>
-</td>
+<td class="gt_row gt_center" headers="stat_1">29 - 17 119</td>
+<td class="gt_row gt_center" headers="stat_2">5 - 6 661</td>
+<td class="gt_row gt_center" headers="stat_0">5 - 17 119</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;(Perdidos)</td>
-<td class="gt_row gt_center" headers="stat_1">1,869</td>
+<td class="gt_row gt_center" headers="stat_1">1 869</td>
 <td class="gt_row gt_center" headers="stat_2">42</td>
-<td class="gt_row gt_center" headers="stat_0">1,911</td>
-<td class="gt_row gt_center" headers="n"><br>
-</td>
+<td class="gt_row gt_center" headers="stat_0">1 911</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span>
+<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span>
 <p>t de Student</p></td>
 </tr>
 </tfoot>
@@ -1519,25 +1444,13 @@ N = 4,887</p></th>
 </section>
 <section id="estructura-de-tallas" class="level2">
 <h2 class="anchored" data-anchor-id="estructura-de-tallas">Estructura de tallas</h2>
-<p>Las composiciones de tamaño de la captura comercial y descartada muestran señales importantes para fines de la evaluación poblacional (<a href="#fig-001" class="quarto-xref">Figura&nbsp;1</a>). Los descartes de hembras, <a href="#tbl-003-1" class="quarto-xref">Tabla&nbsp;3 (a)</a>, revelan ingresos de cohortes que progresan en periodos de al menos 4 años (2019-2022). Similarmente la captura comercial muestra reducción de la fracción vulnerables (i.e., mayormente peces de tamaños grande, <a href="#tbl-003-2" class="quarto-xref">Tabla&nbsp;3 (b)</a>), que podría indicar cambios en las estrategias de pesca o aumentos en los niveles de mortalidad por pesca.</p>
+<p>Las composiciones de tamaño de la captura comercial y descartada muestran señales importantes para fines de la evaluación poblacional (<a href="#fig-001" class="quarto-xref">Figura&nbsp;1</a>). Los descartes de hembras, <a href="#tbl-003" class="quarto-xref">Tabla&nbsp;3</a>, revelan ingresos de cohortes que progresan en periodos de al menos 4 años (2019-2022). Similarmente la captura comercial muestra reducción de la fracción vulnerables (i.e., mayormente peces de tamaños grande, <a href="#tbl-003a" class="quarto-xref">Tabla&nbsp;4</a>), que podría indicar cambios en las estrategias de pesca o aumentos en los niveles de mortalidad por pesca.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>ver código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bg.brks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">110</span>,bd)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> obs_all <span class="sc">|&gt;</span> <span class="fu">filter</span>(sexo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Machos"</span>,<span class="st">"Hembras"</span>)) <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(destino,sexo) <span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">armo_talla</span>(talla,bg.brks), <span class="at">.by =</span> <span class="fu">c</span>(year,destino,sexo)) </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> tmp, <span class="fu">aes</span>(mids,freq)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> destino), <span class="at">width =</span> <span class="cn">NULL</span>, <span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(year <span class="sc">~</span> sexo, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> <span class="fu">mitheme2</span>(<span class="at">bz =</span> <span class="dv">9</span>) <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> mycolor[<span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">2</span>)]) <span class="sc">+</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Talla [cm]"</span>, <span class="at">y =</span> <span class="st">"Proporción"</span>, <span class="at">fill =</span> <span class="st">"Procedencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-001" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="01-tallas_files/figure-html/fig-001-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="01-tallas_files/figure-html/fig-001-1.png" class="img-fluid figure-img" width="2100"></a>
+<a href="01-tallas_files/figure-html/fig-001-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="01-tallas_files/figure-html/fig-001-1.png" class="img-fluid figure-img" width="2100"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-001-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: Estructura de tamaño de merluza del pacífico
@@ -1546,55 +1459,38 @@ Figura&nbsp;1: Estructura de tamaño de merluza del pacífico
 </div>
 </div>
 </div>
-<details class="code-fold">
-<summary>ver código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_language</span>(<span class="at">language =</span> <span class="st">"es"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_journal</span>(<span class="st">"jama"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>obs_all <span class="sc">|&gt;</span> <span class="fu">filter</span> (sexo <span class="sc">==</span> <span class="st">"Hembras"</span>) <span class="sc">|&gt;</span>  <span class="fu">tbl_continuous</span>(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> talla, <span class="at">by =</span> destino, <span class="at">include =</span> year,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="sc">~</span> <span class="fu">c</span>(<span class="st">"{median}"</span>), <span class="at">digits =</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">label =</span> <span class="fu">list</span>(talla <span class="sc">~</span> <span class="st">"Talla"</span>, year <span class="sc">~</span> <span class="st">"Año"</span>) ) <span class="sc">|&gt;</span> <span class="fu">add_p</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bold_p</span>(<span class="at">t =</span> <span class="fl">0.10</span>) <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">"**Factor**"</span>) <span class="sc">|&gt;</span> <span class="fu">as_gt</span>()</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>obs_all <span class="sc">|&gt;</span> <span class="fu">filter</span> (sexo <span class="sc">==</span> <span class="st">"Machos"</span>) <span class="sc">|&gt;</span>  <span class="fu">tbl_continuous</span>(</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> talla, <span class="at">by =</span> destino, <span class="at">include =</span> year,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="sc">~</span> <span class="fu">c</span>(<span class="st">"{median}"</span>), <span class="at">digits =</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>   <span class="at">label =</span> <span class="fu">list</span>(talla <span class="sc">~</span> <span class="st">"Talla"</span>, year <span class="sc">~</span> <span class="st">"Año"</span>) ) <span class="sc">|&gt;</span> <span class="fu">add_p</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bold_p</span>() <span class="sc">|&gt;</span> <span class="fu">bold_labels</span>() <span class="sc">|&gt;</span>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">"**Factor**"</span>) <span class="sc">|&gt;</span> <span class="fu">as_gt</span>()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">reset_gtsummary_theme</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div id="tbl-003" class="quarto-layout-panel anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y descartada. Valor P negrilla indica diferecias significativa entre la captura comercial y descartada.
+Tabla&nbsp;3: Talla media para la captura comercial y descartada en Hemnbras.
 </figcaption>
 <div aria-describedby="tbl-003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-003" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-layout-cell-subref" data-ref-parent="tbl-003">
-<div id="eshceafhog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#eshceafhog table {
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="xheetsgnif" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xheetsgnif table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#eshceafhog thead, #eshceafhog tbody, #eshceafhog tfoot, #eshceafhog tr, #eshceafhog td, #eshceafhog th {
+#xheetsgnif thead, #xheetsgnif tbody, #xheetsgnif tfoot, #xheetsgnif tr, #xheetsgnif td, #xheetsgnif th {
   border-style: none;
 }
 
-#eshceafhog p {
+#xheetsgnif p {
   margin: 0;
   padding: 0;
 }
 
-#eshceafhog .gt_table {
+#xheetsgnif .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
@@ -1613,12 +1509,12 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-left-color: #D3D3D3;
 }
 
-#eshceafhog .gt_caption {
+#xheetsgnif .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#eshceafhog .gt_title {
+#xheetsgnif .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1630,7 +1526,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-bottom-width: 0;
 }
 
-#eshceafhog .gt_subtitle {
+#xheetsgnif .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1642,7 +1538,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-top-width: 0;
 }
 
-#eshceafhog .gt_heading {
+#xheetsgnif .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1654,13 +1550,13 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-right-color: #D3D3D3;
 }
 
-#eshceafhog .gt_bottom_border {
+#xheetsgnif .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#eshceafhog .gt_col_headings {
+#xheetsgnif .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1675,7 +1571,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-right-color: #D3D3D3;
 }
 
-#eshceafhog .gt_col_heading {
+#xheetsgnif .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1695,7 +1591,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   overflow-x: hidden;
 }
 
-#eshceafhog .gt_column_spanner_outer {
+#xheetsgnif .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1707,15 +1603,15 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   padding-right: 4px;
 }
 
-#eshceafhog .gt_column_spanner_outer:first-child {
+#xheetsgnif .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#eshceafhog .gt_column_spanner_outer:last-child {
+#xheetsgnif .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#eshceafhog .gt_column_spanner {
+#xheetsgnif .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1727,13 +1623,13 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   width: 100%;
 }
 
-#eshceafhog .gt_spanner_row {
+#xheetsgnif .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#eshceafhog .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#xheetsgnif .gt_group_heading {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   color: #333333;
@@ -1757,7 +1653,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   text-align: left;
 }
 
-#eshceafhog .gt_empty_group_heading {
+#xheetsgnif .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1772,17 +1668,17 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   vertical-align: middle;
 }
 
-#eshceafhog .gt_from_md > :first-child {
+#xheetsgnif .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#eshceafhog .gt_from_md > :last-child {
+#xheetsgnif .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#eshceafhog .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#xheetsgnif .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -1799,7 +1695,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   overflow-x: hidden;
 }
 
-#eshceafhog .gt_stub {
+#xheetsgnif .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1812,7 +1708,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   padding-right: 5px;
 }
 
-#eshceafhog .gt_stub_row_group {
+#xheetsgnif .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1826,36 +1722,36 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   vertical-align: top;
 }
 
-#eshceafhog .gt_row_group_first td {
+#xheetsgnif .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#eshceafhog .gt_row_group_first th {
+#xheetsgnif .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#eshceafhog .gt_summary_row {
+#xheetsgnif .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#eshceafhog .gt_first_summary_row {
+#xheetsgnif .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#eshceafhog .gt_first_summary_row.thick {
+#xheetsgnif .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#eshceafhog .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#xheetsgnif .gt_last_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: solid;
@@ -1863,19 +1759,19 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-bottom-color: #D3D3D3;
 }
 
-#eshceafhog .gt_grand_summary_row {
+#xheetsgnif .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#eshceafhog .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#xheetsgnif .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-style: double;
@@ -1883,9 +1779,9 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-top-color: #D3D3D3;
 }
 
-#eshceafhog .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#xheetsgnif .gt_last_grand_summary_row_top {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: double;
@@ -1893,11 +1789,11 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-bottom-color: #D3D3D3;
 }
 
-#eshceafhog .gt_striped {
+#xheetsgnif .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#eshceafhog .gt_table_body {
+#xheetsgnif .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1906,7 +1802,7 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-bottom-color: #D3D3D3;
 }
 
-#eshceafhog .gt_footnotes {
+#xheetsgnif .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1920,16 +1816,16 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-right-color: #D3D3D3;
 }
 
-#eshceafhog .gt_footnote {
+#xheetsgnif .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#eshceafhog .gt_sourcenotes {
+#xheetsgnif .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1943,91 +1839,85 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
   border-right-color: #D3D3D3;
 }
 
-#eshceafhog .gt_sourcenote {
+#xheetsgnif .gt_sourcenote {
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#eshceafhog .gt_left {
+#xheetsgnif .gt_left {
   text-align: left;
 }
 
-#eshceafhog .gt_center {
+#xheetsgnif .gt_center {
   text-align: center;
 }
 
-#eshceafhog .gt_right {
+#xheetsgnif .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#eshceafhog .gt_font_normal {
+#xheetsgnif .gt_font_normal {
   font-weight: normal;
 }
 
-#eshceafhog .gt_font_bold {
+#xheetsgnif .gt_font_bold {
   font-weight: bold;
 }
 
-#eshceafhog .gt_font_italic {
+#xheetsgnif .gt_font_italic {
   font-style: italic;
 }
 
-#eshceafhog .gt_super {
+#xheetsgnif .gt_super {
   font-size: 65%;
 }
 
-#eshceafhog .gt_footnote_marks {
+#xheetsgnif .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#eshceafhog .gt_asterisk {
+#xheetsgnif .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#eshceafhog .gt_indent_1 {
+#xheetsgnif .gt_indent_1 {
   text-indent: 5px;
 }
 
-#eshceafhog .gt_indent_2 {
+#xheetsgnif .gt_indent_2 {
   text-indent: 10px;
 }
 
-#eshceafhog .gt_indent_3 {
+#xheetsgnif .gt_indent_3 {
   text-indent: 15px;
 }
 
-#eshceafhog .gt_indent_4 {
+#xheetsgnif .gt_indent_4 {
   text-indent: 20px;
 }
 
-#eshceafhog .gt_indent_5 {
+#xheetsgnif .gt_indent_5 {
   text-indent: 25px;
 }
 
-#eshceafhog .katex-display {
+#xheetsgnif .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#eshceafhog div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xheetsgnif div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<div id="tbl-003-1" class="gt_table do-not-create-environment quarto-float anchored" data-quarto-bootstrap="false" data-quarto-postprocess="true" data-quarto-disable-processing="false">
-<figure class="quarto-float quarto-subfloat-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-003-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Hembras
-</figcaption>
-<div aria-describedby="tbl-003-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-003-1" class="gt_table do-not-create-environment table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell tbl-column-page-inset-right table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -2037,35 +1927,19 @@ Tabla&nbsp;3: Progresión temporal de la talla media para la captura comercial y
 <thead>
 <tr class="header gt_col_headings">
 <th id="<div data-qmd-base64=&quot;KipGYWN0b3IqKg==&quot;><div class='gt_from_md'><p><strong>Factor</strong></p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipGYWN0b3IqKg==">
-<div class="gt_from_md">
-<p><strong>Factor</strong></p>
-</div>
-</div></th>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>Factor</strong></p></th>
 <th id="<div data-qmd-base64=&quot;KipDb21lcmNpYWwqKiAgCk4gPSA4LDIzNg==&quot;><div class='gt_from_md'><p><strong>Comercial</strong><br />
 N = 8,236</p>
-</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipDb21lcmNpYWwqKiAgCk4gPSA4LDIzNg==">
-<div class="gt_from_md">
-<p><strong>Comercial</strong><br>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>Comercial</strong><br>
 N = 8,236</p>
-</div>
-</div>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
 <th id="<div data-qmd-base64=&quot;KipEZXNjYXJ0ZSoqICAKTiA9IDEsOTAw&quot;><div class='gt_from_md'><p><strong>Descarte</strong><br />
 N = 1,900</p>
-</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipEZXNjYXJ0ZSoqICAKTiA9IDEsOTAw">
-<div class="gt_from_md">
-<p><strong>Descarte</strong><br>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>Descarte</strong><br>
 N = 1,900</p>
-</div>
-</div>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
 <th id="<div data-qmd-base64=&quot;KipwLXZhbG9yKio=&quot;><div class='gt_from_md'><p><strong>p-valor</strong></p>
-</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipwLXZhbG9yKio=">
-<div class="gt_from_md">
-<p><strong>p-valor</strong></p>
-</div>
-</div>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>p-valor</strong></p>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>2</sup></span></th>
 </tr>
 </thead>
@@ -2144,56 +2018,54 @@ N = 1,900</p>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
 <td colspan="4" class="gt_footnote" style="text-align: left;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span>
-<div data-qmd-base64="VGFsbGE6IE1lZGlhbmE=">
-<div class="gt_from_md">
-<p>Talla: Mediana</p>
-</div>
-</div></td>
+<p>Talla: Mediana</p></td>
 </tr>
 <tr class="even">
 <td colspan="4" class="gt_footnote" style="text-align: left;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>2</sup></span>
-<div data-qmd-base64="VHdvLXdheSBBTk9WQQ==">
-<div class="gt_from_md">
-<p>Two-way ANOVA</p>
-</div>
-</div></td>
+<p>Two-way ANOVA</p></td>
 </tr>
 </tfoot>
 
 </table>
-</div>
-</figure>
-</div>
 
 </div>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-003" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-layout-cell-subref" data-ref-parent="tbl-003">
-<div id="lmoqyqcgms" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lmoqyqcgms table {
+</div>
+</figure>
+</div>
+<div id="tbl-003a" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-003a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;4: Talla media para la captura comercial y descartada en Machos
+</figcaption>
+<div aria-describedby="tbl-003a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="cznloppfog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cznloppfog table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lmoqyqcgms thead, #lmoqyqcgms tbody, #lmoqyqcgms tfoot, #lmoqyqcgms tr, #lmoqyqcgms td, #lmoqyqcgms th {
+#cznloppfog thead, #cznloppfog tbody, #cznloppfog tfoot, #cznloppfog tr, #cznloppfog td, #cznloppfog th {
   border-style: none;
 }
 
-#lmoqyqcgms p {
+#cznloppfog p {
   margin: 0;
   padding: 0;
 }
 
-#lmoqyqcgms .gt_table {
+#cznloppfog .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
@@ -2212,12 +2084,12 @@ N = 1,900</p>
   border-left-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_caption {
+#cznloppfog .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lmoqyqcgms .gt_title {
+#cznloppfog .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2229,7 +2101,7 @@ N = 1,900</p>
   border-bottom-width: 0;
 }
 
-#lmoqyqcgms .gt_subtitle {
+#cznloppfog .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2241,7 +2113,7 @@ N = 1,900</p>
   border-top-width: 0;
 }
 
-#lmoqyqcgms .gt_heading {
+#cznloppfog .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2253,13 +2125,13 @@ N = 1,900</p>
   border-right-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_bottom_border {
+#cznloppfog .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_col_headings {
+#cznloppfog .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2274,7 +2146,7 @@ N = 1,900</p>
   border-right-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_col_heading {
+#cznloppfog .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2294,7 +2166,7 @@ N = 1,900</p>
   overflow-x: hidden;
 }
 
-#lmoqyqcgms .gt_column_spanner_outer {
+#cznloppfog .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2306,15 +2178,15 @@ N = 1,900</p>
   padding-right: 4px;
 }
 
-#lmoqyqcgms .gt_column_spanner_outer:first-child {
+#cznloppfog .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lmoqyqcgms .gt_column_spanner_outer:last-child {
+#cznloppfog .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lmoqyqcgms .gt_column_spanner {
+#cznloppfog .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2326,13 +2198,13 @@ N = 1,900</p>
   width: 100%;
 }
 
-#lmoqyqcgms .gt_spanner_row {
+#cznloppfog .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lmoqyqcgms .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#cznloppfog .gt_group_heading {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   color: #333333;
@@ -2356,7 +2228,7 @@ N = 1,900</p>
   text-align: left;
 }
 
-#lmoqyqcgms .gt_empty_group_heading {
+#cznloppfog .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2371,17 +2243,17 @@ N = 1,900</p>
   vertical-align: middle;
 }
 
-#lmoqyqcgms .gt_from_md > :first-child {
+#cznloppfog .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lmoqyqcgms .gt_from_md > :last-child {
+#cznloppfog .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lmoqyqcgms .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#cznloppfog .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -2398,7 +2270,7 @@ N = 1,900</p>
   overflow-x: hidden;
 }
 
-#lmoqyqcgms .gt_stub {
+#cznloppfog .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2411,7 +2283,7 @@ N = 1,900</p>
   padding-right: 5px;
 }
 
-#lmoqyqcgms .gt_stub_row_group {
+#cznloppfog .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2425,36 +2297,36 @@ N = 1,900</p>
   vertical-align: top;
 }
 
-#lmoqyqcgms .gt_row_group_first td {
+#cznloppfog .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lmoqyqcgms .gt_row_group_first th {
+#cznloppfog .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lmoqyqcgms .gt_summary_row {
+#cznloppfog .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#lmoqyqcgms .gt_first_summary_row {
+#cznloppfog .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_first_summary_row.thick {
+#cznloppfog .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lmoqyqcgms .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#cznloppfog .gt_last_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: solid;
@@ -2462,19 +2334,19 @@ N = 1,900</p>
   border-bottom-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_grand_summary_row {
+#cznloppfog .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#lmoqyqcgms .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#cznloppfog .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-style: double;
@@ -2482,9 +2354,9 @@ N = 1,900</p>
   border-top-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#cznloppfog .gt_last_grand_summary_row_top {
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
   border-bottom-style: double;
@@ -2492,11 +2364,11 @@ N = 1,900</p>
   border-bottom-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_striped {
+#cznloppfog .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lmoqyqcgms .gt_table_body {
+#cznloppfog .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2505,7 +2377,7 @@ N = 1,900</p>
   border-bottom-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_footnotes {
+#cznloppfog .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2519,16 +2391,16 @@ N = 1,900</p>
   border-right-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_footnote {
+#cznloppfog .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#lmoqyqcgms .gt_sourcenotes {
+#cznloppfog .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2542,91 +2414,85 @@ N = 1,900</p>
   border-right-color: #D3D3D3;
 }
 
-#lmoqyqcgms .gt_sourcenote {
+#cznloppfog .gt_sourcenote {
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#lmoqyqcgms .gt_left {
+#cznloppfog .gt_left {
   text-align: left;
 }
 
-#lmoqyqcgms .gt_center {
+#cznloppfog .gt_center {
   text-align: center;
 }
 
-#lmoqyqcgms .gt_right {
+#cznloppfog .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lmoqyqcgms .gt_font_normal {
+#cznloppfog .gt_font_normal {
   font-weight: normal;
 }
 
-#lmoqyqcgms .gt_font_bold {
+#cznloppfog .gt_font_bold {
   font-weight: bold;
 }
 
-#lmoqyqcgms .gt_font_italic {
+#cznloppfog .gt_font_italic {
   font-style: italic;
 }
 
-#lmoqyqcgms .gt_super {
+#cznloppfog .gt_super {
   font-size: 65%;
 }
 
-#lmoqyqcgms .gt_footnote_marks {
+#cznloppfog .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lmoqyqcgms .gt_asterisk {
+#cznloppfog .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lmoqyqcgms .gt_indent_1 {
+#cznloppfog .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lmoqyqcgms .gt_indent_2 {
+#cznloppfog .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lmoqyqcgms .gt_indent_3 {
+#cznloppfog .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lmoqyqcgms .gt_indent_4 {
+#cznloppfog .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lmoqyqcgms .gt_indent_5 {
+#cznloppfog .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lmoqyqcgms .katex-display {
+#cznloppfog .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lmoqyqcgms div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cznloppfog div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<div id="tbl-003-2" class="gt_table do-not-create-environment quarto-float anchored" data-quarto-bootstrap="false" data-quarto-postprocess="true" data-quarto-disable-processing="false">
-<figure class="quarto-float quarto-subfloat-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-003-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Machos
-</figcaption>
-<div aria-describedby="tbl-003-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-003-2" class="gt_table do-not-create-environment table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell tbl-column-page-inset-right table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -2636,35 +2502,19 @@ N = 1,900</p>
 <thead>
 <tr class="header gt_col_headings">
 <th id="<div data-qmd-base64=&quot;KipGYWN0b3IqKg==&quot;><div class='gt_from_md'><p><strong>Factor</strong></p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipGYWN0b3IqKg==">
-<div class="gt_from_md">
-<p><strong>Factor</strong></p>
-</div>
-</div></th>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>Factor</strong></p></th>
 <th id="<div data-qmd-base64=&quot;KipDb21lcmNpYWwqKiAgCk4gPSAxMCwwNTg=&quot;><div class='gt_from_md'><p><strong>Comercial</strong><br />
 N = 10,058</p>
-</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipDb21lcmNpYWwqKiAgCk4gPSAxMCwwNTg=">
-<div class="gt_from_md">
-<p><strong>Comercial</strong><br>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>Comercial</strong><br>
 N = 10,058</p>
-</div>
-</div>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
 <th id="<div data-qmd-base64=&quot;KipEZXNjYXJ0ZSoqICAKTiA9IDIsNjgx&quot;><div class='gt_from_md'><p><strong>Descarte</strong><br />
 N = 2,681</p>
-</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipEZXNjYXJ0ZSoqICAKTiA9IDIsNjgx">
-<div class="gt_from_md">
-<p><strong>Descarte</strong><br>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>Descarte</strong><br>
 N = 2,681</p>
-</div>
-</div>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
 <th id="<div data-qmd-base64=&quot;KipwLXZhbG9yKio=&quot;><div class='gt_from_md'><p><strong>p-valor</strong></p>
-</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><div data-qmd-base64="KipwLXZhbG9yKio=">
-<div class="gt_from_md">
-<p><strong>p-valor</strong></p>
-</div>
-</div>
+</div></div><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col"><p><strong>p-valor</strong></p>
 <span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>2</sup></span></th>
 </tr>
 </thead>
@@ -2743,28 +2593,16 @@ N = 2,681</p>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
 <td colspan="4" class="gt_footnote" style="text-align: left;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span>
-<div data-qmd-base64="VGFsbGE6IE1lZGlhbmE=">
-<div class="gt_from_md">
-<p>Talla: Mediana</p>
-</div>
-</div></td>
+<p>Talla: Mediana</p></td>
 </tr>
 <tr class="even">
 <td colspan="4" class="gt_footnote" style="text-align: left;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>2</sup></span>
-<div data-qmd-base64="VHdvLXdheSBBTk9WQQ==">
-<div class="gt_from_md">
-<p>Two-way ANOVA</p>
-</div>
-</div></td>
+<p>Two-way ANOVA</p></td>
 </tr>
 </tfoot>
 
 </table>
-</div>
-</figure>
-</div>
 
-</div>
 </div>
 </div>
 </div>
@@ -2772,23 +2610,15 @@ N = 2,681</p>
 </figure>
 </div>
 </section>
-<section id="relación-longitud-peso" class="level2">
-<h2 class="anchored" data-anchor-id="relación-longitud-peso">Relación longitud-peso</h2>
+<section id="longitud-peso" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="longitud-peso">Longitud-peso</h2>
 <p>El crecimiento en peso, <span class="math inline">\(W = a*L^b\)</span>, que depende de la talla, será utilizado para modelar el crecimiento en el modelo de evaluación. Para esto es requerido estimar los parámetros <em>a</em> y <em>b</em> de la relación L-W. Específicamente es relevante discriminar como el cambio de estos parámetros es función del tiempo (años) y el sexo, con énfasis en determinar cuando el crecimiento es de tipo isométrico <span class="math inline">\(b = 3\)</span> o alométrico si <span class="math inline">\(b \neq 3\)</span>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>ver código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>obs_all <span class="sc">|&gt;</span> <span class="fu">filter</span>(sexo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Machos"</span>,<span class="st">"Hembras"</span>)) <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(destino) <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(talla,peso)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> destino), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(year <span class="sc">~</span> sexo, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> <span class="fu">mitheme2</span>(<span class="at">bz =</span> <span class="dv">9</span>) <span class="sc">+</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> mycolor[<span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">2</span>)]) <span class="sc">+</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Talla [cm]"</span>, <span class="at">y =</span> <span class="st">"Peso [gr]"</span>, <span class="at">color =</span> <span class="st">"Destino"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div id="fig-003" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="01-tallas_files/figure-html/fig-003-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="01-tallas_files/figure-html/fig-003-1.png" class="img-fluid figure-img" width="2100"></a>
+<a href="01-tallas_files/figure-html/fig-003-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="01-tallas_files/figure-html/fig-003-1.png" class="img-fluid figure-img" width="2100"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2: Relación L-W para hembras y machos durante el período 2015 - 2023, destacando el destino de la captura
@@ -2797,27 +2627,7 @@ Figura&nbsp;2: Relación L-W para hembras y machos durante el período 2015 - 20
 </div>
 </div>
 </div>
-<p>Los valores de los parámetros estimados para la pendiente (<span class="math inline">\(log(a)\)</span>) y crecimiento (<span class="math inline">\(b\)</span>) bajo diferentes interacciones con el año y el sexo, sugieren que los cambios temporales en el crecimiento individual no son significativos (<a href="#fig-002-1" class="quarto-xref">Figura&nbsp;3 (a)</a>), mientras que se detectan diferencias significativas entre sexo (<a href="#fig-002-2" class="quarto-xref">Figura&nbsp;3 (b)</a>).</p>
-<details class="code-fold">
-<summary>ver código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(labelled)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>obs_all_log <span class="ot">&lt;-</span> obs_all <span class="sc">|&gt;</span> <span class="fu">filter</span>(sexo <span class="sc">!=</span> <span class="st">"Indefinido"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(year,peso,talla) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">yearf =</span> <span class="fu">factor</span>(year), <span class="at">logW =</span> <span class="fu">log</span>(peso), <span class="at">logL =</span> <span class="fu">log</span>(talla)) <span class="sc">|&gt;</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>( <span class="at">yearf =</span> <span class="st">"Año"</span>, <span class="at">logL =</span> <span class="st">"Crecimiento"</span>, <span class="at">logW =</span> <span class="st">"Pendiente"</span> )</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>mod02 <span class="ot">&lt;-</span> <span class="fu">glm</span>(logW <span class="sc">~</span> logL <span class="sc">+</span> yearf, <span class="at">data =</span> obs_all_log)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcoef_model</span>(mod02, <span class="at">intercept =</span> <span class="cn">TRUE</span>, <span class="at">signif_stars =</span> <span class="cn">FALSE</span>, <span class="at">facet_row =</span> <span class="cn">NULL</span>, <span class="at">stripped_rows =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"turbo"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">mitheme2</span>(<span class="at">bz =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>mod01 <span class="ot">&lt;-</span> <span class="fu">glm</span>(logW <span class="sc">~</span> logL <span class="sc">+</span> sexo, <span class="at">data =</span> obs_all_log)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcoef_model</span>(mod01, <span class="at">intercept =</span> <span class="cn">TRUE</span>, <span class="at">signif_stars =</span> <span class="cn">FALSE</span>, <span class="at">facet_row =</span> <span class="cn">NULL</span>, <span class="at">stripped_rows =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"turbo"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">mitheme2</span>(<span class="at">bz =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">12</span>, <span class="st">"pt"</span>), <span class="at">legend.key.spacing.y =</span> <span class="fu">unit</span>(<span class="dv">10</span>, <span class="st">"pt"</span>))</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#tbl_regression(mod01, conf.level = 0.75, intercept = TRUE, exponentiate = FALSE) |&gt; modify_header(label = "Parámetros") </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<p>Los valores de los parámetros estimados para la pendiente (<span class="math inline">\(log(a)\)</span>) y crecimiento (<span class="math inline">\(b\)</span>) bajo diferentes interacciones con el año y el sexo, sugieren que los cambios temporales en el crecimiento individual no son significativos (<a href="#fig-002-1" class="quarto-xref">Figura&nbsp;3 (a)</a>), mientras que se detectan diferencias significativas entre sexo (<a href="#fig-002-2" class="quarto-xref">Figura&nbsp;3 (b)</a>). La <a href="#fig-004" class="quarto-xref">Figura&nbsp;4</a> muestra las curva de la relación longitud-peso que se utilizaran en el modelamiento de merluza del pacífico (<a href="../modelos/index.html">Sección modelos</a>).</p>
 <div id="fig-002" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-002-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2826,7 +2636,7 @@ Figura&nbsp;2: Relación L-W para hembras y machos durante el período 2015 - 20
 <div id="fig-002-1" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-002-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="01-tallas_files/figure-html/fig-002-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="fig-002"><img src="01-tallas_files/figure-html/fig-002-1.png" class="img-fluid figure-img" data-ref-parent="fig-002" width="930"></a>
+<a href="01-tallas_files/figure-html/fig-002-1.png" class="lightbox" data-gallery="fig-002" data-glightbox="description: .lightbox-desc-3"><img src="01-tallas_files/figure-html/fig-002-1.png" class="img-fluid figure-img" data-ref-parent="fig-002" width="930"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-002-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Interacción con el predictor Año
@@ -2840,7 +2650,7 @@ Figura&nbsp;2: Relación L-W para hembras y machos durante el período 2015 - 20
 <div id="fig-002-2" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-002-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="01-tallas_files/figure-html/fig-002-2.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="fig-002"><img src="01-tallas_files/figure-html/fig-002-2.png" class="img-fluid figure-img" data-ref-parent="fig-002" width="930"></a>
+<a href="01-tallas_files/figure-html/fig-002-2.png" class="lightbox" data-gallery="fig-002" data-glightbox="description: .lightbox-desc-4"><img src="01-tallas_files/figure-html/fig-002-2.png" class="img-fluid figure-img" data-ref-parent="fig-002" width="930"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-002-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Interacción con el predictor Sexo
@@ -2855,6 +2665,550 @@ Figura&nbsp;3: Parámetros de la relacion L-W
 </figcaption>
 </figure>
 </div>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-004" class="quarto-figure quarto-figure-center quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<a href="01-tallas_files/figure-html/fig-004-1.png" class="lightbox page-columns page-full" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="01-tallas_files/figure-html/fig-004-1.png" class="img-fluid figure-img column-body-outset-right" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Relación L-W para hembras y machos utilizadas en los modelos de evaluación
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="selectividades" class="level2">
+<h2 class="anchored" data-anchor-id="selectividades">Selectividades</h2>
+<p>Las curvas de estructuras de tallas acumuladas permiten identificar de manera sencilla en qué tallas se producen los puntos de inflexión en las selectividades de la flota (<a href="#fig-005" class="quarto-xref">Figura&nbsp;5</a>). La talla al 50% de selectividad y la talla de máxima selectividad (100%) difieren en cuanto al valor promedio (<a href="#tbl-004" class="quarto-xref">Tabla&nbsp;5</a>). En la pesca comercial, la selectividad varía entre 50% y 100% en tallas de 53 cm a 74 cm. Para la pesca descartada, la selectividad se encuentra en un rango más estrecho, entre 29 cm y 61 cm. En cuanto a las composiciones conjuntas de tallas (comercial + descartes), el rango es intermedio.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-005" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-005-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="01-tallas_files/figure-html/fig-005-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6"><img src="01-tallas_files/figure-html/fig-005-1.png" class="img-fluid figure-img" width="2100"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-005-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Proporción de captura acumulada a lo largo de las tallas de merluza del pacífico
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell tbl-column-body-outset-right">
+<div id="tbl-004" class="cell tbl-column-body-outset-right quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;5: Tallas media (50%) y reclutadas (100%) de selectividad para conjunto de estrucuturas de tamaños de la captura comercial y descartada, asumiendo sexos conjunto y a traves del período 2015 - 2023. En (sd) se muestra la desviación estandar y en [rango] el rango para cada tipo de talla.
+</figcaption>
+<div aria-describedby="tbl-004-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<div id="rtwijirifs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rtwijirifs table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rtwijirifs thead, #rtwijirifs tbody, #rtwijirifs tfoot, #rtwijirifs tr, #rtwijirifs td, #rtwijirifs th {
+  border-style: none;
+}
+
+#rtwijirifs p {
+  margin: 0;
+  padding: 0;
+}
+
+#rtwijirifs .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rtwijirifs .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rtwijirifs .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rtwijirifs .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rtwijirifs .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rtwijirifs .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rtwijirifs .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rtwijirifs .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rtwijirifs .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rtwijirifs .gt_group_heading {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rtwijirifs .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rtwijirifs .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rtwijirifs .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rtwijirifs .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rtwijirifs .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtwijirifs .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rtwijirifs .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rtwijirifs .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rtwijirifs .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtwijirifs .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rtwijirifs .gt_last_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtwijirifs .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_last_grand_summary_row_top {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rtwijirifs .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtwijirifs .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rtwijirifs .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtwijirifs .gt_left {
+  text-align: left;
+}
+
+#rtwijirifs .gt_center {
+  text-align: center;
+}
+
+#rtwijirifs .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rtwijirifs .gt_font_normal {
+  font-weight: normal;
+}
+
+#rtwijirifs .gt_font_bold {
+  font-weight: bold;
+}
+
+#rtwijirifs .gt_font_italic {
+  font-style: italic;
+}
+
+#rtwijirifs .gt_super {
+  font-size: 65%;
+}
+
+#rtwijirifs .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rtwijirifs .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rtwijirifs .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rtwijirifs .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rtwijirifs .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rtwijirifs .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rtwijirifs .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rtwijirifs .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rtwijirifs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell tbl-column-body-outset-right table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="<div data-qmd-base64=&quot;KipUYWxsYSoq&quot;><div class='gt_from_md'><p><strong>Talla</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><p><strong>Talla</strong></p></th>
+<th id="<div data-qmd-base64=&quot;KipDb21lcmNpYWwqKiAgCk4gPSAxOA==&quot;><div class='gt_from_md'><p><strong>Comercial</strong><br />
+N = 18</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Comercial</strong><br>
+N = 18</p></th>
+<th id="<div data-qmd-base64=&quot;KipEZXNjYXJ0ZSoqICAKTiA9IDE4&quot;><div class='gt_from_md'><p><strong>Descarte</strong><br />
+N = 18</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Descarte</strong><br>
+N = 18</p></th>
+<th id="<div data-qmd-base64=&quot;KipDb25qdW50YSoqIAoKTiA9IDM2&quot;><div class='gt_from_md'><p><strong>Conjunta</strong></p>
+<p>N = 36</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Conjunta</strong></p>
+<p>N = 36</p></th>
+<th id="<div data-qmd-base64=&quot;KipNdWVzdHJhcyoq&quot;><div class='gt_from_md'><p><strong>Muestras</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><p><strong>Muestras</strong></p></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">50%, Media (DE) | [Min-Max]</td>
+<td class="gt_row gt_center" headers="stat_1">53 (6) | [44-67]</td>
+<td class="gt_row gt_center" headers="stat_2">29 (4) | [24-35]</td>
+<td class="gt_row gt_center" headers="stat_0">41 (13) | [24-67]</td>
+<td class="gt_row gt_center" headers="n">36</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">100%, Media (DE) | [Min-Max]</td>
+<td class="gt_row gt_center" headers="stat_1">74 (12) | [59-95]</td>
+<td class="gt_row gt_center" headers="stat_2">49 (12) | [35-75]</td>
+<td class="gt_row gt_center" headers="stat_0">61 (17) | [35-95]</td>
+<td class="gt_row gt_center" headers="n">36</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
 
 
 <div class="hidden" aria-hidden="true">
@@ -2862,6 +3216,8 @@ Figura&nbsp;3: Parámetros de la relacion L-W
 <span class="glightbox-desc lightbox-desc-2">Figura&nbsp;2: Relación L-W para hembras y machos durante el período 2015 - 2023, destacando el destino de la captura</span>
 <span class="glightbox-desc lightbox-desc-3">Figura&nbsp;3&nbsp;(a): Interacción con el predictor Año</span>
 <span class="glightbox-desc lightbox-desc-4">Figura&nbsp;3&nbsp;(b): Interacción con el predictor Sexo</span>
+<span class="glightbox-desc lightbox-desc-5">Figura&nbsp;4: Relación L-W para hembras y machos utilizadas en los modelos de evaluación</span>
+<span class="glightbox-desc lightbox-desc-6">Figura&nbsp;5: Proporción de captura acumulada a lo largo de las tallas de merluza del pacífico</span>
 </div>
 </section>
 
@@ -3277,18 +3633,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../datos/01-cruceros.html" class="pagination-link" aria-label="Evaluaciones Cruceros">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Evaluaciones Cruceros</span>
+      <a href="../datos/01-cruceros.html" class="pagination-link" aria-label="Área barrida">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Área barrida</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../datos/01-descartes.html" class="pagination-link" aria-label="Descartes">
+        <span class="nav-page-text">Descartes</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 por <a href="https://www.facilevisual.com">Juan-Carlos Quiroz</a></p>
+<p><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 <a href="https://www.facilevisual.com">Juan-Carlos Quiroz</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -3298,7 +3657,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

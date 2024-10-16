@@ -1,7 +1,8 @@
 ---
 title: "Cruceros area barrida"
-subtitle: "Obtención de índices de abundancia"
-subject: "Análisis"
+subtitle: "Construcción de índices de abundancia"
+date: "Octubre, 2024"
+description: ""
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}

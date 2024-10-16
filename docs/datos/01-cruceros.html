@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -94,12 +94,8 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../datos/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../datos/index.qmd" aria-current="page"> 
 <span class="menu-text">Datos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../biologia/index.html"> 
-<span class="menu-text">Biología</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../modelos/index.html"> 
@@ -108,10 +104,6 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="../resultados/index.html"> 
 <span class="menu-text">Resultados</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Sílabo</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -124,22 +116,36 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Tipo de datos</a></li><li class="breadcrumb-item"><a href="../datos/01-cruceros.html">Evaluaciones Cruceros</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../datos/01-oficiales.html">Tipo de datos</a></li><li class="breadcrumb-item"><a href="../datos/01-cruceros.html">Área barrida</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/index.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contexto</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Análisis de datos</span></a>
+ <span class="menu-text">Tipo de datos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -147,37 +153,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../datos/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contexto</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Tipo de datos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../datos/01-oficiales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Registros Oficiales</span></a>
+ <span class="menu-text">Oficiales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../datos/01-cruceros.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Evaluaciones Cruceros</span></a>
+ <span class="menu-text">Área barrida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../datos/01-tallas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tallas y selectividad</span></a>
+ <span class="menu-text">Estructutados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos/01-descartes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descartes</span></a>
   </div>
 </li>
       </ul>
@@ -201,16 +196,19 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#crucero-2023" id="toc-crucero-2023" class="nav-link" data-scroll-target="#crucero-2023">Crucero 2023</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="01-cruceros.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">Cruceros area barrida</h1>
-<p class="subtitle lead">Obtención de índices de abundancia</p>
+<p class="subtitle lead">Construcción de índices de abundancia</p>
 
 
+<div class="date-block bg-content text-white p-2">
+  <p class="date"> octubre, 2024</p>
+</div>
 </header>
 
 
@@ -874,13 +872,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../datos/01-oficiales.html" class="pagination-link" aria-label="Registros Oficiales">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Registros Oficiales</span>
+      <a href="../datos/01-oficiales.html" class="pagination-link" aria-label="Oficiales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Oficiales</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../datos/01-tallas.html" class="pagination-link" aria-label="Tallas y selectividad">
-        <span class="nav-page-text">Tallas y selectividad</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../datos/01-tallas.html" class="pagination-link" aria-label="Estructutados">
+        <span class="nav-page-text">Estructutados</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -888,7 +886,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 por <a href="https://www.facilevisual.com">Juan-Carlos Quiroz</a></p>
+<p><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 <a href="https://www.facilevisual.com">Juan-Carlos Quiroz</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -898,7 +896,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

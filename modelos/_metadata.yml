@@ -1,10 +1,36 @@
 date-heading:
-  content: "Lesson for"
+  #content: "Lesson for"
   class: "bg-content"
-date-format: "full"
+date-format: "MMMM, YYYY"
 
 format:
   html:
     filters: ["../filters/format_date_end.lua"]
     template-partials:
       - ../html/title-block.html
+  pdf:
+    documentclass: scrreprt
+    fontsize: 12pt
+    linestretch: 1.2
+    fig-width: 5
+    fontfamily: libertinus
+    cite-method: natbib
+    lof: true
+    lot: true
+    toc: true
+    toc-depth: 4
+    number-sections: false
+    number-depth: 3
+    author: "Juan-Carlos Quiroz"
+    include-after-body: 
+       - "../pdf/after.tex"
+    include-in-header: 
+       - "../pdf/header.tex"
+    include-before-body:
+       - "../pdf/pagestyle.tex"
+    code-block-bg: light
+    linkcolor: highlight
+    urlcolor: highlight
+    citecolor: highlight
+    toccolor: highlight
+    filecolor: highlight

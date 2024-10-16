@@ -1,20 +1,25 @@
 ---
 title: "Estructura de tallas"
-author: "JCQ"
 subtitle: "Dinámica poblacional y selectividades"
-subject: "Análisis"
+date: "Octubre, 2024"
+description: ""
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-source(here::here("R", "slide-things.R"))
+source(here::here("R", "functions.R"))
 library(readr)
 library(readxl)
 library(tidyverse)
 library(gtsummary)
+library(GGally)
+library(labelled)
+library(kableExtra)
 
 mycolor <- viridisLite::viridis(12, option = "turbo", begin = 0, end = 1)
 mycolor2 <- viridisLite::viridis(7, option = "turbo", begin = 0, end = 1)
 ```
+
+## Utilidad de las estructuras de tamaños
 
 Las composiciones de tamaños y los pesos medios en un modelo de evaluación poblacional permiten influir en dos
 procesos importantes para la estimación de variables de estado (por ejemplo, biomasa y reclutamiento): (i) el
@@ -54,6 +59,7 @@ descartada. Un total de `r 1343+194` muestras son descartada por no identificar 
 
 theme_gtsummary_language(language = "es")
 theme_gtsummary_journal("jama")
+theme_gtsummary_compact()
 obs_all |>  
   tbl_summary(include = c(year, sexo), by = destino, missing = "ifany", percent = c("row"),
               statistic = list(all_categorical() ~ "{n} ({p}%)"), 
@@ -63,8 +69,8 @@ obs_all |>
   add_overall(col_label = "**Totales** \n\n N = {style_number(N)}", last = TRUE,
               statistic = list(all_categorical() ~ "{n}")) |> 
   add_n(col_label = "**Muestras**", last = TRUE, footnote = FALSE) |>  
-  bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
-
+  bold_labels() |>  modify_header(label = "**Factor**") |> as_gt() 
+reset_gtsummary_theme()
 
 ```
 
@@ -79,22 +85,25 @@ comercial.
 #| label: tbl-002
 
 theme_gtsummary_language(language = "es")
-theme_gtsummary_journal("jama")
+theme_gtsummary_journal(journal = "lancet")
+theme_gtsummary_compact()
 obs_all |>  tbl_summary(include = c(talla, peso), by = destino, missing = "ifany", type = all_continuous() ~ "continuous2",
    statistic = all_continuous() ~ c("{mean} ({sd})", "{min} - {max}"), digits = list(peso ~ 0, talla ~ 1),
    label = list(peso ~ "Peso", talla ~ "Talla"), missing_text = "(Perdidos)") |> 
    add_overall(col_label = "**Totales** \n\n N = {style_number(N)}", last = TRUE) |> 
-   add_n(col_label = "**Muestras, n**", last = TRUE, footnote = FALSE) |> add_p(test = everything() ~ "t.test") |> 
-   bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
+   #add_n(col_label = "**Muestras, n**", last = TRUE, footnote = FALSE) |> 
+  add_p(test = everything() ~ "t.test") |> 
+   bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt() 
 reset_gtsummary_theme()
+
 ```
 
 ## Estructura de tallas
 
 Las composiciones de tamaño de la captura comercial y descartada muestran señales importantes para fines de la
-evaluación poblacional (@fig-001). Los descartes de hembras, @tbl-003-1, revelan ingresos de cohortes que
+evaluación poblacional (@fig-001). Los descartes de hembras, @tbl-003, revelan ingresos de cohortes que
 progresan en periodos de al menos 4 años (2019-2022). Similarmente la captura comercial muestra reducción de
-la fracción vulnerables (i.e., mayormente peces de tamaños grande, @tbl-003-2), que podría indicar cambios en
+la fracción vulnerables (i.e., mayormente peces de tamaños grande, @tbl-003a), que podría indicar cambios en
 las estrategias de pesca o aumentos en los niveles de mortalidad por pesca.
 
 ```{r, warning=FALSE, message=FALSE}
@@ -113,33 +122,54 @@ ggplot(data = tmp, aes(mids,freq)) + geom_col(aes(fill = destino), width = NULL,
   labs(x = "Talla [cm]", y = "Proporción", fill = "Procedencia")
 ```
 
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+est_tallas_by_destino <- obs_all |> filter(sexo %in% c("Machos","Hembras")) |> drop_na(destino) |> 
+  reframe(armo_talla(talla,bg.brks), .by = c(year,destino)) |> select(year, destino, mids, freq) |> 
+  pivot_wider(values_from = freq, names_from = mids)
+write_csv(x = est_tallas_by_destino, file = "../modelos/data/est_tallas_by_destino.csv")
+
+est_tallas_by_year <- obs_all |> filter(sexo %in% c("Machos","Hembras")) |> drop_na(destino) |> 
+  reframe(armo_talla(talla,bg.brks), .by = c(year)) |> select(year, mids, freq) |> 
+  pivot_wider(values_from = freq, names_from = mids)
+write_csv(x = est_tallas_by_year, file = "../modelos/data/est_tallas_by_year.csv")
+```
+
 ```{r, warning=FALSE, message=FALSE}
-#| tbl-cap: "Progresión temporal de la talla media para la captura comercial y descartada. Valor P negrilla indica diferecias significativa entre la captura comercial y descartada."
-#| tbl-subcap: 
-#|   - "Hembras"
-#|   - "Machos"
+#| tbl-cap: "Talla media para la captura comercial y descartada en Hemnbras."
 #| tbl-column: page-inset-right
 #| label: tbl-003
-#| layout-ncol: 2
-#| 
+#| layout-ncol: 1
 
 theme_gtsummary_language(language = "es")
 theme_gtsummary_journal("jama")
+theme_gtsummary_compact()
 obs_all |> filter (sexo == "Hembras") |>  tbl_continuous(
   variable = talla, by = destino, include = year,
   statistic = ~ c("{median}"), digits = ~ 1,
    label = list(talla ~ "Talla", year ~ "Año") ) |> add_p() |> 
    bold_p(t = 0.10) |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
+reset_gtsummary_theme()
+```
 
+```{r, warning=FALSE, message=FALSE}
+#| tbl-cap: "Talla media para la captura comercial y descartada en Machos"
+#| tbl-column: page-inset-right
+#| label: tbl-003a
+#| layout-ncol: 1
+
+theme_gtsummary_language(language = "es")
+theme_gtsummary_journal("jama")
+theme_gtsummary_compact()
 obs_all |> filter (sexo == "Machos") |>  tbl_continuous(
   variable = talla, by = destino, include = year,
   statistic = ~ c("{median}"), digits = ~ 1,
    label = list(talla ~ "Talla", year ~ "Año") ) |> add_p() |> 
    bold_p() |> bold_labels() |>  modify_header(label = "**Factor**") |> as_gt()
 reset_gtsummary_theme()
+
 ```
 
-## Relación longitud-peso
+## Longitud-peso
 
 El crecimiento en peso, $W = a*L^b$, que depende de la talla, será utilizado para modelar el crecimiento en el
 modelo de evaluación. Para esto es requerido estimar los parámetros *a* y *b* de la relación L-W.
@@ -152,16 +182,18 @@ $b \neq 3$.
 #| fig-cap: "Relación L-W para hembras y machos durante el período 2015 - 2023, destacando el destino de la captura"
 #| label: fig-003
 
-obs_all |> filter(sexo %in% c("Machos","Hembras")) |> drop_na(destino) |> 
+obs_all |> filter(sexo %in% c("Machos","Hembras")) |> drop_na(destino) |> mutate(peso = peso/1000) |> 
   ggplot(aes(talla,peso)) + geom_point(aes(color = destino), size = 1, alpha = 0.4) + 
   facet_grid(year ~ sexo, scales = "free_y") + mitheme2(bz = 9) + 
   scale_color_manual(values = mycolor[c(9,2)]) + 
-  labs(x = "Talla [cm]", y = "Peso [gr]", color = "Destino")
+  labs(x = "Talla [cm]", y = "Peso [kg]", color = "Destino")
 ```
 
 Los valores de los parámetros estimados para la pendiente ($log(a)$) y crecimiento ($b$) bajo diferentes
 interacciones con el año y el sexo, sugieren que los cambios temporales en el crecimiento individual no son
-significativos (@fig-002-1), mientras que se detectan diferencias significativas entre sexo (@fig-002-2).
+significativos (@fig-002-1), mientras que se detectan diferencias significativas entre sexo (@fig-002-2). La
+@fig-004 muestra las curva de la relación longitud-peso que se utilizaran en el modelamiento de merluza del
+pacífico ([Sección modelos](../modelos/index.qmd)).
 
 ```{r, warning=FALSE, message=FALSE}
 #| fig-cap: "Parámetros de la relacion L-W"
@@ -172,10 +204,6 @@ significativos (@fig-002-1), mientras que se detectan diferencias significativas
 #| fig-width: 3.1
 #| fig-asp: 0.6
 #| label: fig-002
-
-
-library(GGally)
-library(labelled)
 
 obs_all_log <- obs_all |> filter(sexo != "Indefinido") |> 
   drop_na(year,peso,talla) |> mutate(yearf = factor(year), logW = log(peso), logL = log(talla)) |> 
@@ -191,5 +219,90 @@ ggcoef_model(mod01, intercept = TRUE, signif_stars = FALSE, facet_row = NULL, st
   labs(x = NULL) + scale_color_viridis_d(option = "turbo", direction = 1) + mitheme2(bz = 4) + 
   theme(legend.key.size = unit(12, "pt"), legend.key.spacing.y = unit(10, "pt"))
 #tbl_regression(mod01, conf.level = 0.75, intercept = TRUE, exponentiate = FALSE) |> modify_header(label = "Parámetros") 
+
+```
+
+```{r, warning=FALSE, message=FALSE}
+#| fig-height: 5
+#| fig-cap: "Relación L-W para hembras y machos utilizadas en los modelos de evaluación"
+#| label: fig-004
+#| fig-column: body-outset-right
+
+
+talla <- unique(tmp$mids)
+para <- coefficients(mod01)
+machos = exp(para[1])*talla^para[2]
+hembras = exp(para[1])*talla^(para[2]+para[3])
+
+mod03 <- glm(logW ~ logL, data = obs_all_log)
+paraall <- coefficients(mod03)
+conjunto = exp(paraall[1])*talla^paraall[2]
+
+obslw <- tibble(talla, hembras, machos, conjunto) |> 
+  pivot_longer(cols = c(2:4), names_to = "Tipo", values_to = "Peso") |> mutate(Peso = Peso/1000)
+
+lw_by_tipo <- obslw |> pivot_wider(values_from = Peso, names_from = talla)
+write_csv(x = lw_by_tipo, file = "../modelos/data/lw_by_tipo.csv")
+
+
+obslw |> ggplot(aes(x = talla, y =Peso)) + geom_line(aes(color = Tipo), linewidth = 1, alpha = 0.7) + mitheme2(bz = 10) + 
+  labs(x = "Talla [cm]", y = "Peso [kg]") + scale_color_manual(values = mycolor[c(4,6,11)])
+
+```
+
+## Selectividades
+
+Las curvas de estructuras de tallas acumuladas permiten identificar de manera sencilla en qué tallas se
+producen los puntos de inflexión en las selectividades de la flota (@fig-005). La talla al 50% de selectividad
+y la talla de máxima selectividad (100%) difieren en cuanto al valor promedio (@tbl-004). En la pesca
+comercial, la selectividad varía entre 50% y 100% en tallas de 53 cm a 74 cm. Para la pesca descartada, la
+selectividad se encuentra en un rango más estrecho, entre 29 cm y 61 cm. En cuanto a las composiciones
+conjuntas de tallas (comercial + descartes), el rango es intermedio.
+
+```{r}
+#| fig-height: 9
+#| fig-cap: "Proporción de captura acumulada a lo largo de las tallas de merluza del pacífico"
+#| label: fig-005
+#| 
+tmp1 <- tmp |> select(year,mids,destino,sexo,freq) |> group_by(year,destino,sexo) |> mutate(freqa = cumsum(freq)) 
+
+figcum <- tmp1 |> 
+  ggplot(aes(x = mids, y = freqa)) + geom_path(aes(color = destino)) + 
+  facet_grid(year ~ sexo, scales = "free_y") + 
+  mitheme2(bz = 9) + scale_color_manual(values = mycolor[c(9,2)]) + 
+  labs(x = "Talla [cm]", y = "Proporción", fill = "Procedencia")
+
+extrapp <- tmp1 |> select(!freq) |> group_by(year,destino,sexo) |> 
+  summarise(tallamed = Hmisc::approxExtrap(freqa, mids, xout=0.5)$y, tallamax = Hmisc::approxExtrap(freqa, mids, xout=0.99)$y) |> 
+  mutate(propmed = 0.5, propmax = 1)
+
+figcum + geom_point(data = extrapp, aes(x = tallamed, y = propmed, color = destino), size = 2, shape = 21) + 
+  facet_grid(year ~ sexo, scales = "free_y") +
+  geom_point(data = extrapp, aes(x = tallamax, y = propmax, color = destino), size = 2, shape = 22) + 
+  facet_grid(year ~ sexo, scales = "free_y")
+
+
+```
+
+```{r}
+#| tbl-cap: "Tallas media (50%) y reclutadas (100%) de selectividad para conjunto de estrucuturas de tamaños de la captura comercial y descartada, asumiendo sexos conjunto y a traves del período 2015 - 2023. En (sd) se muestra la desviación estandar y en [rango] el rango para cada tipo de talla."
+#| tbl-column: body-outset-right
+#| label: tbl-004
+
+theme_gtsummary_language(language = "es")
+theme_gtsummary_journal("jama")
+theme_gtsummary_compact()
+extrapp |>   
+  tbl_summary(include = c(tallamed, tallamax), by = destino, missing = "ifany", percent = c("row"),
+              statistic = list(all_categorical() ~ "{n} ({p}%)",
+                               all_continuous() ~ "{mean} ({sd}) | [{min}-{max}]"), 
+              #type = list(all_categorical() ~ "categorical"),
+              label = list(tallamed ~ "50%", tallamax ~ "100%"), 
+              missing_text = "(Perdidos)") |> 
+  add_overall(col_label = "**Conjunta** \n\n N = {style_number(N)}", last = TRUE,
+              statistic = list(all_continuous() ~ "{mean} ({sd}) | [{min}-{max}]")) |> 
+  add_n(col_label = "**Muestras**", last = TRUE, footnote = FALSE) |>  
+  bold_labels() |>  modify_header(label = "**Talla**") |> as_gt()
+reset_gtsummary_theme()
 
 ```
